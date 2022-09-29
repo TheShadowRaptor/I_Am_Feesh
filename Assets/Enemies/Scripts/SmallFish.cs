@@ -15,7 +15,7 @@ public class SmallFish : MonoBehaviour
     Rigidbody2D rb;
     GameObject player;
 
-    private bool p_FacingRight = true;
+    private bool c_FacingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -53,12 +53,12 @@ public class SmallFish : MonoBehaviour
     {
         float moveDir = rb.velocity.x;
 
-        if (moveDir > 0 && !p_FacingRight || moveDir < 0 && p_FacingRight) Flip();
+        if (moveDir > 0 && !c_FacingRight || moveDir < 0 && c_FacingRight) Flip();
     }
 
     void Flip()
     {
-        p_FacingRight = !p_FacingRight;
+        c_FacingRight = !c_FacingRight;
 
         Vector3 theScale = transform.localScale;
         theScale.y *= -1;
@@ -67,6 +67,7 @@ public class SmallFish : MonoBehaviour
 
     public bool PlayerSpotted()
     {
+        // If player is spotted becomes true
         if (detectPlayer.spottedPlayer)
         {           
             return true;
@@ -76,6 +77,7 @@ public class SmallFish : MonoBehaviour
 
     public bool WarningSpotted()
     {
+        // Warning Causes surrounding small fish in warning radius to swim away
         if (warningBehaviour.spottedWarning)
         {
             return true;

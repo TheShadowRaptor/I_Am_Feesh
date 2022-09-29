@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2912894834100806348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8987332193793519313}
+  - component: {fileID: 735492800247514458}
+  m_Layer: 0
+  m_Name: WarningRadius
+  m_TagString: Warning
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8987332193793519313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912894834100806348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7061251369404605213}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &735492800247514458
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912894834100806348}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1 &7061251368861004061
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e6ca1283cd80e4a9ad75bb2870f497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpottedPlayer: 0
+  warningRadius: {fileID: 2912894834100806348}
+  spottedPlayer: 0
 --- !u!1 &7061251369241800487
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70964c115c64b3547bfac9cd84567fe0, type: 3}
   m_Color: {r: 0.9528302, g: 0.39101997, b: 0.39101997, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -159,6 +208,7 @@ GameObject:
   - component: {fileID: 7061251369404605214}
   - component: {fileID: 7061251369404605408}
   - component: {fileID: 7061251369404605410}
+  - component: {fileID: 1432140413807765972}
   m_Layer: 0
   m_Name: SmallFish
   m_TagString: Enemy
@@ -180,6 +230,7 @@ Transform:
   m_Children:
   - {fileID: 7061251369241800488}
   - {fileID: 7061251368861004062}
+  - {fileID: 8987332193793519313}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -232,9 +283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6a18d90ed566147a5009ca3db46b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveRight: 0
   swimSpeed: 30
   fleeSwimSpeed: 50
-  DetectionRadius: {fileID: 7061251368861004063}
+  detectPlayer: {fileID: 7061251368861004063}
+  warningBehaviour: {fileID: 1432140413807765972}
 --- !u!114 &7061251369404605410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,3 +301,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+--- !u!114 &1432140413807765972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061251369404605212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5a386fbbe4f174e81461c9a4c4ae39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spottedWarning: 0

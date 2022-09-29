@@ -9,7 +9,8 @@ public class SmallFish : MonoBehaviour
     public float fleeSwimSpeed = 40;
 
     [Header("Scripts")]
-    public FishDetection DetectionRadius;
+    public DetectPlayer detectPlayer;
+    public DetectWarning warningBehaviour;
 
     Rigidbody2D rb;
     GameObject player;
@@ -26,7 +27,7 @@ public class SmallFish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {      
-        AnimationHandler();
+        FlipCharacter();
     }
 
     void FixedUpdate()
@@ -38,15 +39,17 @@ public class SmallFish : MonoBehaviour
     {
         //Move
         rb.velocity = transform.right * swimSpeed * Time.deltaTime;
-        if (PlayerSpotted())
+
+
+        if (PlayerSpotted()|| WarningSpotted())
         {
-            // Swim Sway
+            // Swim Away 
             transform.right = -player.transform.position + transform.position;
             swimSpeed = fleeSwimSpeed;
         }
     }
 
-    private void AnimationHandler()
+    private void FlipCharacter()
     {
         float moveDir = rb.velocity.x;
 
@@ -57,15 +60,24 @@ public class SmallFish : MonoBehaviour
     {
         p_FacingRight = !p_FacingRight;
 
-        Quaternion theRotation = transform.localRotation;
-        theRotation.y *= -1;
-        transform.localRotation = theRotation;
+        Vector3 theScale = transform.localScale;
+        theScale.y *= -1;
+        transform.localScale = theScale;
     }
 
     public bool PlayerSpotted()
     {
-        if (DetectionRadius.SpottedPlayer)
+        if (detectPlayer.spottedPlayer)
         {           
+            return true;
+        }
+        return false;
+    }
+
+    public bool WarningSpotted()
+    {
+        if (warningBehaviour.spottedWarning)
+        {
             return true;
         }
         return false;

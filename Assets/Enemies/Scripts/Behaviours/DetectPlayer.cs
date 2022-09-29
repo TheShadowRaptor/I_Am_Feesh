@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishDetection : MonoBehaviour
+public class DetectPlayer : MonoBehaviour
 {
-    public bool SpottedPlayer = false;
+    public GameObject warningRadius;
+
+    public bool spottedPlayer = false;
 
     public void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SpottedPlayer = true;
+            spottedPlayer = true;
+            warningRadius.SetActive(true);
         }
     }
 }

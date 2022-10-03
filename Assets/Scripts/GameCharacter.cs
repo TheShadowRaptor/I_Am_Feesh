@@ -4,5 +4,22 @@ using UnityEngine;
 
 public class GameCharacter : MonoBehaviour
 {
- 
+    protected Rigidbody2D rb;
+    protected bool c_FacingRight = true;
+
+    protected void FlipCharacterModel()
+    {
+        float moveDir = rb.velocity.x;
+
+        if (moveDir > 0 && !c_FacingRight || moveDir < 0 && c_FacingRight) Flip();
+    }
+
+    void Flip()
+    {
+        c_FacingRight = !c_FacingRight;
+
+        Vector3 theScale = transform.localScale;
+        theScale.y *= -1;
+        transform.localScale = theScale;
+    }
 }

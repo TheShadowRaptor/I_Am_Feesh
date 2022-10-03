@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SmallFish : FishCharacter
-{    
+{
+    bool changeDir;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,7 @@ public class SmallFish : FishCharacter
     // Update is called once per frame
     void Update()
     {      
-        FlipCharacter();
+        FlipCharacterModel();
     }
 
     public bool WarningSpotted()
@@ -37,12 +38,30 @@ public class SmallFish : FishCharacter
         //Move
         rb.velocity = transform.right * swimSpeed * Time.deltaTime;
 
-
         if (PlayerSpotted() || WarningSpotted())
         {
             // Swim Away 
             transform.right = -player.transform.position + transform.position;
             swimSpeed = fleeSwimSpeed;
         }
-    }      
+
+        else
+        {
+            if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
+            else if (changeDir == true) transform.rotation = new Quaternion(0, 0, 180, 0);
+        }
+        
+    }
+
+    protected void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (PlayerSpotted() == false)
+        {
+            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Wall"))
+            {
+                if (changeDir == true) changeDir = false;
+                else if (changeDir == false) changeDir = true;
+            }
+        }
+    }
 }

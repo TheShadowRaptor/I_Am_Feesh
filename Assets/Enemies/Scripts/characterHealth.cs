@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class characterHealth : MonoBehaviour
 {
-    public int health = 1;
-    // Update is called once per frame
+    public float health;
+
     void Update()
     {
         HealthClamp();
@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
 
     bool IsDead()
     {
-        if(health == 0)
+        if (health == 0)
         {
             return true;
         }
@@ -23,12 +23,11 @@ public class EnemyHealth : MonoBehaviour
 
     void HealthClamp()
     {
-        if(health <= 0)
+        if (health <= 0)
         {
             health = 0;
         }
     }
-
     void CheckState()
     {
         if (IsDead()) gameObject.SetActive(false);

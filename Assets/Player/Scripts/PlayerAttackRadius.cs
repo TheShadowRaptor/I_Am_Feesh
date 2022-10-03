@@ -5,15 +5,28 @@ using UnityEngine;
 public class PlayerAttackRadius : MonoBehaviour
 {
     public GameObject enemyObj;
-    public EnemyHealth enemyHealthScript;
-    public bool attacking;
+    public GameObject foodObj;
+
+    public characterHealth characterHealth;
+    public FoodCharacter foodScript;
+
+    public bool attackCurrentFish;
+    public bool eatCurrentFood;
     private void OnTriggerStay2D(Collider2D other)
     {  
         if (other.gameObject.CompareTag("Enemy"))
         {
             enemyObj = other.gameObject;
-            enemyHealthScript = enemyObj.GetComponent<EnemyHealth>();
-            attacking = true;
+            characterHealth = enemyObj.GetComponent<characterHealth>();
+            attackCurrentFish = true;
+        }
+
+        else if (other.gameObject.CompareTag("Food"))
+        {
+            foodObj = other.gameObject;
+            foodScript = foodObj.GetComponent<FoodCharacter>();
+            characterHealth = foodObj.GetComponent<characterHealth>();
+            eatCurrentFood = true;
         }
     }
 
@@ -22,8 +35,19 @@ public class PlayerAttackRadius : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             enemyObj = null;
-            enemyHealthScript = null;
-            attacking = false;
+            characterHealth = null;
+            attackCurrentFish = false;
+        }
+
+        if (other.gameObject.CompareTag("Food"))
+        {
+            if (other.gameObject.CompareTag("Food"))
+            {
+                foodObj = null;
+                foodScript = null;
+                characterHealth = null;
+                eatCurrentFood = false;
+            }
         }
     }
 }

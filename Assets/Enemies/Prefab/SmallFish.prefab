@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1
 --- !u!1 &7061251368861004061
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,10 +284,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takeDamage: {fileID: 7061251369404605410}
-  swimSpeed: 30
-  fleeSwimSpeed: 50
+  swimSpeed: 20
+  fleeSwimSpeed: 30
   detectPlayer: {fileID: 7061251368861004063}
   warningBehaviour: {fileID: 1432140413807765972}
+  food: {fileID: 5019588910840587033, guid: d9daebc5d69ce1043833012d43546fef, type: 3}
 --- !u!114 &7061251369404605410
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,6 @@ public class TakeDamage : MonoBehaviour
     void Update()
     {
         HealthClamp();
-        CheckState();
     }
 
     bool IsDead()
@@ -27,9 +26,5 @@ public class TakeDamage : MonoBehaviour
         {
             health = 0;
         }
-    }
-    void CheckState()
-    {
-        if (IsDead()) gameObject.SetActive(false);
     }
 }

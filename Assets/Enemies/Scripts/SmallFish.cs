@@ -17,6 +17,8 @@ public class SmallFish : FishCharacter
     {      
         FlipCharacterModel();
         CheckState();
+        SpawnFood();
+        Deactivate();
     }
 
     public bool WarningSpotted()
@@ -52,6 +54,15 @@ public class SmallFish : FishCharacter
             else if (changeDir == true) transform.rotation = new Quaternion(0, 0, 180, 0);
         }
         
+    }
+
+    void SpawnFood()
+    {
+        if (isDead)
+        {
+            Instantiate(food, transform.position, transform.rotation);
+            Debug.Log("Dead");
+        }
     }
 
     protected void OnCollisionEnter2D(Collision2D collision)

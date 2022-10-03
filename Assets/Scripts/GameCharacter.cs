@@ -9,6 +9,8 @@ public class GameCharacter : MonoBehaviour
     protected Rigidbody2D rb;
     protected bool c_FacingRight = true;
 
+    protected bool isDead = false;
+
     protected void FlipCharacterModel()
     {
         float moveDir = rb.velocity.x;
@@ -28,6 +30,14 @@ public class GameCharacter : MonoBehaviour
     public void CheckState()
     {
         if (takeDamage.health == 0)
+        {
+            isDead = true;
+        }
+    }
+
+    public void Deactivate()
+    {
+        if (isDead == true)
         {
             gameObject.SetActive(false);
         }

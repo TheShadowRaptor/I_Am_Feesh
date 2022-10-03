@@ -12,6 +12,8 @@ public class FishCharacter : GameCharacter
     public DetectPlayer detectPlayer;
     public DetectWarning warningBehaviour;
 
+    [Header("GameObjects")]
+    public GameObject food;
     protected GameObject player;
 
     public bool PlayerSpotted()

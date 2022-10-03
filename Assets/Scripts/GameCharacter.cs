@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameCharacter : MonoBehaviour
 {
+    public TakeDamage takeDamage;
+
     protected Rigidbody2D rb;
     protected bool c_FacingRight = true;
 
@@ -21,5 +23,13 @@ public class GameCharacter : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.y *= -1;
         transform.localScale = theScale;
+    }
+
+    public void CheckState()
+    {
+        if (takeDamage.health == 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

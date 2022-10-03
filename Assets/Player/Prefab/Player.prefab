@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyObj: {fileID: 0}
   foodObj: {fileID: 0}
-  characterHealth: {fileID: 0}
+  takeDamage: {fileID: 0}
   foodScript: {fileID: 0}
   attackCurrentFish: 0
   eatCurrentFood: 0
@@ -169,11 +169,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd34539cc8e83741bd9d6608e9a5348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  takeDamage: {fileID: 5649587124154103249}
   playerEvolutionPoints: 0
+  startStamina: 0
+  staminaDecrease: 1
   playerDamage: 1
   swimSpeed: 50
   playerAttackRadius: {fileID: 9155749875499288213}
   attackRadius: {fileID: 1570108902988751184}
+  playerStamina: 0
 --- !u!50 &4161123100735933436
 Rigidbody2D:
   serializedVersion: 4

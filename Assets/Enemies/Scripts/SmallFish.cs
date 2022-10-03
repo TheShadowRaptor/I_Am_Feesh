@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SmallFish : FishCharacter
 {
-    bool changeDir;
+    bool changeDir;   
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +16,7 @@ public class SmallFish : FishCharacter
     void Update()
     {      
         FlipCharacterModel();
+        CheckState();
     }
 
     public bool WarningSpotted()

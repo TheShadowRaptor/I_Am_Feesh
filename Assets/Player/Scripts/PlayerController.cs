@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : GameCharacter
 {
     [Header("PlayerStats")]
     public int playerEvolutionPoints;
@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour
     [Header("GameObjects")]
     public GameObject attackRadius;
 
-    Rigidbody2D rb;
-    private bool c_FacingRight = true;
     public float playerStamina;
 
     // Inputs 
@@ -39,14 +37,31 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         AttackTarget();
-        FlipCharacter();
+        FlipCharacterModel();
         StaminaDrain();
+        CheckState();
     }
 
     private void FixedUpdate()
     {
         InputMananger();
         Move();
+    }
+
+    protected new void FlipCharacterModel()
+    {
+        float moveDir = rb.velocity.x;
+
+        if (moveDir > 0 && !c_FacingRight || moveDir < 0 && c_FacingRight) Flip();
+    }
+
+    void Flip()
+    {
+        c_FacingRight = !c_FacingRight;
+
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
     void InputMananger()
@@ -66,39 +81,23 @@ public class PlayerController : MonoBehaviour
 
     private void AttackTarget()
     {
-        characterHealth characterHealth = playerAttackRadius.characterHealth;
+        TakeDamage takeDamage = playerAttackRadius.takeDamage;
         FoodCharacter food = playerAttackRadius.foodScript;
         // Attack Input
         if (attackButtonDown) attackRadius.SetActive(true);
         else attackRadius.SetActive(false);
 
         // Attack Target        
-        if (playerAttackRadius.attackCurrentFish) characterHealth.health -= playerDamage;
+        if (playerAttackRadius.attackCurrentFish) takeDamage.health -= playerDamage;
 
         // Consume Food       
         if (playerAttackRadius.eatCurrentFood)
         {
             playerEvolutionPoints += food.evolutionPoints;
             playerStamina += food.staminaPoints;
-            if (playerAttackRadius.eatCurrentFood) characterHealth.health -= playerDamage;
+            if (playerAttackRadius.eatCurrentFood) takeDamage.health -= playerDamage;
 
         }
-    }
-
-    private void FlipCharacter()
-    {
-        float moveDir = rb.velocity.x;
-
-        if (moveDir > 0 && !c_FacingRight || moveDir < 0 && c_FacingRight) Flip();
-    }
-
-    void Flip()
-    {
-        c_FacingRight = !c_FacingRight;
-
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
     }
 
     void StaminaDrain()

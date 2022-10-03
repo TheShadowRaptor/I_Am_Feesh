@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6a18d90ed566147a5009ca3db46b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  takeDamage: {fileID: 7061251369404605410}
   swimSpeed: 30
   fleeSwimSpeed: 50
   detectPlayer: {fileID: 7061251368861004063}

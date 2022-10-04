@@ -225,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 7061251369404605212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7061251369241800488}
@@ -289,6 +289,7 @@ MonoBehaviour:
   detectPlayer: {fileID: 7061251368861004063}
   warningBehaviour: {fileID: 1432140413807765972}
   food: {fileID: 5019588910840587033, guid: d9daebc5d69ce1043833012d43546fef, type: 3}
+  changeDir: 0
 --- !u!114 &7061251369404605410
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : GameCharacter
 {
@@ -40,6 +41,7 @@ public class PlayerController : GameCharacter
         FlipCharacterModel();
         StaminaDrain();
         CheckState();
+        Lose();
     }
 
     private void FixedUpdate()
@@ -62,6 +64,14 @@ public class PlayerController : GameCharacter
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    protected void Lose()
+    {
+        if (isDead)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     void InputMananger()
@@ -108,6 +118,7 @@ public class PlayerController : GameCharacter
         if (playerStamina <= 0)
         {
             playerStamina = 0;
+            isDead = true;
         }
 
         if (playerStamina > startStamina)

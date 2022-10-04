@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SmallFish : FishCharacter
 {
-    bool changeDir;   
+    [Header("StartDir --- (Flase = Right, True = Left)")]
+    public bool changeDir;   
     // Start is called before the first frame update
     void Start()
     {

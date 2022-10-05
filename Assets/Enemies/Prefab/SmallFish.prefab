@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8987332193793519313}
   - component: {fileID: 735492800247514458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WarningRadius
   m_TagString: Warning
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 7061251368861004062}
   - component: {fileID: 7061251368861004256}
   - component: {fileID: 7061251368861004063}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DetectionRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7061251369241800488}
   - component: {fileID: 7061251369241800489}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 7061251369404605408}
   - component: {fileID: 7061251369404605410}
   - component: {fileID: 1432140413807765972}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallFish
   m_TagString: Enemy
   m_Icon: {fileID: 0}

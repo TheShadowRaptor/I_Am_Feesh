@@ -12,6 +12,7 @@ public class PlayerController : GameCharacter
 
     public int playerDamage = 1;
     public float swimSpeed = 50;
+    public float rotateSpeed = 10;
 
     [Header("Scripts")]
     public PlayerAttackRadius playerAttackRadius;
@@ -52,18 +53,25 @@ public class PlayerController : GameCharacter
 
     protected new void FlipCharacterModel()
     {
-        float moveDir = rb.velocity.x;
+        float moveDir = transform.rotation.eulerAngles.z;
 
-        if (moveDir > 0 && !c_FacingRight || moveDir < 0 && c_FacingRight) Flip();
-    }
+        if (moveDir > 90 && moveDir < 180 && c_FacingRight)
+        {
+            c_FacingRight = !c_FacingRight;
 
-    void Flip()
-    {
-        c_FacingRight = !c_FacingRight;
+            Vector3 theScale = transform.localScale;
+            theScale.y *= -1;
+            transform.localScale = theScale;
+        }
 
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        if (moveDir > 0 && moveDir < 90 && !c_FacingRight)
+        {
+            c_FacingRight = !c_FacingRight;
+
+            Vector3 theScale = transform.localScale;
+            theScale.y *= -1;
+            transform.localScale = theScale;
+        }
     }
 
     protected void Lose()
@@ -85,8 +93,9 @@ public class PlayerController : GameCharacter
     }
 
     private void Move()
-    {        
-        rb.velocity = new Vector2(horizontalMove, verticalMove) * swimSpeed * Time.deltaTime;
+    {
+        rb.velocity = (Vector2)transform.right * verticalMove * swimSpeed * Time.deltaTime;
+        rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -horizontalMove * rotateSpeed * Time.deltaTime));
     }
 
     private void AttackTarget()

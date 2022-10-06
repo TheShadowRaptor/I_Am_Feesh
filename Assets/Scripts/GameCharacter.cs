@@ -7,7 +7,7 @@ public class GameCharacter : MonoBehaviour
     public TakeDamage takeDamage;
 
     protected Rigidbody2D rb;
-    protected bool c_FacingRight = true;
+    public bool c_FacingRight = true;
 
     protected bool isDead = false;
 

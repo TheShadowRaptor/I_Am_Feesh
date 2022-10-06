@@ -175,6 +175,7 @@ MonoBehaviour:
   staminaDecrease: 1
   playerDamage: 1
   swimSpeed: 50
+  rotateSpeed: 10
   playerAttackRadius: {fileID: 9155749875499288213}
   attackRadius: {fileID: 1570108902988751184}
   playerStamina: 0
@@ -198,7 +199,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!58 &1346115622307095965
 CircleCollider2D:
   m_ObjectHideFlags: 0

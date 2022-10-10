@@ -9,6 +9,7 @@ public class LevelMananger : MonoBehaviour
     {
         EndGame();
     }
+
     public void EndGame()
     {
         if (Input.GetKey(KeyCode.Escape))
@@ -16,5 +17,10 @@ public class LevelMananger : MonoBehaviour
             Application.Quit();
             Debug.Log("Exit");
         }
+    }
+
+    public void LoadLevel()
+    {
+
     }
 }

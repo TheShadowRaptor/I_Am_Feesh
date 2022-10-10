@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIMananger : MonoBehaviour
+public class GameplayHud : MonoBehaviour
 {
     public TextMeshProUGUI evolutionPointCountText;
     public Slider hungerBarSlider;
@@ -18,7 +18,7 @@ public class UIMananger : MonoBehaviour
     void Start()
     {
         playerObj = GameObject.Find("Player");
-        player = playerObj.GetComponent<PlayerController>();  
+        player = playerObj.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame

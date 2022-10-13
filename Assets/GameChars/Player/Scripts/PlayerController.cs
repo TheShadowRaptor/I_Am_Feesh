@@ -26,6 +26,7 @@ public class PlayerController : GameCharacter
     float horizontalMove;
     float verticalMove;
 
+    Vector3 theScale; 
     bool attackButtonDown;
 
     // Start is called before the first frame update
@@ -38,6 +39,7 @@ public class PlayerController : GameCharacter
     // Update is called once per frame
     void Update()
     {
+        theScale = transform.localScale;
         AttackTarget();
         FlipCharacterModel();
         StaminaDrain();
@@ -53,25 +55,32 @@ public class PlayerController : GameCharacter
 
     protected new void FlipCharacterModel()
     {
-        float moveDir = transform.rotation.eulerAngles.z;
+        float moveDir = transform.localEulerAngles.z;
 
-        if (moveDir > 90 && moveDir < 180 && c_FacingRight)
-        {
-            c_FacingRight = !c_FacingRight;
+        theScale.y = -1;
+        if (Mathf.Abs(moveDir) < 90) theScale.y = 1;
+        if (Mathf.Abs(moveDir) > 270) theScale.y = 1;
+        transform.localScale = theScale;
 
-            Vector3 theScale = transform.localScale;
-            theScale.y *= -1;
-            transform.localScale = theScale;
-        }
+        //if (Mathf.Abs(moveDir) > 90)
+        //{
+        //    theScale.y = -1;
+        //    transform.localScale = theScale;
+        //}
 
-        if (moveDir > 0 && moveDir < 90 && !c_FacingRight)
-        {
-            c_FacingRight = !c_FacingRight;
+        //if  (Mathf.Abs(moveDir) < 90 && moveDir < 180)
+        //{
+        //    theScale.y = 1;
+        //    transform.localScale = theScale;
+        //}
+    }
 
-            Vector3 theScale = transform.localScale;
-            theScale.y *= -1;
-            transform.localScale = theScale;
-        }
+    void Flip()
+    {
+        c_FacingRight = !c_FacingRight;
+
+        Vector3 theScale = transform.localScale;
+        
     }
 
     protected void Lose()

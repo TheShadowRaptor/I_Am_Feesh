@@ -170,8 +170,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takeDamage: {fileID: 5649587124154103249}
+  c_FacingRight: 1
   playerEvolutionPoints: 0
-  startStamina: 0
+  startStamina: 25
   staminaDecrease: 1
   playerDamage: 1
   swimSpeed: 50

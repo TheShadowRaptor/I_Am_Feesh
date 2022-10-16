@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     enum GameState
     {
         title,
+        controls,
         settings,
         gameplay,
         pause,
@@ -17,23 +18,35 @@ public class GameManager : MonoBehaviour
 
     public UIMananger uIMananger;
     public LevelMananger levelMananger;
+    public PlayerController player;
 
     GameState state;
 
     // Start is called before the first frame update
     void Start()
     {
-        state = GameState.title;
+        state = GameState.title;       
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player.isDead)
+        {
+            state = GameState.results;
+            player.ResetStats();
+        }
+
         switch (state)
         {
             case GameState.title:
                 Time.timeScale = 0;
                 uIMananger.TitleCanvasOn();
+                break;
+
+            case GameState.controls:
+                Time.timeScale = 0;
+                uIMananger.ControlsCanvasOn();
                 break;
 
             case GameState.settings:
@@ -43,16 +56,24 @@ public class GameManager : MonoBehaviour
 
             case GameState.gameplay:
                 Time.timeScale = 1;
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    state = GameState.pause;
+                }
                 uIMananger.GameplayCanvasOn();
                 break;
 
             case GameState.pause:
                 Time.timeScale = 0;
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    state = GameState.gameplay;
+                }
                 uIMananger.PauseCanvasOn();
                 break;
 
             case GameState.results:
-                Time.timeScale = 1;
+                Time.timeScale = 0;
                 uIMananger.ResultsCanvasOn();
                 break;
 
@@ -90,7 +111,7 @@ public class GameManager : MonoBehaviour
         state = GameState.settings;
     }
 
-    public void BackButtonButton()
+    public void BackButton()
     {
         if (levelMananger.currentSceneNum == 0) state = GameState.title;
         else state = GameState.pause;
@@ -99,5 +120,10 @@ public class GameManager : MonoBehaviour
     public void LoadUpgradeButton()
     {
         state = GameState.upgrade;
+    }
+
+    public void LoadControlsButton()
+    {
+        state = GameState.controls;
     }
 }

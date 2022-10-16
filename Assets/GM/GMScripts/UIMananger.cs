@@ -7,6 +7,7 @@ using TMPro;
 public class UIMananger : MonoBehaviour
 {
     public Canvas title;
+    public Canvas control;
     public Canvas settings;
     public Canvas gameplay;
     public Canvas pause;
@@ -17,6 +18,7 @@ public class UIMananger : MonoBehaviour
     public void TitleCanvasOn()
     {
         title.enabled = true;
+        control.enabled = false;
         settings.enabled = false;
         gameplay.enabled = false;
         pause.enabled = false;
@@ -24,9 +26,23 @@ public class UIMananger : MonoBehaviour
         upgrade.enabled = false;
         win.enabled = false;
     }
+
+    public void ControlsCanvasOn()
+    {
+        title.enabled = false;
+        control.enabled = true;
+        settings.enabled = false;
+        gameplay.enabled = false;
+        pause.enabled = false;
+        results.enabled = false;
+        upgrade.enabled = false;
+        win.enabled = false;
+    }
+
     public void SettingsCanvasOn()
     {
         title.enabled = false;
+        control.enabled = false;
         settings.enabled = true;
         gameplay.enabled = false;
         pause.enabled = false;
@@ -37,6 +53,7 @@ public class UIMananger : MonoBehaviour
     public void GameplayCanvasOn()
     {
         title.enabled = false;
+        control.enabled = false;
         settings.enabled = false;
         gameplay.enabled = true;
         pause.enabled = false;
@@ -48,6 +65,7 @@ public class UIMananger : MonoBehaviour
     public void PauseCanvasOn()
     {
         title.enabled = false;
+        control.enabled = false;
         settings.enabled = false;
         gameplay.enabled = false;
         pause.enabled = true;
@@ -59,6 +77,7 @@ public class UIMananger : MonoBehaviour
     public void ResultsCanvasOn()
     {
         title.enabled = false;
+        control.enabled = false;
         settings.enabled = false;
         gameplay.enabled = false;
         pause.enabled = false;
@@ -70,6 +89,7 @@ public class UIMananger : MonoBehaviour
     public void UpgradeCanvasOn()
     {
         title.enabled = false;
+        control.enabled = false;
         settings.enabled = false;
         gameplay.enabled = false;
         pause.enabled = false;
@@ -81,6 +101,7 @@ public class UIMananger : MonoBehaviour
     public void WinCanvasOn()
     {
         title.enabled = false;
+        control.enabled = false;
         settings.enabled = false;
         gameplay.enabled = false;
         pause.enabled = false;

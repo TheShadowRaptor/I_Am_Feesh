@@ -9,7 +9,7 @@ public class GameCharacter : MonoBehaviour
     protected Rigidbody2D rb;
     public bool c_FacingRight = true;
 
-    protected bool isDead = false;
+    public bool isDead = false;
 
     protected void FlipCharacterModel()
     {
@@ -29,9 +29,13 @@ public class GameCharacter : MonoBehaviour
 
     public void CheckState()
     {
-        if (takeDamage.health == 0)
+        if (takeDamage.health <= 0)
         {
             isDead = true;
+        }
+        else
+        {
+            isDead = false;
         }
     }
 

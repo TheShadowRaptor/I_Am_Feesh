@@ -10,17 +10,22 @@ public class PlayerController : GameCharacter
     public float startStamina;
     public float staminaDecrease = 1.0f;
 
-    public int playerDamage = 1;
-    public float swimSpeed = 50;
-    public float rotateSpeed = 10;
+    public int startDamage = 1;
+    public float startSwimSpeed = 50;
+    public float startRotateSpeed = 10;
 
     [Header("Scripts")]
+    public GameManager gameManager;
     public PlayerAttackRadius playerAttackRadius;
 
     [Header("GameObjects")]
     public GameObject attackRadius;
 
-    public float playerStamina;
+    [HideInInspector] public float playerStamina;
+    [HideInInspector] public int playerDamage;
+    [HideInInspector] public float swimSpeed;
+    [HideInInspector] public float rotateSpeed;
+    
 
     // Inputs 
     float horizontalMove;
@@ -33,7 +38,7 @@ public class PlayerController : GameCharacter
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerStamina = startStamina;
+        ResetStats();
     }
 
     // Update is called once per frame
@@ -44,7 +49,6 @@ public class PlayerController : GameCharacter
         FlipCharacterModel();
         StaminaDrain();
         CheckState();
-        Lose();
     }
 
     private void FixedUpdate()
@@ -61,34 +65,6 @@ public class PlayerController : GameCharacter
         if (Mathf.Abs(moveDir) < 90) theScale.y = 1;
         if (Mathf.Abs(moveDir) > 270) theScale.y = 1;
         transform.localScale = theScale;
-
-        //if (Mathf.Abs(moveDir) > 90)
-        //{
-        //    theScale.y = -1;
-        //    transform.localScale = theScale;
-        //}
-
-        //if  (Mathf.Abs(moveDir) < 90 && moveDir < 180)
-        //{
-        //    theScale.y = 1;
-        //    transform.localScale = theScale;
-        //}
-    }
-
-    void Flip()
-    {
-        c_FacingRight = !c_FacingRight;
-
-        Vector3 theScale = transform.localScale;
-        
-    }
-
-    protected void Lose()
-    {
-        if (isDead)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
     }
 
     void InputMananger()
@@ -142,6 +118,30 @@ public class PlayerController : GameCharacter
         if (playerStamina > startStamina)
         {
             playerStamina = startStamina;
+        }
+    }
+
+    public void ResetStats()
+    {
+        playerStamina = startStamina;
+        playerDamage = startDamage;
+        swimSpeed = startSwimSpeed;
+        rotateSpeed = startRotateSpeed;
+    }
+
+    public new void CheckState()
+    {
+        if (takeDamage.health <= 0)
+        {
+            isDead = true;
+        }
+        else if (playerStamina <= 0)
+        {
+            isDead = true;
+        }
+        else
+        {
+            isDead = false;
         }
     }
 

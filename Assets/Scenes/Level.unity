@@ -3630,7 +3630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1900361496231728389, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1900361496231728389, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag

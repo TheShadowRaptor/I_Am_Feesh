@@ -7,10 +7,14 @@ public class PlayerController : GameCharacter
 {
     [Header("PlayerStats")]
     public int playerEvolutionPoints;
-    public float startStamina;
     public float staminaDecrease = 1.0f;
+    public float dashSpeedDecrease = 1.0f;
+    public float attackTimeDecrease = 1.0f;
 
+    public float startStamina;
     public int startDamage = 1;
+    public int startDashCharges = 1;
+    public int startDashSpeed = 2;
     public float startSwimSpeed = 50;
     public float startRotateSpeed = 10;
 
@@ -25,14 +29,21 @@ public class PlayerController : GameCharacter
     [HideInInspector] public int playerDamage;
     [HideInInspector] public float swimSpeed;
     [HideInInspector] public float rotateSpeed;
-    
+    [HideInInspector] public int dashCharges;
+    [HideInInspector] public int playerDashSpeed;
+
 
     // Inputs 
     float horizontalMove;
     float verticalMove;
+    bool attackButton;
+    bool dashButtonDown;
 
     Vector3 theScale; 
-    bool attackButtonDown;
+    float currentDashSpeed = 1;
+    float currentAttackTime = 0;
+    float attackTime = 5;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -45,9 +56,9 @@ public class PlayerController : GameCharacter
     void Update()
     {
         theScale = transform.localScale;
-        AttackTarget();
+        AttackManager();
         FlipCharacterModel();
-        StaminaDrain();
+        DrainManager();
         CheckState();
     }
 
@@ -74,21 +85,30 @@ public class PlayerController : GameCharacter
         verticalMove = Input.GetAxis("Vertical");
 
         //Attack Input
-        attackButtonDown = Input.GetButton("Attack");
+        attackButton = Input.GetButton("Attack");
+
+        //Dash Input
+        dashButtonDown = Input.GetButtonDown("Dash");
     }
 
     private void Move()
     {
-        rb.velocity = (Vector2)transform.right * verticalMove * swimSpeed * Time.deltaTime;
+        rb.velocity = (Vector2)transform.right * verticalMove * swimSpeed * currentDashSpeed * Time.deltaTime;
         rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -horizontalMove * rotateSpeed * Time.deltaTime));
+
+        if (dashButtonDown && dashCharges > 0)
+        {
+            currentDashSpeed = playerDashSpeed;
+            dashCharges -= 1;
+        }
     }
 
-    private void AttackTarget()
+    private void AttackManager()
     {
         TakeDamage takeDamage = playerAttackRadius.takeDamage;
         FoodCharacter food = playerAttackRadius.foodScript;
         // Attack Input
-        if (attackButtonDown) attackRadius.SetActive(true);
+        if (Attacking()) attackRadius.SetActive(true);
         else attackRadius.SetActive(false);
 
         // Attack Target        
@@ -102,6 +122,17 @@ public class PlayerController : GameCharacter
             if (playerAttackRadius.eatCurrentFood) takeDamage.health -= playerDamage;
 
         }
+    }
+
+    bool Attacking()
+    {
+        if (attackButton && currentAttackTime == 0)
+        {
+            currentAttackTime = attackTime;
+            return true;
+        }
+        else if (currentAttackTime > 0) return true;
+        else return false;
     }
 
     void StaminaDrain()
@@ -121,12 +152,54 @@ public class PlayerController : GameCharacter
         }
     }
 
+    void DashDrain()
+    {
+        currentDashSpeed -= dashSpeedDecrease * Time.deltaTime;
+
+        // Clamp
+        if (currentDashSpeed <= 1)
+        {
+            currentDashSpeed = 1;
+
+        }
+
+        if (currentDashSpeed > playerDashSpeed)
+        {
+            currentDashSpeed = playerDashSpeed;
+        }
+    }
+
+    void AttackTimeDrain()
+    {
+        currentAttackTime -= attackTimeDecrease;
+
+        // Clamp
+        if (currentAttackTime <= 0)
+        {
+            currentAttackTime = 0;
+        }
+
+        if (currentAttackTime > attackTime)
+        {
+            currentAttackTime = attackTime;
+        }
+    }
+
+    void DrainManager()
+    {
+        StaminaDrain();
+        DashDrain();
+        AttackTimeDrain();
+    }
+
     public void ResetStats()
     {
         playerStamina = startStamina;
         playerDamage = startDamage;
         swimSpeed = startSwimSpeed;
         rotateSpeed = startRotateSpeed;
+        dashCharges = startDashCharges;
+        playerDashSpeed = startDashSpeed;
     }
 
     public new void CheckState()

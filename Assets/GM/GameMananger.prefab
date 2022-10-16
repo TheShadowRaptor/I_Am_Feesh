@@ -3835,7 +3835,10 @@ MonoBehaviour:
 
     A/D = Turn
 
-    Leftclick/Space = Attack'
+    Leftclick/Space = Attack
+
+    Esc
+    = Pause/Unpause'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8173,6 +8176,18 @@ PrefabInstance:
     - target: {fileID: 4161123100735933437, guid: 2813bd1840bc563418b0ab8ed4419553, type: 3}
       propertyPath: isDead
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161123100735933437, guid: 2813bd1840bc563418b0ab8ed4419553, type: 3}
+      propertyPath: startDashSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161123100735933437, guid: 2813bd1840bc563418b0ab8ed4419553, type: 3}
+      propertyPath: startRotateSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161123100735933437, guid: 2813bd1840bc563418b0ab8ed4419553, type: 3}
+      propertyPath: attackTimeDecrease
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4161123100735933439, guid: 2813bd1840bc563418b0ab8ed4419553, type: 3}
       propertyPath: m_RootOrder

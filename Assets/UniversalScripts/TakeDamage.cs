@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
-    public float health;
+    public int health;
 
     void Update()
     {

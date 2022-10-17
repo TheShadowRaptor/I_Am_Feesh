@@ -11,6 +11,7 @@ public class PlayerController : GameCharacter
     public float dashSpeedDecrease = 1.0f;
     public float attackTimeDecrease = 1.0f;
 
+    public int startHealth = 1;
     public float startStamina;
     public int startDamage = 1;
     public int startDashCharges = 1;
@@ -19,18 +20,18 @@ public class PlayerController : GameCharacter
     public float startRotateSpeed = 10;
 
     [Header("Scripts")]
-    public GameManager gameManager;
     public PlayerAttackRadius playerAttackRadius;
 
     [Header("GameObjects")]
     public GameObject attackRadius;
 
-    [HideInInspector] public float playerStamina;
-    [HideInInspector] public int playerDamage;
+    [HideInInspector] public int health;
+    [HideInInspector] public float stamina;
+    [HideInInspector] public int damage;
     [HideInInspector] public float swimSpeed;
     [HideInInspector] public float rotateSpeed;
     [HideInInspector] public int dashCharges;
-    [HideInInspector] public int playerDashSpeed;
+    [HideInInspector] public int dashSpeed;
 
 
     // Inputs 
@@ -98,7 +99,7 @@ public class PlayerController : GameCharacter
 
         if (dashButtonDown && dashCharges > 0)
         {
-            currentDashSpeed = playerDashSpeed;
+            currentDashSpeed = dashSpeed;
             dashCharges -= 1;
         }
     }
@@ -112,14 +113,14 @@ public class PlayerController : GameCharacter
         else attackRadius.SetActive(false);
 
         // Attack Target        
-        if (playerAttackRadius.attackCurrentFish) takeDamage.health -= playerDamage;
+        if (playerAttackRadius.attackCurrentFish) takeDamage.health -= damage;
 
         // Consume Food       
         if (playerAttackRadius.eatCurrentFood)
         {
             playerEvolutionPoints += food.evolutionPoints;
-            playerStamina += food.staminaPoints;
-            if (playerAttackRadius.eatCurrentFood) takeDamage.health -= playerDamage;
+            stamina += food.staminaPoints;
+            if (playerAttackRadius.eatCurrentFood) takeDamage.health -= damage;
 
         }
     }
@@ -137,18 +138,18 @@ public class PlayerController : GameCharacter
 
     void StaminaDrain()
     {
-        playerStamina -= staminaDecrease * Time.deltaTime;
+        stamina -= staminaDecrease * Time.deltaTime;
 
         // Clamp
-        if (playerStamina <= 0)
+        if (stamina <= 0)
         {
-            playerStamina = 0;
-            isDead = true;
+            stamina = 0;
+            health = 0;
         }
 
-        if (playerStamina > startStamina)
+        if (stamina > startStamina)
         {
-            playerStamina = startStamina;
+            stamina = startStamina;
         }
     }
 
@@ -163,9 +164,9 @@ public class PlayerController : GameCharacter
 
         }
 
-        if (currentDashSpeed > playerDashSpeed)
+        if (currentDashSpeed > dashSpeed)
         {
-            currentDashSpeed = playerDashSpeed;
+            currentDashSpeed = dashSpeed;
         }
     }
 
@@ -194,21 +195,19 @@ public class PlayerController : GameCharacter
 
     public void ResetStats()
     {
-        playerStamina = startStamina;
-        playerDamage = startDamage;
+        health = takeDamage.health;
+        takeDamage.health = health;
+        stamina = startStamina;
+        damage = startDamage;
         swimSpeed = startSwimSpeed;
         rotateSpeed = startRotateSpeed;
         dashCharges = startDashCharges;
-        playerDashSpeed = startDashSpeed;
+        dashSpeed = startDashSpeed;
     }
 
     public new void CheckState()
     {
-        if (takeDamage.health <= 0)
-        {
-            isDead = true;
-        }
-        else if (playerStamina <= 0)
+        if (health <= 0)
         {
             isDead = true;
         }

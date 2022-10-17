@@ -38,7 +38,7 @@ public class GameplayHud : MonoBehaviour
     void DisplayHungerBar()
     {
         hungerBarSlider.maxValue = player.startStamina;
-        staminaCount = player.playerStamina;
+        staminaCount = player.stamina;
 
         hungerBarSlider.value = staminaCount;
     }

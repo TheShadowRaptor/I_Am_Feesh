@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class HudManager : MonoBehaviour
+public class GameplayHud : MonoBehaviour
 {
     [Header("Text")]
     public TextMeshProUGUI evolutionPointCountText;
@@ -31,13 +31,18 @@ public class HudManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerObj = GameObject.Find("Player");
-        player = playerObj.GetComponent<PlayerController>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (playerObj == null)
+        {
+            playerObj = GameObject.Find("Player");
+            player = playerObj.GetComponent<PlayerController>();
+        }
+
         DisplayEvolutionPoints();
         DisplayHungerBar();
         DisplayDash();

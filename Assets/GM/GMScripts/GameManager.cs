@@ -18,19 +18,26 @@ public class GameManager : MonoBehaviour
 
     public UIMananger uIMananger;
     public LevelMananger levelMananger;
-    public PlayerController player;
+    GameObject playerObj;
+    PlayerController player;
 
     GameState state;
 
     // Start is called before the first frame update
     void Start()
     {
-        state = GameState.title;       
+        state = GameState.title;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            playerObj = GameObject.Find("Player");
+            player = playerObj.GetComponent<PlayerController>();
+        }
+
         if (player.isDead)
         {
             state = GameState.results;

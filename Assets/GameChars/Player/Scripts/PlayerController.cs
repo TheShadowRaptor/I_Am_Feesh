@@ -6,11 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayerController : GameCharacter
 {
     [Header("PlayerStats")]
-    public int playerEvolutionPoints;
-    public float staminaDecrease = 1.0f;
-    public float dashSpeedDecrease = 1.0f;
-    public float attackTimeDecrease = 1.0f;
 
+    public int evolutionPoints;
     public int startHealth = 1;
     public float startStamina;
     public int startDamage = 1;
@@ -18,6 +15,11 @@ public class PlayerController : GameCharacter
     public int startDashSpeed = 2;
     public float startSwimSpeed = 50;
     public float startRotateSpeed = 10;
+
+    [Header("Decrease")]
+    public float staminaDecrease = 1.0f;
+    public float dashSpeedDecrease = 1.0f;
+    public float attackTimeDecrease = 1.0f;
 
     [Header("Scripts")]
     public PlayerAttackRadius playerAttackRadius;
@@ -118,7 +120,7 @@ public class PlayerController : GameCharacter
         // Consume Food       
         if (playerAttackRadius.eatCurrentFood)
         {
-            playerEvolutionPoints += food.evolutionPoints;
+            evolutionPoints += food.evolutionPoints;
             stamina += food.staminaPoints;
             if (playerAttackRadius.eatCurrentFood) takeDamage.health -= damage;
 
@@ -195,8 +197,17 @@ public class PlayerController : GameCharacter
 
     public void ResetStats()
     {
+        SaveData saveData = new SaveData();
+
+        saveData.startHealth = startHealth;
+        saveData.startStamina = startStamina;
+        saveData.startDashSpeed = startDashSpeed;
+        saveData.startDashCharges = startDashCharges;
+        saveData.startSwimSpeed = startSwimSpeed;
+        saveData.startRotateSpeed = startRotateSpeed;
+
+        takeDamage.health = startHealth;
         health = takeDamage.health;
-        takeDamage.health = health;
         stamina = startStamina;
         damage = startDamage;
         swimSpeed = startSwimSpeed;

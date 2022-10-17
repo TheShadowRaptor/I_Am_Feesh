@@ -51,7 +51,7 @@ public class GameplayHud : MonoBehaviour
 
     void DisplayEvolutionPoints()
     {
-        evolutionPointCount = player.playerEvolutionPoints;
+        evolutionPointCount = player.evolutionPoints;
 
         evolutionPointCountText.text = "Evo Points: (" + evolutionPointCount.ToString() + ")";
     }

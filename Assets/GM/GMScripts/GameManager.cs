@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -143,5 +145,25 @@ public class GameManager : MonoBehaviour
     public void LoadControlsButton()
     {
         state = GameState.controls;
+    }
+
+    public void NewGameButton()
+    {
+
+    }
+
+    public void LoadGameButton()
+    {
+
+    }
+
+    public void Save()
+    {
+
+    }
+
+    public void Load()
+    {
+        
     }
 }

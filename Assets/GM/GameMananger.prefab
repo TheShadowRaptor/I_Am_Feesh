@@ -1773,7 +1773,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613486613746540990}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -2869,7 +2869,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2437934362697024946}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -5947,7 +5947,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5724953683973483764}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -6016,9 +6016,9 @@ MonoBehaviour:
   SwimSpeedText: {fileID: 360688913440792458}
   TurnSpeedText: {fileID: 6349445934475797645}
   StomachCapacityText: {fileID: 6069371748775989950}
-  swimSpeedPrice: 25
-  turnSpeedPrice: 15
-  stomachCapacityPrice: 30
+  swimSpeedPrices: 
+  turnSpeedPrices: 
+  stomachCapacityPrices: 
 --- !u!1 &5767441940702210280
 GameObject:
   m_ObjectHideFlags: 0

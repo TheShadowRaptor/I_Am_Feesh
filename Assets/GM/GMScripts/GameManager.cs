@@ -19,23 +19,30 @@ public class GameManager : MonoBehaviour
     public UIMananger uIMananger;
     public LevelMananger levelMananger;
     GameObject playerObj;
+    GameObject playerSpawn;
     PlayerController player;
+
 
     GameState state;
 
     // Start is called before the first frame update
     void Start()
     {
-        state = GameState.title;
+        state = GameState.title;        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
+        if (player == null && playerObj == null)
         {
             playerObj = GameObject.Find("Player");
             player = playerObj.GetComponent<PlayerController>();
+        }
+
+        if (playerSpawn == null)
+        {
+            playerSpawn = GameObject.Find("PlayerSpawn");
         }
 
         if (player.isDead)
@@ -48,6 +55,8 @@ public class GameManager : MonoBehaviour
         {
             case GameState.title:
                 Time.timeScale = 0;
+                player.transform.position = playerSpawn.transform.position;
+                player.transform.rotation = playerSpawn.transform.rotation;
                 uIMananger.TitleCanvasOn();
                 break;
 
@@ -71,12 +80,12 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.pause:
-                Time.timeScale = 0;
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     state = GameState.gameplay;
                 }
                 uIMananger.PauseCanvasOn();
+                Time.timeScale = 0;
                 break;
 
             case GameState.results:
@@ -99,6 +108,8 @@ public class GameManager : MonoBehaviour
     public void LoadLevelButton()
     {
         levelMananger.LoadScene(1);
+        player.transform.position = playerSpawn.transform.position;
+        player.transform.rotation = playerSpawn.transform.rotation;
         state = GameState.gameplay;
     }
 

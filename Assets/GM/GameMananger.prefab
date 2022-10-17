@@ -1365,7 +1365,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6612660916928567142}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2549269735516707524}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: TurnSpeedUpgradeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1311973738308848453
 GameObject:
   m_ObjectHideFlags: 0
@@ -4618,7 +4630,7 @@ GameObject:
   - component: {fileID: 8762770219737341550}
   - component: {fileID: 5040793467610369824}
   m_Layer: 0
-  m_Name: StomachCapacityButton (1)
+  m_Name: EvolveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4985,7 +4997,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2501887369768411029}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2549269735516707524}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: StomachCapacityUpgradeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4293056932211923382
 GameObject:
   m_ObjectHideFlags: 0
@@ -5879,6 +5903,7 @@ GameObject:
   - component: {fileID: 1900361496231728389}
   - component: {fileID: 450644894461517635}
   - component: {fileID: 3964258330284799210}
+  - component: {fileID: 2549269735516707524}
   m_Layer: 0
   m_Name: CanvasUpgrade
   m_TagString: Untagged
@@ -5976,6 +6001,24 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2549269735516707524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724953683973483764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2aa4f9b5f0f8b488dfeaeb7e95c0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwimSpeedText: {fileID: 360688913440792458}
+  TurnSpeedText: {fileID: 6349445934475797645}
+  StomachCapacityText: {fileID: 6069371748775989950}
+  swimSpeedPrice: 25
+  turnSpeedPrice: 15
+  stomachCapacityPrice: 30
 --- !u!1 &5767441940702210280
 GameObject:
   m_ObjectHideFlags: 0
@@ -8936,7 +8979,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4156352863793556625}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2549269735516707524}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: SwimSpeedUpgradeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8340511175445662114
 GameObject:
   m_ObjectHideFlags: 0

@@ -381,6 +381,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4012353663904596499, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: m_Name
+      value: EvolveButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4088827404853317818, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_Enabled
       value: 0

@@ -197,15 +197,6 @@ public class PlayerController : GameCharacter
 
     public void ResetStats()
     {
-        SaveData saveData = new SaveData();
-
-        saveData.startHealth = startHealth;
-        saveData.startStamina = startStamina;
-        saveData.startDashSpeed = startDashSpeed;
-        saveData.startDashCharges = startDashCharges;
-        saveData.startSwimSpeed = startSwimSpeed;
-        saveData.startRotateSpeed = startRotateSpeed;
-
         takeDamage.health = startHealth;
         health = takeDamage.health;
         stamina = startStamina;

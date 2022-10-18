@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
 using System.IO;
 
 public class GameManager : MonoBehaviour
@@ -20,10 +21,18 @@ public class GameManager : MonoBehaviour
 
     public UIMananger uIMananger;
     public LevelMananger levelMananger;
+
     GameObject playerObj;
     GameObject playerSpawn;
+
+    public GameObject warningPanel;
+    public TextMeshProUGUI SaveDataDoesNotExist;
+
     PlayerController player;
 
+    //Text timer
+    float timeStart = 3;
+    float timeLeft = 3;
 
     GameState state;
 
@@ -51,6 +60,18 @@ public class GameManager : MonoBehaviour
         {
             state = GameState.results;
             player.ResetStats();
+        }
+
+        //Text Timer
+        if (SaveDataDoesNotExist.enabled == true)
+        {
+            // Timescale is 0 so I use 0.01 instead to subtract time
+            timeLeft -= 0.01f;
+            if (timeLeft <= 0)
+            {
+                timeLeft = timeStart;
+                SaveDataDoesNotExist.enabled = false;
+            }
         }
 
         switch (state)
@@ -112,33 +133,21 @@ public class GameManager : MonoBehaviour
         levelMananger.LoadScene(1);
         player.transform.position = playerSpawn.transform.position;
         player.transform.rotation = playerSpawn.transform.rotation;
+        Save();
         state = GameState.gameplay;
     }
-
-    public void UnPauseButton()
-    {
-        state = GameState.gameplay;
-    }
-
     public void LoadTitleButton()
     {
         levelMananger.LoadScene(0);
         state = GameState.title;
     }
-
     public void LoadSettingsButton()
     {
         state = GameState.settings;
     }
-
-    public void BackButton()
-    {
-        if (levelMananger.currentSceneNum == 0) state = GameState.title;
-        else state = GameState.pause;
-    }
-
     public void LoadUpgradeButton()
     {
+        Save();
         state = GameState.upgrade;
     }
 
@@ -147,23 +156,79 @@ public class GameManager : MonoBehaviour
         state = GameState.controls;
     }
 
-    public void NewGameButton()
+    public void LoadSaveButton()
     {
-
+        if (File.Exists(Application.persistentDataPath + "/savefile1.dat"))
+        {
+            Load();
+            LoadLevelButton();
+        }
+        else
+        {
+            SaveDataDoesNotExist.enabled = true;
+        }
     }
 
-    public void LoadGameButton()
+    public void UnPauseButton()
     {
-
+        state = GameState.gameplay;
     }
+
+    public void BackButton()
+    {
+        if (levelMananger.currentSceneNum == 0) state = GameState.title;
+        else state = GameState.pause;
+    }
+
+    public void showWarningPanel()
+    {
+        warningPanel.SetActive(true);
+    }
+
+    public void hideWarningPanel()
+    {
+        warningPanel.SetActive(false);
+    }
+
 
     public void Save()
     {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/savefile1.dat");
 
+        SaveData saveData = new SaveData();
+
+        saveData.evolutionPoints = player.evolutionPoints;
+        saveData.startHealth = player.startHealth;
+        saveData.startStamina = player.startStamina;
+        saveData.startDashSpeed = player.startDashSpeed;
+        saveData.startDashCharges = player.startDashCharges;
+        saveData.startSwimSpeed = player.startSwimSpeed;
+        saveData.startRotateSpeed = player.startRotateSpeed;
+
+        bf.Serialize(file, saveData);
+        file.Close();
     }
 
     public void Load()
     {
-        
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(Application.persistentDataPath + "/savefile1.dat", FileMode.Open);
+
+        SaveData saveData = (SaveData)bf.Deserialize(file);
+        file.Close();
+
+        player.evolutionPoints = saveData.evolutionPoints;
+        player.startHealth = saveData.startHealth;
+        player.startStamina = saveData.startStamina;
+        player.startDashSpeed = saveData.startDashSpeed;
+        player.startDashCharges = saveData.startDashCharges;
+        player.startSwimSpeed = saveData.startSwimSpeed;
+        player.startRotateSpeed = saveData.startRotateSpeed;
+    }
+
+    public void OnGUI()
+    {
+
     }
 }

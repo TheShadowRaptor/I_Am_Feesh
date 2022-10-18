@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TitleManager : MonoBehaviour
 {
-    public GameObject warningPanel;
+
     // Update is called once per frame
 
 }

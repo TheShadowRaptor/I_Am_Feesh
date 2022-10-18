@@ -399,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2574994678676544262, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadControlsButton
+      value: showWarningPanel
       objectReference: {fileID: 0}
     - target: {fileID: 2743456573375920455, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_RootOrder

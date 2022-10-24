@@ -8,13 +8,13 @@ public class PlayerController : GameCharacter
     [Header("PlayerStats")]
 
     public int evolutionPoints;
-    public int startHealth = 1;
-    public float startStamina;
-    public int startDamage = 1;
-    public int startDashCharges = 1;
-    public int startDashSpeed = 2;
-    public float startSwimSpeed = 50;
-    public float startRotateSpeed = 10;
+    public int baseHealth = 1;
+    public float baseStamina;
+    public int baseDamage = 1;
+    public int baseDashCharges = 1;
+    public int baseDashSpeed = 2;
+    public float baseSwimSpeed = 50;
+    public float baseRotateSpeed = 10;
 
     [Header("Decrease")]
     public float staminaDecrease = 1.0f;
@@ -45,6 +45,7 @@ public class PlayerController : GameCharacter
     bool dashButtonDown;
 
     Vector3 theScale; 
+
     float currentDashSpeed = 1;
     float currentAttackTime = 0;
     float attackTime = 5;
@@ -153,9 +154,9 @@ public class PlayerController : GameCharacter
             health = 0;
         }
 
-        if (stamina > startStamina)
+        if (stamina > baseStamina)
         {
-            stamina = startStamina;
+            stamina = baseStamina;
         }
     }
 
@@ -201,14 +202,14 @@ public class PlayerController : GameCharacter
 
     public void ResetStats()
     {
-        takeDamage.health = startHealth;
+        takeDamage.health = baseHealth;
         health = takeDamage.health;
-        stamina = startStamina;
-        damage = startDamage;
-        swimSpeed = startSwimSpeed;
-        rotateSpeed = startRotateSpeed;
-        dashCharges = startDashCharges;
-        dashSpeed = startDashSpeed;
+        stamina = baseStamina;
+        damage = baseDamage;
+        swimSpeed = baseSwimSpeed;
+        rotateSpeed = baseRotateSpeed;
+        dashCharges = baseDashCharges;
+        dashSpeed = baseDashSpeed;
     }
 
     public new void CheckState()

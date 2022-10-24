@@ -8,11 +8,11 @@ public class SaveData
 {
     // Start is called before the first frame update
     public int evolutionPoints;
-    public int startHealth;
-    public float startStamina;
-    public int startDamage;
-    public int startDashCharges;
-    public int startDashSpeed;
-    public float startSwimSpeed;
-    public float startRotateSpeed;
+    public int health;
+    public float stamina;
+    public int damage;
+    public int dashCharges;
+    public int dashSpeed;
+    public float swimSpeed;
+    public float rotateSpeed;
 }

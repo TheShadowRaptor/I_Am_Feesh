@@ -53,7 +53,7 @@ public class UpgradeManager : MonoBehaviour
     {
         if (player.evolutionPoints >= swimSpeedPrices[currentSwimSpeedButton])
         {
-            player.startSwimSpeed += 10;
+            player.baseSwimSpeed += 10;
             player.evolutionPoints -= swimSpeedPrices[currentSwimSpeedButton];
             currentSwimSpeedButton += 1;
         }
@@ -63,7 +63,7 @@ public class UpgradeManager : MonoBehaviour
     {
         if (player.evolutionPoints >= turnSpeedPrices[currentTurnSpeedButton])
         {
-            player.startRotateSpeed += 10;
+            player.baseRotateSpeed += 10;
             player.evolutionPoints -= turnSpeedPrices[currentTurnSpeedButton];
             currentTurnSpeedButton += 1;
         }      
@@ -73,7 +73,7 @@ public class UpgradeManager : MonoBehaviour
     {
         if (player.evolutionPoints >= stomachCapacityPrices[currentStomachCapacityButton])
         {
-            player.startRotateSpeed += 10;
+            player.baseRotateSpeed += 10;
             player.evolutionPoints -= stomachCapacityPrices[currentStomachCapacityButton];
             currentStomachCapacityButton += 1;
         }

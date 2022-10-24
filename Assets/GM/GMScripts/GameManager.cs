@@ -216,12 +216,12 @@ public class GameManager : MonoBehaviour
         SaveData saveData = new SaveData();
 
         saveData.evolutionPoints = player.evolutionPoints;
-        saveData.startHealth = player.startHealth;
-        saveData.startStamina = player.startStamina;
-        saveData.startDashSpeed = player.startDashSpeed;
-        saveData.startDashCharges = player.startDashCharges;
-        saveData.startSwimSpeed = player.startSwimSpeed;
-        saveData.startRotateSpeed = player.startRotateSpeed;
+        saveData.health = player.baseHealth;
+        saveData.stamina = player.baseStamina;
+        saveData.dashSpeed = player.baseDashSpeed;
+        saveData.dashCharges = player.baseDashCharges;
+        saveData.swimSpeed = player.baseSwimSpeed;
+        saveData.rotateSpeed = player.baseRotateSpeed;
 
         bf.Serialize(file, saveData);
         file.Close();
@@ -238,12 +238,12 @@ public class GameManager : MonoBehaviour
         file.Close();
 
         player.evolutionPoints = saveData.evolutionPoints;
-        player.startHealth = saveData.startHealth;
-        player.startStamina = saveData.startStamina;
-        player.startDashSpeed = saveData.startDashSpeed;
-        player.startDashCharges = saveData.startDashCharges;
-        player.startSwimSpeed = saveData.startSwimSpeed;
-        player.startRotateSpeed = saveData.startRotateSpeed;
+        player.baseHealth = saveData.health;
+        player.baseStamina = saveData.stamina;
+        player.baseDashSpeed = saveData.dashSpeed;
+        player.baseDashCharges = saveData.dashCharges;
+        player.baseSwimSpeed = saveData.swimSpeed;
+        player.baseRotateSpeed = saveData.rotateSpeed;
     }
 
     public void OnGUI()

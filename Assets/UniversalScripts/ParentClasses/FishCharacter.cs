@@ -6,6 +6,11 @@ public class FishCharacter : GameCharacter
 {
     protected Renderer renderer;
 
+    protected float currentAttackTime = 0;
+    protected float attackTime = 5;
+
+    protected int damage;
+
     [Header("StartDir --- (Flase = Right, True = Left)")]
     public bool changeDir;
 

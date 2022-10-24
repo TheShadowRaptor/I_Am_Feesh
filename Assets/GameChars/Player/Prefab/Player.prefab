@@ -172,10 +172,7 @@ MonoBehaviour:
   takeDamage: {fileID: 5649587124154103249}
   c_FacingRight: 1
   isDead: 0
-  playerEvolutionPoints: 0
-  staminaDecrease: 1
-  dashSpeedDecrease: 1
-  attackTimeDecrease: 0.09
+  evolutionPoints: 0
   startHealth: 1
   startStamina: 25
   startDamage: 1
@@ -183,6 +180,9 @@ MonoBehaviour:
   startDashSpeed: 2
   startSwimSpeed: 50
   startRotateSpeed: 50
+  staminaDecrease: 1
+  dashSpeedDecrease: 1
+  attackTimeDecrease: 0.09
   playerAttackRadius: {fileID: 9155749875499288213}
   attackRadius: {fileID: 1570108902988751184}
   health: 0

@@ -19,14 +19,19 @@ public class GameManager : MonoBehaviour
         win
     }
 
+    [Header("GameManagers")]
     public UIMananger uIMananger;
     public LevelMananger levelMananger;
 
+    [Header("TextObjects")]
+    public TextMeshProUGUI SaveDataDoesNotExist;
+    
+    [Header("GameObjects")]
+    public GameObject warningPanel;
+    public GameObject SavingPanel;
+
     GameObject playerObj;
     GameObject playerSpawn;
-
-    public GameObject warningPanel;
-    public TextMeshProUGUI SaveDataDoesNotExist;
 
     PlayerController player;
 
@@ -62,7 +67,7 @@ public class GameManager : MonoBehaviour
             player.ResetStats();
         }
 
-        //Text Timer
+        //Text Timer-----------------------------
         if (SaveDataDoesNotExist.enabled == true)
         {
             // Timescale is 0 so I use 0.01 instead to subtract time
@@ -73,6 +78,18 @@ public class GameManager : MonoBehaviour
                 SaveDataDoesNotExist.enabled = false;
             }
         }
+
+        if (SavingPanel.activeSelf == true)
+        {
+            // Timescale is 0 so I use 0.01 instead to subtract time
+            timeLeft -= 0.01f;
+            if (timeLeft <= 0)
+            {
+                timeLeft = timeStart;
+                SavingPanel.SetActive(false);
+            }
+        }
+        //--------------------------------------
 
         switch (state)
         {
@@ -208,6 +225,8 @@ public class GameManager : MonoBehaviour
 
         bf.Serialize(file, saveData);
         file.Close();
+
+        SavingPanel.SetActive(true);
     }
 
     public void Load()

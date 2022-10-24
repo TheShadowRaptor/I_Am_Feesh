@@ -26,6 +26,7 @@ public class PlayerController : GameCharacter
 
     [Header("GameObjects")]
     public GameObject attackRadius;
+    public Camera camera;
 
     [HideInInspector] public int health;
     [HideInInspector] public float stamina;
@@ -35,6 +36,7 @@ public class PlayerController : GameCharacter
     [HideInInspector] public int dashCharges;
     [HideInInspector] public int dashSpeed;
 
+    // Find Scripts
 
     // Inputs 
     float horizontalMove;
@@ -55,21 +57,23 @@ public class PlayerController : GameCharacter
         ResetStats();
     }
 
+    private void FixedUpdate()
+    {
+        InputMananger();
+        Move();
+    }
+
     // Update is called once per frame
     void Update()
     {
         theScale = transform.localScale;
+
         AttackManager();
         FlipCharacterModel();
         DrainManager();
         CheckState();
     }
 
-    private void FixedUpdate()
-    {
-        InputMananger();
-        Move();
-    }
 
     protected new void FlipCharacterModel()
     {
@@ -98,6 +102,7 @@ public class PlayerController : GameCharacter
     {
         rb.velocity = (Vector2)transform.right * verticalMove * swimSpeed * currentDashSpeed * Time.deltaTime;
         rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -horizontalMove * rotateSpeed * Time.deltaTime));
+        CheckBounds();
 
         if (dashButtonDown && dashCharges > 0)
         {
@@ -125,6 +130,16 @@ public class PlayerController : GameCharacter
             if (playerAttackRadius.eatCurrentFood) takeDamage.health -= damage;
 
         }
+    }
+
+    private void CheckBounds()
+    {
+        Vector3 camPos = camera.WorldToViewportPoint(transform.position);
+        if (camPos.y < 1)
+        {
+            Debug.Log("hi");
+        }
+        
     }
 
     bool Attacking()

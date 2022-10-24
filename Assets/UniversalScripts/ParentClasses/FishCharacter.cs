@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class FishCharacter : GameCharacter
 {
+    protected Renderer renderer;
+
+    [Header("StartDir --- (Flase = Right, True = Left)")]
+    public bool changeDir;
+
     [Header("FishStats")]
     public float swimSpeed = 20;
     public float fleeSwimSpeed = 40;
@@ -24,5 +29,43 @@ public class FishCharacter : GameCharacter
             return true;
         }
         return false;
-    }   
+    }
+
+    protected void Move()
+    {
+        //Move
+        rb.velocity = transform.right * swimSpeed * Time.deltaTime;
+
+        if (PlayerSpotted() || WarningSpotted())
+        {
+            // Swim Away 
+            transform.right = -player.transform.position + transform.position;
+            swimSpeed = fleeSwimSpeed;
+        }
+
+        else
+        {
+            if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
+            else if (changeDir == true) transform.rotation = new Quaternion(0, 0, 180, 0);
+        }
+    }
+
+    protected void SpawnFood()
+    {
+        if (isDead)
+        {
+            Instantiate(food, transform.position, transform.rotation);
+            Debug.Log("Dead");
+        }
+    }
+
+    protected bool WarningSpotted()
+    {
+        // Warning Causes surrounding small fish in warning radius to swim away
+        if (warningBehaviour.spottedWarning)
+        {
+            return true;
+        }
+        return false;
+    }
 }

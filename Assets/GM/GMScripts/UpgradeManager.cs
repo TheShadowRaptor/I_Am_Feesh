@@ -14,9 +14,9 @@ public class UpgradeManager : MonoBehaviour
     public TextMeshProUGUI StomachCapacityText;
 
     [Header("Prices - Capacity [3]")]
-    public List<int> swimSpeedPrices = new List<int>(3);
-    public List<int> turnSpeedPrices = new List<int>(3);
-    public List<int> stomachCapacityPrices = new List<int>(3);
+    public List<int> swimSpeedPrices = new List<int>();
+    public List<int> turnSpeedPrices = new List<int>();
+    public List<int> stomachCapacityPrices = new List<int>();
 
     int currentSwimSpeedButton = 0;
     int currentTurnSpeedButton = 0;

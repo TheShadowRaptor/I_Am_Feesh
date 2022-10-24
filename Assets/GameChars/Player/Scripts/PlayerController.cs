@@ -102,7 +102,6 @@ public class PlayerController : GameCharacter
     {
         rb.velocity = (Vector2)transform.right * verticalMove * swimSpeed * currentDashSpeed * Time.deltaTime;
         rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -horizontalMove * rotateSpeed * Time.deltaTime));
-        CheckBounds();
 
         if (dashButtonDown && dashCharges > 0)
         {
@@ -130,16 +129,6 @@ public class PlayerController : GameCharacter
             if (playerAttackRadius.eatCurrentFood) takeDamage.health -= damage;
 
         }
-    }
-
-    private void CheckBounds()
-    {
-        Vector3 camPos = camera.WorldToViewportPoint(transform.position);
-        if (camPos.y < 1)
-        {
-            Debug.Log("hi");
-        }
-        
     }
 
     bool Attacking()

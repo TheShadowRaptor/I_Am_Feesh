@@ -1447,6 +1447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8347973936764120121}
   - component: {fileID: 6173484561534215631}
+  - component: {fileID: 3655387053820786991}
   m_Layer: 0
   m_Name: LevelMananger
   m_TagString: Untagged
@@ -1482,6 +1483,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSceneNum: 0
+--- !u!114 &3655387053820786991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280264890368665461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24a2e47491b7164daa5b3743f18fd81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallFri: {fileID: 0}
+  meanSam: {fileID: 0}
+  spawners: []
 --- !u!1 &1311406978278683479
 GameObject:
   m_ObjectHideFlags: 0
@@ -6886,9 +6902,9 @@ MonoBehaviour:
   SwimSpeedText: {fileID: 360688913440792458}
   TurnSpeedText: {fileID: 6349445934475797645}
   StomachCapacityText: {fileID: 6069371748775989950}
-  swimSpeedPrices: 
-  turnSpeedPrices: 
-  stomachCapacityPrices: 
+  swimSpeedPrices: 050000001900000019000000
+  turnSpeedPrices: 050000000a0000000f000000
+  stomachCapacityPrices: 0f0000001900000000000000
 --- !u!1 &5767441940702210280
 GameObject:
   m_ObjectHideFlags: 0

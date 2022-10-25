@@ -79,7 +79,7 @@ public class MeanSamon : FishCharacter
         if (attackRadiusObj.activeSelf)
         {
             currentAttackTime = attackTime;
-            return true;
+            return false;
         }
         else if (currentAttackTime > 0) return true;
         else return false;

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MeanSamon : FishCharacter
 {
-    public EnemyAttackRadius attackRadius;
-    public GameObject attackRadiusObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +16,8 @@ public class MeanSamon : FishCharacter
     // Update is called once per frame
     void Update()
     {
+        AttackManager();
+        AttackTimeDrain();
         FlipCharacterModel();
         CheckState();
         SpawnFood();
@@ -66,23 +66,42 @@ public class MeanSamon : FishCharacter
     private void AttackManager()
     {
         TakeDamage takeDamage = attackRadius.takeDamage;
+
         // Attack Input
         if (Attacking()) attackRadiusObj.SetActive(true);
         else attackRadiusObj.SetActive(false);
 
         // Attack Target        
-        if (attackRadius.attackPlayer) takeDamage.health -= damage;
+        if (attackRadius.attackPlayer ) takeDamage.health -= damage;
     }
 
     bool Attacking()
     {
-        if (attackRadiusObj.activeSelf)
+        StopAttacking();
+        if (attackRange.inRange && currentAttackTime == 0)
         {
             currentAttackTime = attackTime;
+            attacking = true;
             return false;
         }
-        else if (currentAttackTime > 0) return true;
-        else return false;
+
+        else if (attacking == true && currentAttackTime <= attackingLength && player.GetComponent<PlayerController>().isDead == false)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
+
+    void StopAttacking()
+    {
+        if (currentAttackTime <= 0)
+        {
+            attacking = false;
+        }
     }
 
     protected void OnCollisionEnter2D(Collision2D collision)

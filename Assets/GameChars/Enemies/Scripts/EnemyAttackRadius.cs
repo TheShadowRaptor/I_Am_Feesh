@@ -9,6 +9,7 @@ public class EnemyAttackRadius : MonoBehaviour
     public TakeDamage takeDamage;
 
     public bool attackPlayer;
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))

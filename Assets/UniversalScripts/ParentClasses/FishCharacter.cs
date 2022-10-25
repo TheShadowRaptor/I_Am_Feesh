@@ -6,8 +6,14 @@ public class FishCharacter : GameCharacter
 {
     protected Renderer renderer;
 
-    protected float currentAttackTime = 0;
-    protected float attackTime = 5;
+    public float currentAttackTime = 0;
+    public float attackTimeDecrease = 5.0f;
+    protected float attackTime = 0.2f;
+    protected float attackingLength = 0.1f;
+
+
+    protected bool attacking = false;
+
 
     protected int damage;
 
@@ -25,6 +31,10 @@ public class FishCharacter : GameCharacter
     [Header("GameObjects")]
     public GameObject food;
     protected GameObject player;
+
+    public EnemyAttackRange attackRange;
+    public EnemyAttackRadius attackRadius;
+    public GameObject attackRadiusObj;
 
     public bool PlayerSpotted()
     {
@@ -72,5 +82,21 @@ public class FishCharacter : GameCharacter
             return true;
         }
         return false;
+    }
+
+    protected void AttackTimeDrain()
+    {
+        currentAttackTime -= attackTimeDecrease * Time.deltaTime;
+
+        // Clamp
+        if (currentAttackTime <= 0)
+        {
+            currentAttackTime = 0;
+        }
+
+        if (currentAttackTime > attackTime)
+        {
+            currentAttackTime = attackTime;
+        }
     }
 }

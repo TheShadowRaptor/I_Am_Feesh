@@ -5,19 +5,9 @@ using UnityEngine;
 public class TakeDamage : MonoBehaviour
 {
     public int health;
-
     void Update()
     {
         HealthClamp();
-    }
-
-    bool IsDead()
-    {
-        if (health == 0)
-        {
-            return true;
-        }
-        return false;
     }
 
     void HealthClamp()

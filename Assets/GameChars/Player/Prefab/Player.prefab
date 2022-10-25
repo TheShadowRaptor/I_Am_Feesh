@@ -174,7 +174,7 @@ MonoBehaviour:
   isDead: 0
   evolutionPoints: 0
   baseHealth: 1
-  baseStamina: 10
+  baseStamina: 20
   baseDamage: 1
   baseDashCharges: 1
   baseDashSpeed: 2
@@ -182,7 +182,7 @@ MonoBehaviour:
   baseRotateSpeed: 20
   staminaDecrease: 1
   dashSpeedDecrease: 1
-  attackTimeDecrease: 0.09
+  attackTimeDecrease: 0.18
   playerAttackRadius: {fileID: 9155749875499288213}
   attackRadius: {fileID: 1570108902988751184}
   camera: {fileID: 0}
@@ -193,6 +193,8 @@ MonoBehaviour:
   rotateSpeed: 10
   dashCharges: 0
   dashSpeed: 0
+  currentAttackTime: 0
+  attacking: 0
 --- !u!50 &4161123100735933436
 Rigidbody2D:
   serializedVersion: 4

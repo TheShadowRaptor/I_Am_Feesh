@@ -19,7 +19,7 @@ public class PlayerController : GameCharacter
     [Header("Decrease")]
     public float staminaDecrease = 1.0f;
     public float dashSpeedDecrease = 1.0f;
-    public float attackTimeDecrease = 1.0f;
+    public float attackTimeDecrease = 5.0f;
 
     [Header("Scripts")]
     public PlayerAttackRadius playerAttackRadius;
@@ -46,9 +46,13 @@ public class PlayerController : GameCharacter
 
     Vector3 theScale; 
 
+    //Attack Timing
+    public float currentAttackTime = 0;
     float currentDashSpeed = 1;
-    float currentAttackTime = 0;
-    float attackTime = 5;
+    float attackTime = 0.2f;
+    float attackLength = 0.1f;
+
+    bool attacking = false;
     
 
     // Start is called before the first frame update
@@ -69,10 +73,10 @@ public class PlayerController : GameCharacter
     {
         theScale = transform.localScale;
 
+        CheckState();
         AttackManager();
         FlipCharacterModel();
         DrainManager();
-        CheckState();
     }
 
 
@@ -116,7 +120,7 @@ public class PlayerController : GameCharacter
         TakeDamage takeDamage = playerAttackRadius.takeDamage;
         FoodCharacter food = playerAttackRadius.foodScript;
         // Attack Input
-        if (Attacking()) attackRadius.SetActive(true);
+        if (Attacking() == true) attackRadius.SetActive(true);
         else attackRadius.SetActive(false);
 
         // Attack Target        
@@ -134,13 +138,32 @@ public class PlayerController : GameCharacter
 
     bool Attacking()
     {
+        StopAttacking();
         if (attackButton && currentAttackTime == 0)
         {
             currentAttackTime = attackTime;
+            attacking = true;
+            return false;
+        }
+
+        else if (attacking == true && currentAttackTime <= attackLength)
+        {
             return true;
         }
-        else if (currentAttackTime > 0) return true;
-        else return false;
+
+        else
+        {
+
+            return false;
+        }
+    }
+
+    void StopAttacking()
+    {
+        if (currentAttackTime <= 0)
+        {
+            attacking = false;
+        }
     }
 
     void StaminaDrain()
@@ -179,7 +202,7 @@ public class PlayerController : GameCharacter
 
     void AttackTimeDrain()
     {
-        currentAttackTime -= attackTimeDecrease;
+        currentAttackTime -= attackTimeDecrease * Time.deltaTime;
 
         // Clamp
         if (currentAttackTime <= 0)
@@ -202,8 +225,8 @@ public class PlayerController : GameCharacter
 
     public void ResetStats()
     {
-        takeDamage.health = baseHealth;
-        health = takeDamage.health;
+        health = baseHealth;
+        takeDamage.health = health;
         stamina = baseStamina;
         damage = baseDamage;
         swimSpeed = baseSwimSpeed;
@@ -214,7 +237,7 @@ public class PlayerController : GameCharacter
 
     public new void CheckState()
     {
-        if (health <= 0)
+        if (health <= 0 || takeDamage.health <= 0)
         {
             isDead = true;
         }

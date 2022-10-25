@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
         if (player.isDead)
         {
             state = GameState.results;
-            player.ResetStats();
         }
 
         //Text Timer-----------------------------
@@ -95,8 +94,11 @@ public class GameManager : MonoBehaviour
         {
             case GameState.title:
                 Time.timeScale = 0;
+
+                //Set plays position to player spawn
                 player.transform.position = playerSpawn.transform.position;
                 player.transform.rotation = playerSpawn.transform.rotation;
+
                 uIMananger.TitleCanvasOn();
                 break;
 

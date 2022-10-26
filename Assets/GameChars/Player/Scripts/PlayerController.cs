@@ -23,11 +23,12 @@ public class PlayerController : GameCharacter
 
     [Header("Scripts")]
     public PlayerAttackRadius playerAttackRadius;
+    public AudioManager audioManager;
 
     [Header("GameObjects")]
     public GameObject attackRadius;
     public Camera camera;
-
+    
     [HideInInspector] public int health;
     [HideInInspector] public float stamina;
     [HideInInspector] public int damage;
@@ -50,7 +51,7 @@ public class PlayerController : GameCharacter
     public float currentAttackTime = 0;
     float currentDashSpeed = 1;
     float attackTime = 0.2f;
-    float attackLength = 0.1f;
+    float attackLength = 0.05f;
 
     bool attacking = false;
     
@@ -113,6 +114,12 @@ public class PlayerController : GameCharacter
             currentDashSpeed = dashSpeed;
             dashCharges -= 1;
         }
+
+        //Play Audio
+        if (verticalMove > 0 || verticalMove < 0)
+        {
+            //audioManager.PlayPlayerSwim();
+        }
     }
 
     private void AttackManager()
@@ -120,7 +127,10 @@ public class PlayerController : GameCharacter
         TakeDamage takeDamage = playerAttackRadius.takeDamage;
         FoodCharacter food = playerAttackRadius.foodScript;
         // Attack Input
-        if (Attacking() == true) attackRadius.SetActive(true);
+        if (Attacking() == true)
+        {
+            attackRadius.SetActive(true);
+        }
         else attackRadius.SetActive(false);
 
         // Attack Target        
@@ -141,6 +151,7 @@ public class PlayerController : GameCharacter
         StopAttacking();
         if (attackButton && currentAttackTime == 0)
         {
+            //audioManager.PlayPlayerReadyingBite();
             currentAttackTime = attackTime;
             attacking = true;
             return false;
@@ -148,6 +159,7 @@ public class PlayerController : GameCharacter
 
         else if (attacking == true && currentAttackTime <= attackLength)
         {
+            //audioManager.PlayPlayerBite();
             return true;
         }
 

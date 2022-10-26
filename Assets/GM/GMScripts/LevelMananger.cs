@@ -8,6 +8,14 @@ public class LevelMananger : MonoBehaviour
     public GameObject level;
     // Used to save currentSceneNumber for export
     public int currentSceneNum;
+
+    private void Update()
+    {
+        if (level == null)
+        {
+            level = GameObject.Find("LevelOne");
+        }
+    }
     public void EndGame()
     {
         Application.Quit();

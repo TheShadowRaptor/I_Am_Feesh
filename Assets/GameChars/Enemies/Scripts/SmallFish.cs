@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SmallFish : FishCharacter
-{  
+{
+    AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {       
@@ -14,7 +15,11 @@ public class SmallFish : FishCharacter
 
     // Update is called once per frame
     void Update()
-    {      
+    {
+        if (audioManager == null)
+        {
+            audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
+        }
         FlipCharacterModel();
         CheckState();
         SpawnFood();

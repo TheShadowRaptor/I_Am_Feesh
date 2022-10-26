@@ -2,23 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeanSamon : FishCharacter
+public class CoralLatcher : FishCharacter
 {
     AudioManager audioManager;
+    Color spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         renderer = gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
+        spriteRenderer = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
         damage = 1;
+
+        if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
+        else if (changeDir == true) transform.rotation = new Quaternion(0, 0, 180, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
-
+        if (audioManager == null)
+        {
+            audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
+        }
+        CamouflageManager();
         AttackManager();
         AttackTimeDrain();
         FlipCharacterModel();
@@ -43,14 +51,13 @@ public class MeanSamon : FishCharacter
         if (PlayerSpotted() || WarningSpotted())
         {
             // Swim Away 
-            transform.right = player.transform.position - transform.position;
+            
             swimSpeed = fleeSwimSpeed;
         }
 
         else
         {
-            if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
-            else if (changeDir == true) transform.rotation = new Quaternion(0, 0, 180, 0);
+            transform.right = player.transform.position - transform.position;          
         }
     }
 
@@ -75,7 +82,7 @@ public class MeanSamon : FishCharacter
         else attackRadiusObj.SetActive(false);
 
         // Attack Target        
-        if (attackRadius.attackPlayer ) takeDamage.health -= damage;
+        if (attackRadius.attackPlayer) takeDamage.health -= damage;
     }
 
     bool Attacking()
@@ -97,6 +104,18 @@ public class MeanSamon : FishCharacter
         else
         {
             return false;
+        }
+    }
+
+    void CamouflageManager()
+    {
+        if (PlayerSpotted() == false || WarningSpotted() == false)
+        {
+            spriteRenderer.a = 0.2f;
+        }
+        else
+        {
+            spriteRenderer.a = 1f;
         }
     }
 

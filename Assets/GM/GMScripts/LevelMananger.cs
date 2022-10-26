@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelMananger : MonoBehaviour
 {
+    public GameObject level;
     // Used to save currentSceneNumber for export
     public int currentSceneNum;
     public void EndGame()
@@ -13,9 +14,14 @@ public class LevelMananger : MonoBehaviour
         Debug.Log("Exit");
     }
 
-    public void LoadScene(int num)
+    public void LoadLevel()
     {
-        currentSceneNum = num;
-        SceneManager.LoadScene(num);
+        SceneManager.LoadScene(1);
+        level.SetActive(true);
+    }
+
+    public void LoadTitle()
+    {
+        SceneManager.LoadScene(0);
     }
 }

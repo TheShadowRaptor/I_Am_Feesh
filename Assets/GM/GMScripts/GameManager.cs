@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevelButton()
     {
-        levelMananger.LoadScene(1);
+        levelMananger.LoadLevel();
         player.transform.position = playerSpawn.transform.position;
         player.transform.rotation = playerSpawn.transform.rotation;
         Save();
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
     }
     public void LoadTitleButton()
     {
-        levelMananger.LoadScene(0);
+        levelMananger.LoadTitle();
         state = GameState.title;
     }
     public void LoadSettingsButton()

@@ -113,6 +113,7 @@ public class PlayerController : GameCharacter
         {
             currentDashSpeed = dashSpeed;
             dashCharges -= 1;
+            audioManager.PlayPlayerDash();
         }
 
         //Play Audio
@@ -151,7 +152,7 @@ public class PlayerController : GameCharacter
         StopAttacking();
         if (attackButton && currentAttackTime == 0)
         {
-            //audioManager.PlayPlayerReadyingBite();
+            audioManager.PlayPlayerReadyingBite();
             currentAttackTime = attackTime;
             attacking = true;
             return false;
@@ -159,7 +160,7 @@ public class PlayerController : GameCharacter
 
         else if (attacking == true && currentAttackTime <= attackLength)
         {
-            //audioManager.PlayPlayerBite();
+            audioManager.PlayPlayerBite();
             return true;
         }
 
@@ -172,7 +173,7 @@ public class PlayerController : GameCharacter
 
     void StopAttacking()
     {
-        if (currentAttackTime <= 0)
+        if (currentAttackTime <= 0 || isDead)
         {
             attacking = false;
         }

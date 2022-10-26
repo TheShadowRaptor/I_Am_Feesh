@@ -5,11 +5,11 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [Header("AudioSources")]
-    public AudioSourceScript playerAudio;
-    public AudioSourceScript playerBiteAudio;
-    public AudioSourceScript objectAudio;
-    public AudioSourceScript enemyAudio;
-    public AudioSourceScript uIAudio;
+    public AudioSource playerAudio;
+    public AudioSource playerBiteAudio;
+    public AudioSource objectAudio;
+    public AudioSource enemyAudio;
+    public AudioSource uIAudio;
 
     [Header("PlayerSounds")]
     public AudioClip playerBite;
@@ -27,36 +27,50 @@ public class AudioManager : MonoBehaviour
     [Header("UISounds")]
     public AudioClip selectButton;
 
+    private void Start()
+    {
+        playerAudio = gameObject.transform.Find("PlayerAudio").gameObject.GetComponent<AudioSource>();
+        playerBiteAudio = gameObject.transform.Find("PlayerBiteAudio").gameObject.GetComponent<AudioSource>();
+        objectAudio = gameObject.transform.Find("ObjectAudio").gameObject.GetComponent<AudioSource>();
+        enemyAudio = gameObject.transform.Find("EnemyAudio").gameObject.GetComponent<AudioSource>();
+        uIAudio = gameObject.transform.Find("UiAudio").gameObject.GetComponent<AudioSource>();
+    }
+
     //Player Sounds
     public void PlayPlayerBite()
     {
-        if (playerBiteAudio.audioSource.isPlaying == false)
+        playerBiteAudio.clip = playerBite;
+        if (playerBiteAudio.isPlaying == false)
         {
-            playerBiteAudio.Play(playerBite);
+            playerBiteAudio.Play();
         }
     }
 
     public void PlayPlayerReadyingBite()
     {
-        playerAudio.Play(playerReadyingBite);
+        playerAudio.clip = playerReadyingBite;
+        playerAudio.Play();
     }
 
     public void PlayPlayerDeath()
     {
-        playerAudio.Play(playerDeath);
+        playerAudio.clip = playerDeath;
+        playerAudio.Play();
     }
 
     public void PlayPlayerSwim()
     {
-        if (playerAudio.audioSource.isPlaying == false || playerBiteAudio.audioSource.isPlaying == false)
+        playerAudio.clip = playerSwim;
+        if (playerAudio.isPlaying == false || playerBiteAudio.isPlaying == false)
         {
-            playerAudio.Play(playerSwim);
+            playerAudio.PlayOneShot(playerSwim);
         }
     }
 
     public void PlayPlayerDash()
     {
-        playerAudio.Play(playerDash);
+        playerAudio.clip = playerDash;
+        playerAudio.Play();
     }
     
     //------------------------------------------
@@ -64,21 +78,21 @@ public class AudioManager : MonoBehaviour
     //Object Sounds
     public void PlayFoodEaten()
     {
-        objectAudio.Play(foodEaten);
+        objectAudio.clip = foodEaten;
+        playerAudio.PlayOneShot(foodEaten);
     }
 
     //Enemy Sounds
     public void PlayEnemyBite()
     {
-        if (enemyAudio.audioSource.isPlaying == false)
-        {
-            enemyAudio.Play(enemyBite);
-        }
+        enemyAudio.clip = enemyBite;
+        playerAudio.PlayOneShot(enemyBite);
     }
 
     //UI Sounds
-    public void SelectButton()
+    public void PlaySelectButton()
     {
-        uIAudio.Play(selectButton);
+        uIAudio.clip = selectButton;
+        uIAudio.PlayOneShot(selectButton);
     }
 }

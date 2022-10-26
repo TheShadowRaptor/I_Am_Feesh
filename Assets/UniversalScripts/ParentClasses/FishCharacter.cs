@@ -5,7 +5,7 @@ using UnityEngine;
 public class FishCharacter : GameCharacter
 {
     protected Renderer renderer;
-
+        
     public float currentAttackTime = 0;
     public float attackTimeDecrease = 5.0f;
     protected float attackTime = 0.2f;

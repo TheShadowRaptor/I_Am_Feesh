@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeanSamon : FishCharacter
 {
+    public AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,8 +86,9 @@ public class MeanSamon : FishCharacter
             return false;
         }
 
-        else if (attacking == true && currentAttackTime <= attackingLength && player.GetComponent<PlayerController>().isDead == false)
+        else if (attacking == true && currentAttackTime <= attackingLength)
         {
+            audioManager.PlayEnemyBite();
             return true;
         }
 
@@ -98,7 +100,7 @@ public class MeanSamon : FishCharacter
 
     void StopAttacking()
     {
-        if (currentAttackTime <= 0)
+        if (currentAttackTime <= 0 || player.GetComponent<PlayerController>().isDead == true)
         {
             attacking = false;
         }

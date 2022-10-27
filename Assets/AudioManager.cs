@@ -86,7 +86,7 @@ public class AudioManager : MonoBehaviour
     public void PlayEnemyBite()
     {
         enemyAudio.clip = enemyBite;
-        playerAudio.PlayOneShot(enemyBite);
+        enemyAudio.PlayOneShot(enemyBite);
     }
 
     //UI Sounds

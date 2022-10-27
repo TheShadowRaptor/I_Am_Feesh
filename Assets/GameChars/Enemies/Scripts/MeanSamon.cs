@@ -68,7 +68,7 @@ public class MeanSamon : FishCharacter
 
     private void AttackManager()
     {
-        TakeDamage takeDamage = attackRadius.takeDamage;
+        TakeDamage takeDamage = attackRadius.playerTakeDamage;
 
         // Attack Input
         if (Attacking()) attackRadiusObj.SetActive(true);

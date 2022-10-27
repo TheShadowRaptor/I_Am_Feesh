@@ -6,10 +6,10 @@ public class FishCharacter : GameCharacter
 {
     protected Renderer renderer;
         
+    public float attackingLength = 0.1f;
     public float currentAttackTime = 0;
     public float attackTimeDecrease = 5.0f;
     protected float attackTime = 0.2f;
-    protected float attackingLength = 0.1f;
 
 
     protected bool attacking = false;

@@ -43,7 +43,7 @@ public class PlayerController : GameCharacter
     float horizontalMove;
     float verticalMove;
     bool attackButton;
-    bool dashButtonDown;
+    bool dashButton;
 
     Vector3 theScale; 
 
@@ -101,7 +101,7 @@ public class PlayerController : GameCharacter
         attackButton = Input.GetButton("Attack");
 
         //Dash Input
-        dashButtonDown = Input.GetButtonDown("Dash");
+        dashButton = Input.GetKeyDown(KeyCode.LeftShift);
     }
 
     private void Move()
@@ -109,7 +109,7 @@ public class PlayerController : GameCharacter
         rb.velocity = (Vector2)transform.right * verticalMove * swimSpeed * currentDashSpeed * Time.deltaTime;
         rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -horizontalMove * rotateSpeed * Time.deltaTime));
 
-        if (dashButtonDown && dashCharges > 0)
+        if (dashButton && dashCharges > 0)
         {
             currentDashSpeed = dashSpeed;
             dashCharges -= 1;

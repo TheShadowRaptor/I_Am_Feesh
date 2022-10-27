@@ -2,31 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoralLatcher : FishCharacter
+public class SpearFish : FishCharacter
 {
     AudioManager audioManager;
-    Color spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         renderer = gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
-        spriteRenderer = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
         damage = 1;
-
-        if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
-        else if (changeDir == true) transform.rotation = new Quaternion(0, 0, 180, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (audioManager == null)
-        {
-            audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
-        }
-        CamouflageManager();
+        audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
+
         AttackManager();
         AttackTimeDrain();
         FlipCharacterModel();
@@ -51,13 +43,14 @@ public class CoralLatcher : FishCharacter
         if (PlayerSpotted() || WarningSpotted())
         {
             // Swim Away 
-            
+            transform.right = player.transform.position - transform.position;
             swimSpeed = fleeSwimSpeed;
         }
 
         else
         {
-            transform.right = player.transform.position - transform.position;          
+            if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
+            else if (changeDir == true) transform.rotation = new Quaternion(0, 0, 180, 0);
         }
     }
 
@@ -65,7 +58,7 @@ public class CoralLatcher : FishCharacter
     {
         if (isDead)
         {
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Instantiate(food, transform.position, transform.rotation);
                 Debug.Log("Dead");
@@ -115,19 +108,6 @@ public class CoralLatcher : FishCharacter
         }
     }
 
-    void CamouflageManager()
-    {
-        if (PlayerSpotted() == false)
-        {
-            spriteRenderer.a = 0.05f;
-            spriteRenderer = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteRenderer;
-        }
-        else
-        {
-            spriteRenderer.a = 1f;
-            spriteRenderer = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteRenderer;
-        }
-    }
     protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (PlayerSpotted() == false)

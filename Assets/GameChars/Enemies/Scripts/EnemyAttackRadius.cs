@@ -6,16 +6,17 @@ public class EnemyAttackRadius : MonoBehaviour
 {
     public GameObject player;
 
-    public TakeDamage takeDamage;
+    public TakeDamage playerTakeDamage;
 
     public bool attackPlayer;
+
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             player = other.gameObject;
-            takeDamage = player.GetComponent<TakeDamage>();
+            playerTakeDamage = player.GetComponent<TakeDamage>();
             attackPlayer = true;
         }
     }
@@ -25,7 +26,7 @@ public class EnemyAttackRadius : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             player = null;
-            takeDamage = null;
+            playerTakeDamage = null;
             attackPlayer = false;
         }
     }

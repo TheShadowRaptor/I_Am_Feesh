@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class FishCharacter : GameCharacter
 {
-    protected Renderer renderer;
-        
-    public float attackingLength = 0.1f;
-    public float currentAttackTime = 0;
-    public float attackTimeDecrease = 5.0f;
+    protected GameObject player;
+
     protected float attackTime = 0.2f;
 
 
@@ -24,13 +21,16 @@ public class FishCharacter : GameCharacter
     public float swimSpeed = 20;
     public float fleeSwimSpeed = 40;
 
+    public float attackingLength = 0.1f;
+    public float currentAttackTime = 0;
+    public float attackTimeDecrease = 5.0f;
+
     [Header("Scripts")]
     public DetectPlayer detectPlayer;
     public DetectWarning warningBehaviour;
 
     [Header("GameObjects")]
     public GameObject food;
-    protected GameObject player;
 
     public EnemyAttackRange attackRange;
     public EnemyAttackRadius attackRadius;

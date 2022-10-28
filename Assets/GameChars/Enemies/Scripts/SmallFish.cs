@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SmallFish : FishCharacter
 {
+    protected Renderer renderer;
     AudioManager audioManager;
     // Start is called before the first frame update
     void Start()

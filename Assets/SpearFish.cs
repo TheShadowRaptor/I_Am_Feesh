@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpearFish : FishCharacter
 {
+    protected Renderer renderer;
     AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
@@ -40,18 +41,10 @@ public class SpearFish : FishCharacter
         //Move
         rb.velocity = transform.right * swimSpeed * Time.deltaTime;
 
-        if (PlayerSpotted() || WarningSpotted())
-        {
-            // Swim Away 
-            transform.right = player.transform.position - transform.position;
-            swimSpeed = fleeSwimSpeed;
-        }
 
-        else
-        {
-            if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
-            else if (changeDir == true) transform.rotation = new Quaternion(0, 0, 180, 0);
-        }
+        if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
+     else if (changeDir == true) transform.rotation = new Quaternion(0, 0, 180, 0);
+
     }
 
     protected new void SpawnFood()

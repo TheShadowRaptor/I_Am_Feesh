@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameCharacter : MonoBehaviour
 {
+    protected Renderer renderer;
+
     public TakeDamage takeDamage;
 
     protected Rigidbody2D rb;

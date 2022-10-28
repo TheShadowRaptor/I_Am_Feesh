@@ -5,14 +5,16 @@ using UnityEngine;
 public class CoralLatcher : FishCharacter
 {
     AudioManager audioManager;
-    Color spriteRenderer;
+
+    protected Renderer renderer;
+    Color spriteColor;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         renderer = gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
-        spriteRenderer = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
+        spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
         damage = 1;
 
         if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -119,13 +121,13 @@ public class CoralLatcher : FishCharacter
     {
         if (PlayerSpotted() == false)
         {
-            spriteRenderer.a = 0.05f;
-            spriteRenderer = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteRenderer;
+            spriteColor.a = 0.05f;
+            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
         }
         else
         {
-            spriteRenderer.a = 1f;
-            spriteRenderer = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteRenderer;
+            spriteColor.a = 1f;
+            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
         }
     }
     protected void OnCollisionEnter2D(Collision2D collision)

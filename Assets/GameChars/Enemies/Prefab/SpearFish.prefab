@@ -191,7 +191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3015532943434185073
 Transform:
   m_ObjectHideFlags: 0
@@ -416,15 +416,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401d07a2f62c7ce438144828a6750f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeDamage: {fileID: 0}
+  takeDamage: {fileID: 1873366925829318748}
   c_FacingRight: 1
   isDead: 0
-  attackingLength: 0.1
-  currentAttackTime: 0
-  attackTimeDecrease: 3
   changeDir: 0
   swimSpeed: 300
   fleeSwimSpeed: 40
+  attackingLength: 0.1
+  currentAttackTime: 0
+  attackTimeDecrease: 3
   detectPlayer: {fileID: 0}
   warningBehaviour: {fileID: 0}
   food: {fileID: 5019588910840587033, guid: d9daebc5d69ce1043833012d43546fef, type: 3}

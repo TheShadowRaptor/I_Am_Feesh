@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [Header("GameManagers")]
     public UIMananger uIMananger;
     public LevelMananger levelMananger;
+    public AudioManager audioManager;
 
     [Header("TextObjects")]
     public TextMeshProUGUI SaveDataDoesNotExist;
@@ -133,6 +134,7 @@ public class GameManager : MonoBehaviour
             case GameState.results:
                 Time.timeScale = 0;
                 uIMananger.ResultsCanvasOn();
+                audioManager.StopGameplayMusic();
                 break;
 
             case GameState.upgrade:
@@ -150,9 +152,14 @@ public class GameManager : MonoBehaviour
     public void LoadLevelButton()
     {
         levelMananger.LoadLevel();
+
+        //Set Player position to PlayerSpawn point
         player.transform.position = playerSpawn.transform.position;
         player.transform.rotation = playerSpawn.transform.rotation;
+
+        audioManager.PlayGameplayMusic();
         Save();
+
         state = GameState.gameplay;
     }
     public void LoadTitleButton()

@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource objectAudio;
     public AudioSource enemyAudio;
     public AudioSource uIAudio;
+    public AudioSource musicAudio;
 
     [Header("PlayerSounds")]
     public AudioClip playerBite;
@@ -27,6 +28,9 @@ public class AudioManager : MonoBehaviour
     [Header("UISounds")]
     public AudioClip selectButton;
 
+    [Header("Music")]
+    public AudioClip gameplayMusic;
+
     private void Start()
     {
         playerAudio = gameObject.transform.Find("PlayerAudio").gameObject.GetComponent<AudioSource>();
@@ -34,6 +38,7 @@ public class AudioManager : MonoBehaviour
         objectAudio = gameObject.transform.Find("ObjectAudio").gameObject.GetComponent<AudioSource>();
         enemyAudio = gameObject.transform.Find("EnemyAudio").gameObject.GetComponent<AudioSource>();
         uIAudio = gameObject.transform.Find("UiAudio").gameObject.GetComponent<AudioSource>();
+        musicAudio = gameObject.transform.Find("UiAudio").gameObject.GetComponent<AudioSource>();
     }
 
     //Player Sounds
@@ -94,5 +99,17 @@ public class AudioManager : MonoBehaviour
     {
         uIAudio.clip = selectButton;
         uIAudio.PlayOneShot(selectButton);
+    }
+
+    //Music 
+    public void PlayGameplayMusic()
+    {
+        musicAudio.clip = gameplayMusic;
+        musicAudio.Play();
+    }
+
+    public void StopGameplayMusic()
+    {
+        musicAudio.Stop();
     }
 }

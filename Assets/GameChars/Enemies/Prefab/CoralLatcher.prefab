@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  takeDamage: {fileID: 0}
+  playerTakeDamage: {fileID: 0}
   attackPlayer: 0
 --- !u!1 &5335046047018713015
 GameObject:
@@ -290,10 +290,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7618470013849741424}
   - component: {fileID: 4658799450972654863}
-  - component: {fileID: 6125441715681838000}
   - component: {fileID: 1600229212212232768}
   - component: {fileID: 2103675217752827682}
   - component: {fileID: 302558537452593258}
+  - component: {fileID: 5241664906787764922}
   m_Layer: 7
   m_Name: CoralLatcher
   m_TagString: Enemy
@@ -342,22 +342,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &6125441715681838000
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5335046047018713015}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: f66eb51a28874574890258b468c77821, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &1600229212212232768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,18 +383,44 @@ MonoBehaviour:
   takeDamage: {fileID: 1600229212212232768}
   c_FacingRight: 1
   isDead: 0
-  currentAttackTime: 0
-  attackTimeDecrease: 5
   changeDir: 0
   swimSpeed: 0
   fleeSwimSpeed: 60
+  attackingLength: 0.1
+  currentAttackTime: 0
+  attackTimeDecrease: 5
   detectPlayer: {fileID: 7174315558566771764}
   warningBehaviour: {fileID: 2103675217752827682}
   food: {fileID: 0}
   attackRange: {fileID: 659298073409051290}
   attackRadius: {fileID: 2706894807241294278}
   attackRadiusObj: {fileID: 3639944878742037464}
-  audioManager: {fileID: 0}
+--- !u!61 &5241664906787764922
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335046047018713015}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0290588}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.624169}
+  m_EdgeRadius: 0
 --- !u!1 &7598703323056590035
 GameObject:
   m_ObjectHideFlags: 0

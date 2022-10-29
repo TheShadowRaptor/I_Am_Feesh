@@ -226,10 +226,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7061251369404605213}
   - component: {fileID: 7061251369404605215}
-  - component: {fileID: 7061251369404605214}
   - component: {fileID: 7061251369404605408}
   - component: {fileID: 7061251369404605410}
   - component: {fileID: 1432140413807765972}
+  - component: {fileID: 9063402674523948722}
   m_Layer: 7
   m_Name: SmallFish
   m_TagString: Enemy
@@ -276,22 +276,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &7061251369404605214
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7061251369404605212}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: f66eb51a28874574890258b468c77821, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &7061251369404605408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,12 +291,18 @@ MonoBehaviour:
   takeDamage: {fileID: 7061251369404605410}
   c_FacingRight: 1
   isDead: 0
+  changeDir: 0
   swimSpeed: 20
   fleeSwimSpeed: 30
+  attackingLength: 0.1
+  currentAttackTime: 0
+  attackTimeDecrease: 5
   detectPlayer: {fileID: 7061251368861004063}
   warningBehaviour: {fileID: 1432140413807765972}
   food: {fileID: 5019588910840587033, guid: d9daebc5d69ce1043833012d43546fef, type: 3}
-  changeDir: 0
+  attackRange: {fileID: 0}
+  attackRadius: {fileID: 0}
+  attackRadiusObj: {fileID: 0}
 --- !u!114 &7061251369404605410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,3 +329,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spottedWarning: 0
+--- !u!61 &9063402674523948722
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061251369404605212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0290588}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.624169}
+  m_EdgeRadius: 0

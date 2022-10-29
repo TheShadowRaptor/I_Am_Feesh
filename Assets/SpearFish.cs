@@ -63,41 +63,11 @@ public class SpearFish : FishCharacter
     {
         TakeDamage takeDamage = attackRadius.playerTakeDamage;
 
-        // Attack Input
-        if (Attacking()) attackRadiusObj.SetActive(true);
-        else attackRadiusObj.SetActive(false);
-
         // Attack Target        
-        if (attackRadius.attackPlayer) takeDamage.health -= damage;
-    }
-
-    bool Attacking()
-    {
-        StopAttacking();
-        if (attackRange.inRange && currentAttackTime == 0)
+        if (attackRadius.attackPlayer)
         {
-            currentAttackTime = attackTime;
-            attacking = true;
-            return false;
-        }
-
-        else if (attacking == true && currentAttackTime <= attackingLength)
-        {
+            takeDamage.health -= damage;
             audioManager.PlayEnemyBite();
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
-    }
-
-    void StopAttacking()
-    {
-        if (currentAttackTime <= 0 || player.GetComponent<PlayerController>().isDead == true)
-        {
-            attacking = false;
         }
     }
 

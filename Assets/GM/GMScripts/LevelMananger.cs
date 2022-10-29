@@ -13,7 +13,7 @@ public class LevelMananger : MonoBehaviour
     {
         if (level == null)
         {
-            level = GameObject.Find("LevelOne");
+            level = GameObject.Find("Level");
         }
     }
     public void EndGame()
@@ -25,7 +25,7 @@ public class LevelMananger : MonoBehaviour
     public void LoadLevel()
     {
         SceneManager.LoadScene(1);
-        level.SetActive(true);
+        //level.SetActive(true);
     }
 
     public void LoadTitle()

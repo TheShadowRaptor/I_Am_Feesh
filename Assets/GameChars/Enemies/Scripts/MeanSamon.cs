@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeanSamon : FishCharacter
 {
+    protected Renderer renderer;
     AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
@@ -75,7 +76,11 @@ public class MeanSamon : FishCharacter
         else attackRadiusObj.SetActive(false);
 
         // Attack Target        
-        if (attackRadius.attackPlayer ) takeDamage.health -= damage;
+        if (attackRadius.attackPlayer && takeDamage.canTakeDamage)
+        {
+            takeDamage.health -= damage;
+            player.GetComponent<PlayerController>().hit = true;
+        }
     }
 
     bool Attacking()

@@ -51,7 +51,7 @@ public class SpearFish : FishCharacter
     {
         if (isDead)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Instantiate(food, transform.position, transform.rotation);
                 Debug.Log("Dead");
@@ -64,10 +64,11 @@ public class SpearFish : FishCharacter
         TakeDamage takeDamage = attackRadius.playerTakeDamage;
 
         // Attack Target        
-        if (attackRadius.attackPlayer)
+        if (attackRadius.attackPlayer && takeDamage.canTakeDamage)
         {
             takeDamage.health -= damage;
             audioManager.PlayEnemyBite();
+            player.GetComponent<PlayerController>().hit = true;
         }
     }
 

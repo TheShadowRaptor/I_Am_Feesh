@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  canTakeDamage: 1
 --- !u!114 &2546963460300292760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +555,7 @@ MonoBehaviour:
   changeDir: 0
   swimSpeed: 20
   fleeSwimSpeed: 40
-  attackingLength: 0.1
+  attackingLength: 0.01
   currentAttackTime: 0
   attackTimeDecrease: 0.18
   detectPlayer: {fileID: 6771488931474332046}

@@ -84,7 +84,11 @@ public class CoralLatcher : FishCharacter
         else attackRadiusObj.SetActive(false);
 
         // Attack Target        
-        if (attackRadius.attackPlayer) takeDamage.health -= damage;
+        if (attackRadius.attackPlayer && takeDamage.canTakeDamage)
+        {
+            takeDamage.health -= damage;
+            player.GetComponent<PlayerController>().hit = true;
+        }
     }
 
     bool Attacking()

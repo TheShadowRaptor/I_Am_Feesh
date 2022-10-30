@@ -355,6 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  canTakeDamage: 1
 --- !u!114 &2103675217752827682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +392,7 @@ MonoBehaviour:
   attackTimeDecrease: 5
   detectPlayer: {fileID: 7174315558566771764}
   warningBehaviour: {fileID: 2103675217752827682}
-  food: {fileID: 0}
+  food: {fileID: 5019588910840587033, guid: d9daebc5d69ce1043833012d43546fef, type: 3}
   attackRange: {fileID: 659298073409051290}
   attackRadius: {fileID: 2706894807241294278}
   attackRadiusObj: {fileID: 3639944878742037464}

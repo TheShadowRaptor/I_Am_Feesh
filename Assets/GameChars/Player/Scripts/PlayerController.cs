@@ -17,6 +17,7 @@ public class PlayerController : GameCharacter
     public int baseDashSpeed = 2;
     public float baseSwimSpeed = 50;
     public float baseRotateSpeed = 10;
+    public int baseDepthLimit = 0;
 
     [Header("Decrease")]
     public float staminaDecrease = 1.0f;
@@ -39,6 +40,7 @@ public class PlayerController : GameCharacter
     [HideInInspector] public float rotateSpeed;
     [HideInInspector] public int dashCharges;
     [HideInInspector] public int dashSpeed;
+    [HideInInspector] public int depthLimit;
 
     // Find Scripts
 
@@ -277,6 +279,7 @@ public class PlayerController : GameCharacter
         rotateSpeed = baseRotateSpeed;
         dashCharges = baseDashCharges;
         dashSpeed = baseDashSpeed;
+        depthLimit = baseDepthLimit;
     }
 
     public new void CheckState()

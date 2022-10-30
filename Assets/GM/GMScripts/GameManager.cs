@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public UIMananger uIMananger;
     public LevelMananger levelMananger;
     public AudioManager audioManager;
+    public UpgradeManager upgradeManager;
 
     [Header("TextObjects")]
     public TextMeshProUGUI SaveDataDoesNotExist;
@@ -224,6 +225,7 @@ public class GameManager : MonoBehaviour
 
         SaveData saveData = new SaveData();
 
+        // PlayerData
         saveData.evolutionPoints = player.evolutionPoints;
         saveData.health = player.baseHealth;
         saveData.stamina = player.baseStamina;
@@ -231,6 +233,15 @@ public class GameManager : MonoBehaviour
         saveData.dashCharges = player.baseDashCharges;
         saveData.swimSpeed = player.baseSwimSpeed;
         saveData.rotateSpeed = player.baseRotateSpeed;
+        saveData.depthLimit = player.baseDepthLimit;
+
+        // UpgradeData
+        saveData.currentSwimSpeedButton = upgradeManager.currentSwimSpeedButton;
+        saveData.currentTurnSpeedButton = upgradeManager.currentTurnSpeedButton;
+        saveData.currentStomachCapacityButton = upgradeManager.currentStomachCapacityButton;
+        saveData.currentDepthIncreaseButton = upgradeManager.currentDepthIncreaseButton;
+        saveData.currentDashSpeedButton = upgradeManager.currentDashSpeedButton;
+        saveData.evolutionStage = upgradeManager.evolutionStage;
 
         bf.Serialize(file, saveData);
         file.Close();
@@ -246,6 +257,7 @@ public class GameManager : MonoBehaviour
         SaveData saveData = (SaveData)bf.Deserialize(file);
         file.Close();
 
+        // PlayerData
         player.evolutionPoints = saveData.evolutionPoints;
         player.baseHealth = saveData.health;
         player.baseStamina = saveData.stamina;
@@ -253,6 +265,15 @@ public class GameManager : MonoBehaviour
         player.baseDashCharges = saveData.dashCharges;
         player.baseSwimSpeed = saveData.swimSpeed;
         player.baseRotateSpeed = saveData.rotateSpeed;
+        player.baseDepthLimit = saveData.depthLimit;
+
+        // UpgradeData
+        upgradeManager.currentSwimSpeedButton = saveData.currentSwimSpeedButton;
+        upgradeManager.currentTurnSpeedButton = saveData.currentTurnSpeedButton;
+        upgradeManager.currentStomachCapacityButton = saveData.currentStomachCapacityButton;
+        upgradeManager.currentDepthIncreaseButton = saveData.currentDepthIncreaseButton;
+        upgradeManager.currentDashSpeedButton = saveData.currentDashSpeedButton;
+        upgradeManager.evolutionStage = saveData.evolutionStage;
     }
 
     public void OnGUI()

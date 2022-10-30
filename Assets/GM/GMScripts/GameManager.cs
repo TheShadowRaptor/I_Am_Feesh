@@ -150,6 +150,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void NewGame()
+    {
+        DeleteSave();
+        player.FullyResetStats();
+        LoadLevelButton();
+    }
     public void LoadLevelButton()
     {
         levelMananger.LoadLevel();
@@ -274,6 +280,11 @@ public class GameManager : MonoBehaviour
         upgradeManager.currentDepthIncreaseButton = saveData.currentDepthIncreaseButton;
         upgradeManager.currentDashSpeedButton = saveData.currentDashSpeedButton;
         upgradeManager.evolutionStage = saveData.evolutionStage;
+    }
+
+    public void DeleteSave()
+    {
+        File.Delete(Application.persistentDataPath + "/savefile1.dat");
     }
 
     public void OnGUI()

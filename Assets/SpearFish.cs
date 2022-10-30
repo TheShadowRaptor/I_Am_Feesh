@@ -64,7 +64,7 @@ public class SpearFish : FishCharacter
         TakeDamage takeDamage = attackRadius.playerTakeDamage;
 
         // Attack Target        
-        if (attackRadius.attackPlayer && takeDamage.canTakeDamage)
+        if (attackRadius.attackPlayer && takeDamage.canTakeDamage && player.GetComponent<PlayerController>().isDead == false)
         {
             takeDamage.health -= damage;
             audioManager.PlayEnemyBite();

@@ -287,6 +287,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7381558851870524012, guid: c979b262208226d4d98d86b78418566e, type: 3}
   m_PrefabInstance: {fileID: 1101014293}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1506368332 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+  m_PrefabInstance: {fileID: 1751642336}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2aa4f9b5f0f8b488dfeaeb7e95c0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1751642336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,6 +316,10 @@ PrefabInstance:
     - target: {fileID: 1055324847057906714, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158673696697633074, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetRunStats
       objectReference: {fileID: 0}
     - target: {fileID: 2403120680136403538, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -376,7 +391,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4002685921023841064, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: baseHealth
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791849982925382912, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NewGame
       objectReference: {fileID: 0}
     - target: {fileID: 5800173004709001040, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_RootOrder
@@ -430,6 +449,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8047815183634792025, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: upgradeManager
+      value: 
+      objectReference: {fileID: 1506368332}
     - target: {fileID: 8155529687517949090, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -55.75946

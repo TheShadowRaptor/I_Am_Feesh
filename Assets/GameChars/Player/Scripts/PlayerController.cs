@@ -7,17 +7,26 @@ public class PlayerController : GameCharacter
 {
     public bool hit = false;
 
-    [Header("PlayerStats")]
-
-    public int evolutionPoints;
+    [Header("BaseStats")]
     public int baseHealth = 1;
-    public float baseStamina;
+    public float baseStamina = 20;
     public int baseDamage = 1;
     public int baseDashCharges = 1;
     public int baseDashSpeed = 2;
     public float baseSwimSpeed = 50;
-    public float baseRotateSpeed = 10;
+    public float baseRotateSpeed = 20;
     public int baseDepthLimit = 0;
+
+    [Header("PlayerStats")]
+    public int evolutionPoints;
+    public int health;
+    public float stamina;
+    public int damage;
+    public float swimSpeed;
+    public float rotateSpeed;
+    public int dashCharges;
+    public int dashSpeed;
+    public int depthLimit;
 
     [Header("Decrease")]
     public float staminaDecrease = 1.0f;
@@ -33,14 +42,6 @@ public class PlayerController : GameCharacter
     public GameObject attackRadius;
     public Camera camera;
     
-    [HideInInspector] public int health;
-    [HideInInspector] public float stamina;
-    [HideInInspector] public int damage;
-    [HideInInspector] public float swimSpeed;
-    [HideInInspector] public float rotateSpeed;
-    [HideInInspector] public int dashCharges;
-    [HideInInspector] public int dashSpeed;
-    [HideInInspector] public int depthLimit;
 
     // Find Scripts
 
@@ -69,7 +70,7 @@ public class PlayerController : GameCharacter
     {
         rb = GetComponent<Rigidbody2D>();
         spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
-        ResetStats();
+        ResetRunStats();
     }
 
     private void FixedUpdate()
@@ -159,7 +160,7 @@ public class PlayerController : GameCharacter
 
     public void InvincibilityFrames()
     {
-        if (hit)
+        if (hit && isDead == false)
         {
             frameTime -= Time.deltaTime;
             takeDamage.canTakeDamage = false;
@@ -171,6 +172,12 @@ public class PlayerController : GameCharacter
                 hit = false;
             }
         }
+
+        else if (isDead)
+        {
+            hit = false;
+        }
+
         else
         {
             frameTime = startFrameTime;
@@ -269,8 +276,31 @@ public class PlayerController : GameCharacter
         AttackTimeDrain();
     }
 
-    public void ResetStats()
+    public void ResetRunStats()
     {
+        health = baseHealth;
+        takeDamage.health = health;
+        stamina = baseStamina;
+        damage = baseDamage;
+        swimSpeed = baseSwimSpeed;
+        rotateSpeed = baseRotateSpeed;
+        dashCharges = baseDashCharges;
+        dashSpeed = baseDashSpeed;
+        depthLimit = baseDepthLimit;
+    }
+
+    public void FullyResetStats()
+    {
+        evolutionPoints = 0;
+        baseHealth = 1;
+        baseStamina = 20;
+        baseDamage = 1;
+        baseDashCharges = 1;
+        baseDashSpeed = 2;
+        baseSwimSpeed = 50;
+        baseRotateSpeed = 20;
+        baseDepthLimit = 0;
+
         health = baseHealth;
         takeDamage.health = health;
         stamina = baseStamina;

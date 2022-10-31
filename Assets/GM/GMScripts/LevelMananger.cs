@@ -25,11 +25,13 @@ public class LevelMananger : MonoBehaviour
     public void LoadLevel()
     {
         SceneManager.LoadScene(1);
+        currentSceneNum = 1;
         //level.SetActive(true);
     }
 
     public void LoadTitle()
     {
         SceneManager.LoadScene(0);
+        currentSceneNum = 0;
     }
 }

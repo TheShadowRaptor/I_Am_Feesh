@@ -16,6 +16,8 @@ public class UpgradeManager : MonoBehaviour
     public TextMeshProUGUI depthIncreaseText;
     public TextMeshProUGUI dashSpeedText;
 
+    public TextMeshProUGUI evolutionPointCountText;
+
     public TextMeshProUGUI evolveText;
 
     [Header("GameObjects")]
@@ -42,6 +44,8 @@ public class UpgradeManager : MonoBehaviour
     [HideInInspector] public int currentDashSpeedButton = 0;
 
     [HideInInspector] public int evolutionStage = 0;
+
+    int evolutionPointCount;
     // Update is called once per frame
 
     private void Start()
@@ -64,7 +68,12 @@ public class UpgradeManager : MonoBehaviour
     }
 
     void DisplayText()
-    {     
+    {
+        evolutionPointCount = player.evolutionPoints;
+
+        evolutionPointCountText.text = "Evo Points: (" + evolutionPointCount.ToString() + ")";
+
+        // Upgrades Text
         swimSpeedText.text = "Swim Speed\n (" + swimSpeedPrices[currentSwimSpeedButton].ToString() + ")";
         turnSpeedText.text = "Turn Speed\n (" + turnSpeedPrices[currentTurnSpeedButton].ToString() + ")";
         stomachCapacityText.text = "Stomach Capacity\n (" + stomachCapacityPrices[currentStomachCapacityButton].ToString() + ")";
@@ -142,7 +151,7 @@ public class UpgradeManager : MonoBehaviour
         {
             if (player.evolutionPoints >= stomachCapacityPrices[currentStomachCapacityButton])
             {
-                player.baseRotateSpeed += 10;
+                player.baseRotateSpeed += 20;
                 player.evolutionPoints -= stomachCapacityPrices[currentStomachCapacityButton];
                 currentStomachCapacityButton += 1;
             }

@@ -223,6 +223,11 @@ public class GameManager : MonoBehaviour
         warningPanel.SetActive(false);
     }
 
+    public void WinGame()
+    {
+        state = GameState.win;
+    }
+
 
     public void Save()
     {

@@ -78,6 +78,7 @@ public class MeanSamon : FishCharacter
         // Attack Target        
         if (attackRadius.attackPlayer && takeDamage.canTakeDamage)
         {
+            player.GetComponent<PlayerController>().causeOfDeath = "Fish Food!";
             takeDamage.health -= damage;
             player.GetComponent<PlayerController>().hit = true;
         }

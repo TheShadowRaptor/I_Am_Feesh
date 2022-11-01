@@ -74,6 +74,19 @@ public class FishCharacter : GameCharacter
         }
     }
 
+    protected new void CheckState()
+    {
+        if (takeDamage.health <= 0)
+        {
+            isDead = true;
+            player.GetComponent<PlayerController>().tallyKills += 1;
+        }
+        else
+        {
+            isDead = false;
+        }
+    }
+
     protected bool WarningSpotted()
     {
         // Warning Causes surrounding small fish in warning radius to swim away

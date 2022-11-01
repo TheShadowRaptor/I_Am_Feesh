@@ -41,7 +41,13 @@ public class PlayerController : GameCharacter
     [Header("GameObjects")]
     public GameObject attackRadius;
     public Camera camera;
-    
+
+    // Run Results
+    [HideInInspector] public int tallyEvoPoints;
+    [HideInInspector] public int tallyKills;
+    [HideInInspector] public int tallyFoodEaten;
+    [HideInInspector] public string tallyBiome;
+    [HideInInspector] public string causeOfDeath;
 
     // Find Scripts
 
@@ -50,6 +56,7 @@ public class PlayerController : GameCharacter
     float verticalMove;
     bool attackButton;
     bool dashButton;
+
 
     Vector3 theScale;
     Color spriteColor;
@@ -112,7 +119,7 @@ public class PlayerController : GameCharacter
         attackButton = Input.GetButton("Attack");
 
         //Dash Input
-        dashButton = Input.GetKeyDown(KeyCode.LeftShift);
+        dashButton = Input.GetKeyDown(KeyCode.LeftShift) || Input.GetMouseButtonDown(1);
     }
 
     private void Move()
@@ -227,6 +234,7 @@ public class PlayerController : GameCharacter
         if (stamina <= 0)
         {
             stamina = 0;
+            causeOfDeath = "Starved!";
             health = 0;
         }
 
@@ -287,6 +295,11 @@ public class PlayerController : GameCharacter
         dashCharges = baseDashCharges;
         dashSpeed = baseDashSpeed;
         depthLimit = baseDepthLimit;
+
+        tallyEvoPoints = 0;
+        tallyFoodEaten = 0;
+        tallyKills = 0;
+        tallyBiome = "Shallow";
     }
 
     public void FullyResetStats()

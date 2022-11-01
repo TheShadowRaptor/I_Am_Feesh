@@ -67,6 +67,7 @@ public class SpearFish : FishCharacter
         if (attackRadius.attackPlayer && takeDamage.canTakeDamage && player.GetComponent<PlayerController>().isDead == false)
         {
             takeDamage.health -= damage;
+            player.GetComponent<PlayerController>().causeOfDeath = "Fish Food!";
             audioManager.PlayEnemyBite();
             player.GetComponent<PlayerController>().hit = true;
         }

@@ -247,14 +247,21 @@ public class GameManager : MonoBehaviour
         saveData.depthLimit = player.baseDepthLimit;
 
         // UpgradeData
-        saveData.currentSwimSpeedButton = upgradeManager.currentSwimSpeedButton;
-        saveData.currentTurnSpeedButton = upgradeManager.currentTurnSpeedButton;
-        saveData.currentStomachCapacityButton = upgradeManager.currentStomachCapacityButton;
-        saveData.currentDepthIncreaseButton = upgradeManager.currentDepthIncreaseButton;
-        saveData.currentDashSpeedButton = upgradeManager.currentDashSpeedButton;
+        saveData.currentSwimSpeedButtonState = upgradeManager.currentSwimSpeedButtonState;
+        saveData.currentTurnSpeedButtonState = upgradeManager.currentTurnSpeedButtonState;
+        saveData.currentStomachCapacityButtonState = upgradeManager.currentStomachCapacityButtonState;
+        saveData.currentDepthIncreaseButtonState = upgradeManager.currentDepthIncreaseButtonState;
+        saveData.currentDashSpeedButtonState = upgradeManager.currentDashSpeedButtonState;
+
+        saveData.currentSwimSpeedButtonPriceState = upgradeManager.currentSwimSpeedButtonPriceState;
+        saveData.currentTurnSpeedButtonPriceState = upgradeManager.currentTurnSpeedButtonPriceState;
+        saveData.currentStomachCapacityPriceButtonState = upgradeManager.currentStomachCapacityButtonPriceState;
+        saveData.currentDepthIncreaseButtonPriceState = upgradeManager.currentDepthIncreaseButtonPriceState;
+        saveData.currentDashSpeedButtonPriceState = upgradeManager.currentDashSpeedButtonPriceState;
+
         saveData.evolutionStage = upgradeManager.evolutionStage;
 
-        bf.Serialize(file, saveData);
+    bf.Serialize(file, saveData);
         file.Close();
 
         SavingPanel.SetActive(true);
@@ -279,11 +286,18 @@ public class GameManager : MonoBehaviour
         player.baseDepthLimit = saveData.depthLimit;
 
         // UpgradeData
-        upgradeManager.currentSwimSpeedButton = saveData.currentSwimSpeedButton;
-        upgradeManager.currentTurnSpeedButton = saveData.currentTurnSpeedButton;
-        upgradeManager.currentStomachCapacityButton = saveData.currentStomachCapacityButton;
-        upgradeManager.currentDepthIncreaseButton = saveData.currentDepthIncreaseButton;
-        upgradeManager.currentDashSpeedButton = saveData.currentDashSpeedButton;
+        upgradeManager.currentSwimSpeedButtonState = saveData.currentSwimSpeedButtonState;
+        upgradeManager.currentTurnSpeedButtonState = saveData.currentTurnSpeedButtonState;
+        upgradeManager.currentStomachCapacityButtonState = saveData.currentStomachCapacityButtonState;
+        upgradeManager.currentDepthIncreaseButtonState = saveData.currentDepthIncreaseButtonState;
+        upgradeManager.currentDashSpeedButtonState = saveData.currentDashSpeedButtonState;
+
+        upgradeManager.currentSwimSpeedButtonPriceState = saveData.currentSwimSpeedButtonPriceState;
+        upgradeManager.currentTurnSpeedButtonPriceState = saveData.currentTurnSpeedButtonPriceState;
+        upgradeManager.currentStomachCapacityButtonPriceState = saveData.currentStomachCapacityPriceButtonState;
+        upgradeManager.currentDepthIncreaseButtonPriceState = saveData.currentDepthIncreaseButtonPriceState;
+        upgradeManager.currentDashSpeedButtonPriceState = saveData.currentDashSpeedButtonPriceState;
+
         upgradeManager.evolutionStage = saveData.evolutionStage;
     }
 

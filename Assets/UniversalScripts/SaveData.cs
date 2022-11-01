@@ -18,12 +18,17 @@ public class SaveData
     public int depthLimit;
 
     // UpgradeData
-    public int currentSwimSpeedButton;
-    public int currentTurnSpeedButton;
-    public int currentStomachCapacityButton;
+    public int currentSwimSpeedButtonState;
+    public int currentTurnSpeedButtonState;
+    public int currentStomachCapacityButtonState;
+    public int currentDepthIncreaseButtonState;
+    public int currentDashSpeedButtonState;
 
-    public int currentDepthIncreaseButton;
-    public int currentDashSpeedButton;
+    public int currentSwimSpeedButtonPriceState;
+    public int currentTurnSpeedButtonPriceState;
+    public int currentStomachCapacityPriceButtonState;
+    public int currentDepthIncreaseButtonPriceState;
+    public int currentDashSpeedButtonPriceState;
 
     public int evolutionStage;
 }

@@ -52,7 +52,7 @@ MonoBehaviour:
   c_FacingRight: 1
   isDead: 0
   evolutionPoints: 1
-  staminaPoints: 1
+  staminaPoints: 4
 --- !u!114 &859752387206242976
 MonoBehaviour:
   m_ObjectHideFlags: 0

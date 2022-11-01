@@ -5,7 +5,7 @@ using UnityEngine;
 public class FoodCharacter : GameCharacter
 {
     public int evolutionPoints = 1;
-    public float staminaPoints = 5.0f;
+    public float staminaPoints = 15.0f;
 
     AudioManager audioManager;
     GameObject player;

@@ -63,6 +63,12 @@ public class UpgradeManager : MonoBehaviour
     int depthIncreaseButtonStateCap;
     int dashSpeedButtonStateCap;
 
+    int swimSpeedButtonPriceStateCap;
+    int turnSpeedButtonPriceStateCap;
+    int stomachCapacityButtonPriceStateCap;
+    int depthIncreaseButtonPriceStateCap;
+    int dashSpeedButtonPriceStateCap;
+
     int evolutionPointCount;
     // Update is called once per frame
 
@@ -310,7 +316,11 @@ public class UpgradeManager : MonoBehaviour
             swimSpeedButtonStateCap = 4;
             turnSpeedButtonStateCap = 4;
             stomachCapacityButtonStateCap = 4;
-            
+
+            swimSpeedButtonStateCap = 4;
+            turnSpeedButtonStateCap = 4;
+            stomachCapacityButtonStateCap = 4;
+
             for (int i = 0; i < swimSpeedButtonStateCap; i++)
             {
                 swimSpeedObj.transform.GetChild(i).gameObject.SetActive(true);
@@ -345,6 +355,7 @@ public class UpgradeManager : MonoBehaviour
             depthIncreaseButtonStateCap = 1;
             dashSpeedButtonStateCap = 2;
 
+
             if (currentSwimSpeedButtonPriceState == swimSpeedButtonStateCap) swimSpeedObj.SetActive(false);
             else swimSpeedObj.SetActive(true);
 
@@ -359,6 +370,21 @@ public class UpgradeManager : MonoBehaviour
 
             if (currentDashSpeedButtonPriceState == dashSpeedButtonStateCap) dashSpeedObj.SetActive(false);
             else dashSpeedObj.SetActive(true);
+
+            for (int i = 0; i < swimSpeedButtonStateCap; i++)
+            {
+                swimSpeedObj.transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+            for (int i = 0; i < turnSpeedButtonStateCap; i++)
+            {
+                turnSpeedObj.transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+            for (int i = 0; i < stomachCapacityButtonStateCap; i++)
+            {
+                stomachCapacityObj.transform.GetChild(i).gameObject.SetActive(true);
+            }
         }
 
         if (currentSwimSpeedButtonState == swimSpeedButtonStateCap) currentSwimSpeedButtonState = 0;

@@ -104,7 +104,7 @@ MonoBehaviour:
   c_FacingRight: 1
   isDead: 0
   evolutionPoints: 1
-  staminaPoints: 1
+  staminaPoints: 5
 --- !u!114 &5019588910840587034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  canTakeDamage: 1
 --- !u!58 &5019588910840587031
 CircleCollider2D:
   m_ObjectHideFlags: 0

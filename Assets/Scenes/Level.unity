@@ -7583,15 +7583,19 @@ PrefabInstance:
       objectReference: {fileID: 176542942}
     - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: dashSpeedPrices.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: swimSpeedPrices.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: turnSpeedPrices.Array.size
-      value: 8
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: dashSpeedPrices.Array.data[3]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: swimSpeedPrices.Array.data[3]
@@ -7614,6 +7618,10 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: swimSpeedPrices.Array.data[8]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: turnSpeedPrices.Array.data[3]
       value: 15
       objectReference: {fileID: 0}
@@ -7634,12 +7642,24 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: turnSpeedPrices.Array.data[8]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: depthIncreasePrices.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: stomachCapacityPrices.Array.size
-      value: 8
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: depthIncreasePrices.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549269735516707524, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: stomachCapacityPrices.Array.data[8]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3017949170447872212, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_AnchoredPosition.y

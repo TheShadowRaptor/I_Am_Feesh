@@ -43,15 +43,15 @@ public class UpgradeManager : MonoBehaviour
     GameObject TurnSpeedPips;
     GameObject StomichCapacityPips;
 
-    [HideInInspector] public int currentSwimSpeedButtonState = 0;
-    [HideInInspector] public int currentTurnSpeedButtonState = 0;
-    [HideInInspector] public int currentStomachCapacityButtonState = 0;
+    public int currentSwimSpeedButtonState = 0;
+    public int currentTurnSpeedButtonState = 0;
+    public int currentStomachCapacityButtonState = 0;
     [HideInInspector] public int currentDepthIncreaseButtonState = 0;
     [HideInInspector] public int currentDashSpeedButtonState = 0;
 
-    [HideInInspector] public int currentSwimSpeedButtonPriceState = 0;
-    [HideInInspector] public int currentTurnSpeedButtonPriceState = 0;
-    [HideInInspector] public int currentStomachCapacityButtonPriceState = 0;
+    public int currentSwimSpeedButtonPriceState = 0;
+    public int currentTurnSpeedButtonPriceState = 0;
+    public int currentStomachCapacityButtonPriceState = 0;
     [HideInInspector] public int currentDepthIncreaseButtonPriceState = 0;
     [HideInInspector] public int currentDashSpeedButtonPriceState = 0;
 
@@ -70,6 +70,8 @@ public class UpgradeManager : MonoBehaviour
     int dashSpeedButtonPriceStateCap;
 
     int evolutionPointCount;
+
+    bool evolved = false;
     // Update is called once per frame
 
     private void Start()
@@ -142,6 +144,11 @@ public class UpgradeManager : MonoBehaviour
             dashSpeedObj.transform.GetChild(i).gameObject.SetActive(false);
         }
 
+        
+        //---------------------------------------------------------------------------------------------
+        
+        //Set Yellow
+
         for (int i = 0; i < currentSwimSpeedButtonState; i++)
         {
             swimSpeedObj.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.yellow;
@@ -160,6 +167,31 @@ public class UpgradeManager : MonoBehaviour
         for (int i = 0; i < evolutionStage; i++)
         {
             evolutionObj.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.yellow;
+        }
+
+        //Set White
+        
+        if (evolved)
+        {
+            for (int i = 0; i < currentSwimSpeedButtonState; i++)
+            {
+                swimSpeedObj.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.white;
+            }
+
+            for (int i = 0; i < currentTurnSpeedButtonState; i++)
+            {
+                turnSpeedObj.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.white;
+            }
+
+            for (int i = 0; i < currentStomachCapacityButtonState; i++)
+            {
+                stomachCapacityObj.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.white;
+            }
+
+            for (int i = 0; i < evolutionStage; i++)
+            {
+                evolutionObj.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.white;
+            }
         }
     }
 
@@ -294,16 +326,18 @@ public class UpgradeManager : MonoBehaviour
                 Debug.Log("evolve");
                 player.baseHealth += 1;
                 player.baseDashCharges += 1;
+                evolved = true;
                 evolutionStage += 1;
             }
         }
 
         else if (evolutionStage == 1)
         {
-            if (currentSwimSpeedButtonState == 8 && currentTurnSpeedButtonState == 8 && currentStomachCapacityButtonState == 8)
+            if (currentSwimSpeedButtonPriceState == 8 && currentTurnSpeedButtonPriceState == 8 && currentStomachCapacityButtonPriceState == 8)
             {
                 player.baseHealth += 1;
                 player.baseDashCharges += 1;
+                evolved = true;
                 evolutionStage += 1;
             }
         }
@@ -311,65 +345,72 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeButtonManager()
     {
+        if (evolved)
+        {
+            currentSwimSpeedButtonState = 0;
+            currentTurnSpeedButtonState = 0;
+            currentStomachCapacityButtonState = 0;
+            evolved = false;
+        }
+
         if (evolutionStage == 0)
         {
             swimSpeedButtonStateCap = 4;
             turnSpeedButtonStateCap = 4;
             stomachCapacityButtonStateCap = 4;
 
+            swimSpeedButtonPriceStateCap = 4;
+            turnSpeedButtonPriceStateCap = 4;
+            stomachCapacityButtonPriceStateCap = 4;
+
+            for (int i = 0; i < swimSpeedButtonStateCap; i++)
+            {
+                swimSpeedObj.transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+            for (int i = 0; i < turnSpeedButtonStateCap; i++)
+            {
+                turnSpeedObj.transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+            for (int i = 0; i < stomachCapacityButtonStateCap; i++)
+            {
+                stomachCapacityObj.transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+            if (currentSwimSpeedButtonState == swimSpeedButtonStateCap) swimSpeedObj.SetActive(false);           
+            else swimSpeedObj.SetActive(true);
+
+            if (currentTurnSpeedButtonState == turnSpeedButtonStateCap) turnSpeedObj.SetActive(false);
+            else turnSpeedObj.SetActive(true);
+
+            if (currentStomachCapacityButtonState == stomachCapacityButtonStateCap) stomachCapacityObj.SetActive(false);
+            else stomachCapacityObj.SetActive(true);
+
+        }
+
+        else if (evolutionStage == 1)
+        {
+            if (evolved)
+            {
+                currentSwimSpeedButtonState = 0;
+                currentTurnSpeedButtonState = 0;
+                currentStomachCapacityButtonState = 0;
+                evolved = false;
+            }
+
             swimSpeedButtonStateCap = 4;
             turnSpeedButtonStateCap = 4;
             stomachCapacityButtonStateCap = 4;
-
-            for (int i = 0; i < swimSpeedButtonStateCap; i++)
-            {
-                swimSpeedObj.transform.GetChild(i).gameObject.SetActive(true);
-            }
-
-            for (int i = 0; i < turnSpeedButtonStateCap; i++)
-            {
-                turnSpeedObj.transform.GetChild(i).gameObject.SetActive(true);
-            }
-
-            for (int i = 0; i < stomachCapacityButtonStateCap; i++)
-            {
-                stomachCapacityObj.transform.GetChild(i).gameObject.SetActive(true);
-            }
-
-            if (currentSwimSpeedButtonPriceState == swimSpeedButtonStateCap) swimSpeedObj.SetActive(false);           
-            else swimSpeedObj.SetActive(true);
-
-            if (currentTurnSpeedButtonPriceState == turnSpeedButtonStateCap) turnSpeedObj.SetActive(false);
-            else turnSpeedObj.SetActive(true);
-
-            if (currentStomachCapacityButtonPriceState == stomachCapacityButtonStateCap) stomachCapacityObj.SetActive(false);
-            else stomachCapacityObj.SetActive(true);
-
-        }
-
-        else if (evolutionStage <= 1)
-        {
-            swimSpeedButtonStateCap = 8;
-            turnSpeedButtonStateCap = 8;
-            stomachCapacityButtonStateCap = 8;
             depthIncreaseButtonStateCap = 1;
             dashSpeedButtonStateCap = 2;
 
+            swimSpeedButtonPriceStateCap = 8;
+            turnSpeedButtonPriceStateCap = 8;
+            stomachCapacityButtonPriceStateCap = 8;
+            depthIncreaseButtonPriceStateCap = 1;
+            dashSpeedButtonPriceStateCap = 2;
 
-            if (currentSwimSpeedButtonPriceState == swimSpeedButtonStateCap) swimSpeedObj.SetActive(false);
-            else swimSpeedObj.SetActive(true);
-
-            if (currentTurnSpeedButtonPriceState == turnSpeedButtonStateCap) turnSpeedObj.SetActive(false);
-            else turnSpeedObj.SetActive(true);
-
-            if (currentStomachCapacityButtonPriceState == stomachCapacityButtonStateCap) stomachCapacityObj.SetActive(false);
-            else stomachCapacityObj.SetActive(true);
-
-            if (currentDepthIncreaseButtonPriceState == depthIncreaseButtonStateCap) depthIncreaseObj.SetActive(false);
-            else depthIncreaseObj.SetActive(true);
-
-            if (currentDashSpeedButtonPriceState == dashSpeedButtonStateCap) dashSpeedObj.SetActive(false);
-            else dashSpeedObj.SetActive(true);
 
             for (int i = 0; i < swimSpeedButtonStateCap; i++)
             {
@@ -385,10 +426,32 @@ public class UpgradeManager : MonoBehaviour
             {
                 stomachCapacityObj.transform.GetChild(i).gameObject.SetActive(true);
             }
+
+            for (int i = 0; i < depthIncreaseButtonStateCap; i++)
+            {
+                swimSpeedObj.transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+            for (int i = 0; i < dashSpeedButtonStateCap; i++)
+            {
+                turnSpeedObj.transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+            if (currentSwimSpeedButtonState == swimSpeedButtonStateCap) swimSpeedObj.SetActive(false);
+            else swimSpeedObj.SetActive(true);
+
+            if (currentTurnSpeedButtonPriceState == turnSpeedButtonPriceStateCap) turnSpeedObj.SetActive(false);
+            else turnSpeedObj.SetActive(true);
+
+            if (currentStomachCapacityButtonPriceState == stomachCapacityButtonPriceStateCap) stomachCapacityObj.SetActive(false);
+            else stomachCapacityObj.SetActive(true);
+
+            if (currentDepthIncreaseButtonPriceState == depthIncreaseButtonPriceStateCap) depthIncreaseObj.SetActive(false);
+            else depthIncreaseObj.SetActive(true);
+
+            if (currentDashSpeedButtonPriceState == dashSpeedButtonPriceStateCap) dashSpeedObj.SetActive(false);
+            else dashSpeedObj.SetActive(true);
         }
 
-        if (currentSwimSpeedButtonState == swimSpeedButtonStateCap) currentSwimSpeedButtonState = 0;
-        if (currentTurnSpeedButtonState == turnSpeedButtonStateCap) currentTurnSpeedButtonState = 0;
-        if (currentStomachCapacityButtonState == stomachCapacityButtonStateCap) currentStomachCapacityButtonState = 0;
     }
 }

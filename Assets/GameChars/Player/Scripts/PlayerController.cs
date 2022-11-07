@@ -91,6 +91,10 @@ public class PlayerController : GameCharacter
     {
         theScale = transform.localScale;
 
+        if (Input.GetKey(KeyCode.C))
+        {
+            GodMode();
+        }
         InvincibilityFrames();
         CheckState();
         AttackManager();
@@ -300,6 +304,20 @@ public class PlayerController : GameCharacter
         tallyFoodEaten = 0;
         tallyKills = 0;
         tallyBiome = "Shallow";
+    }
+
+    public void GodMode()
+    {
+        evolutionPoints = 999;
+        health = 999;
+        takeDamage.health = 999;
+        staminaDecrease = 0;
+        damage = 999;
+        swimSpeed = 500;
+        rotateSpeed = 200;
+        dashCharges = 999;
+        dashSpeed = 999;
+        depthLimit = 999;
     }
 
     public void FullyResetStats()

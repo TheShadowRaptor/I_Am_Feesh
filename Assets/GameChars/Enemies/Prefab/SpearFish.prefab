@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5620600931116598654}
   - component: {fileID: 623236679663354283}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: WarningRadius
   m_TagString: Warning
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 3266973454693711979}
   - component: {fileID: 499022889639342214}
   - component: {fileID: 1785892533473258906}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: attackRangeRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 7969956518896082880}
   - component: {fileID: 3051888904940497882}
   - component: {fileID: 2139974648824057071}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: attackRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 1367809784978050366}
   - component: {fileID: 5723459247641601808}
   - component: {fileID: 7488236612677206862}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SpearFish
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  canTakeDamage: 1
 --- !u!114 &1367809784978050366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,7 +453,7 @@ GameObject:
   - component: {fileID: 5791659076242827427}
   - component: {fileID: 3360563387323533977}
   - component: {fileID: 7220771976545426827}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +558,7 @@ GameObject:
   - component: {fileID: 3510731885193098641}
   - component: {fileID: 6502914781430794168}
   - component: {fileID: 7807807213777884712}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: DetectionRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}

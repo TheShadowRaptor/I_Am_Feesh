@@ -285,7 +285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FinalResults
+  m_text: Results
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -4061,7 +4061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc008b91e26a2ed468e258b213b980b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultsText: {fileID: 882417147090664766}
+  resultsText: {fileID: 1452374589973255390}
   deathText: {fileID: 7451671757109242340}
 --- !u!1 &2183517470234790948
 GameObject:
@@ -5510,6 +5510,7 @@ GameObject:
   - component: {fileID: 3226414531875379972}
   - component: {fileID: 2896425712825001495}
   - component: {fileID: 2005493242606749247}
+  - component: {fileID: 8240487980639699711}
   m_Layer: 0
   m_Name: CanvasWin
   m_TagString: Untagged
@@ -5549,7 +5550,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2906047978060274611}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -5603,6 +5604,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8240487980639699711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906047978060274611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc008b91e26a2ed468e258b213b980b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultsText: {fileID: 6315603059244815485}
+  deathText: {fileID: 0}
 --- !u!1 &3035600986325112061
 GameObject:
   m_ObjectHideFlags: 0
@@ -9812,7 +9827,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5724953683973483764}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -9890,6 +9905,7 @@ MonoBehaviour:
   stomachCapacityObj: {fileID: 4255497312134252824}
   depthIncreaseObj: {fileID: 6723956661263301603}
   dashSpeedObj: {fileID: 3125033167294461655}
+  evolutionObj: {fileID: 4012353663904596499}
   swimSpeedPrices: 03000000060000000a000000190000002000000028000000370000003c000000
   turnSpeedPrices: 01000000030000000f000000190000001e000000280000003700000041000000
   stomachCapacityPrices: 050000000a000000140000001e00000028000000370000004100000050000000
@@ -9900,6 +9916,11 @@ MonoBehaviour:
   currentStomachCapacityButtonState: 0
   currentDepthIncreaseButtonState: 0
   currentDashSpeedButtonState: 0
+  currentSwimSpeedButtonPriceState: 0
+  currentTurnSpeedButtonPriceState: 0
+  currentStomachCapacityButtonPriceState: 0
+  currentDepthIncreaseButtonPriceState: 0
+  currentDashSpeedButtonPriceState: 0
   evolutionStage: 0
 --- !u!1 &5767441940702210280
 GameObject:
@@ -11473,11 +11494,11 @@ RectTransform:
   m_Father: {fileID: 1248604436637527226}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -342, y: 150}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -121, y: -320}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2894133195488269209
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11569,7 +11590,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -242.77008, w: 0}
+  m_margin: {x: -45.624992, y: 0, z: -848.93164, w: -1134.1085}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

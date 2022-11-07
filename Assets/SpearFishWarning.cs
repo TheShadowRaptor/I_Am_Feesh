@@ -7,7 +7,7 @@ public class SpearFishWarning : MonoBehaviour
     Renderer renderer;
     Color spriteRenderer;
 
-    public bool rightSpawn = false;
+    public bool rightSpawn = true;
 
     public GameObject spearFish;
     public GameObject spearFishLeft;
@@ -47,7 +47,7 @@ public class SpearFishWarning : MonoBehaviour
     {
         if (cycleTime == lastCycle)
         {
-            if (rightSpawn == false)
+            if (rightSpawn)
             {
                 Instantiate(spearFish, transform.position, transform.rotation);
                 Destroy(gameObject);

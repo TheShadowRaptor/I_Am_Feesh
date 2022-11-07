@@ -6,14 +6,14 @@ public class GameWin : MonoBehaviour
 {
     GameObject gameManagerObj;
 
-    private void Start()
-    {
-        gameManagerObj = GameObject.Find("GameManager");
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (gameManagerObj == null)
+        {
+            gameManagerObj = GameObject.Find("GameManager");
+        }
+
+        if (other.gameObject.CompareTag("Player")) 
         {
             gameManagerObj.GetComponent<GameManager>().WinGame();
         }

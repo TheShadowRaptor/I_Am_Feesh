@@ -9,17 +9,20 @@ public class ResultsManager : MonoBehaviour
     public TextMeshProUGUI deathText;
     GameObject playerObj;
     PlayerController player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerObj = GameObject.Find("Player");
-        player = playerObj.GetComponent<PlayerController>();
-    }
 
     // Update is called once per frame
     void Update()
     {
-        deathText.text = player.causeOfDeath;
+        if (playerObj == null)
+        {
+            playerObj = GameObject.Find("Player");
+            player = playerObj.GetComponent<PlayerController>();
+        }
+
+        if (deathText != null)
+        {
+            deathText.text = player.causeOfDeath;
+        }
         resultsText.text = "Evo Points Collected: " + player.tallyEvoPoints +
             "\nFood Eaten: " + player.tallyFoodEaten +
             "\nFish Killed: " + player.tallyKills +

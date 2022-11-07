@@ -87,6 +87,7 @@ public class CoralLatcher : FishCharacter
         if (attackRadius.attackPlayer && takeDamage.canTakeDamage)
         {
             takeDamage.health -= damage;
+            player.GetComponent<PlayerController>().causeOfDeath = "Fish Food!";
             player.GetComponent<PlayerController>().hit = true;
         }
     }

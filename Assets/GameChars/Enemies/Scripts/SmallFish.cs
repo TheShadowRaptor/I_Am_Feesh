@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class SmallFish : FishCharacter
 {
-    protected Renderer renderer;
+    public bool hit = false;
+    public Renderer spriteRenderer;
+    // Components
+    Color spriteColor;
     AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
-    {       
+    {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = spriteRenderer.GetComponent<SpriteRenderer>();
+        spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
         player = GameObject.Find("Player");
-        renderer = gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -29,7 +33,7 @@ public class SmallFish : FishCharacter
 
     void FixedUpdate()
     {
-        if (renderer.isVisible)
+        if (spriteRenderer.isVisible)
         {
             Move();
         }

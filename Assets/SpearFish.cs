@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class SpearFish : FishCharacter
 {
-    protected Renderer renderer;
+    public bool hit = false;
+    public Renderer spriteRenderer;
+    // Components
+    Color spriteColor;
     AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = spriteRenderer.GetComponent<SpriteRenderer>();
+        spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
         player = GameObject.Find("Player");
-        renderer = gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
         damage = 1;
     }
 
@@ -30,7 +34,7 @@ public class SpearFish : FishCharacter
 
     void FixedUpdate()
     {
-        if (renderer.isVisible)
+        if (spriteRenderer.isVisible)
         {
             Move();
         }
@@ -56,6 +60,35 @@ public class SpearFish : FishCharacter
                 Instantiate(food, transform.position, transform.rotation);
                 Debug.Log("Dead");
             }
+        }
+    }
+
+    public void InvincibilityFrames()
+    {
+        if (hit && isDead == false)
+        {
+            hitFrameTime -= Time.deltaTime;
+            takeDamage.canTakeDamage = false;
+            spriteColor.a = 0.2f;
+            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
+            if (hitFrameTime <= 0)
+            {
+                hitFrameTime = 0;
+                hit = false;
+            }
+        }
+
+        else if (isDead)
+        {
+            hit = false;
+        }
+
+        else
+        {
+            hitFrameTime = startHitFrameTime;
+            takeDamage.canTakeDamage = true;
+            spriteColor.a = 1f;
+            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
         }
     }
 

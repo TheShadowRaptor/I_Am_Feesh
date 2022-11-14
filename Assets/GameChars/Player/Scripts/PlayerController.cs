@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class PlayerController : GameCharacter
 {
     public bool hit = false;
-
     [Header("BaseStats")]
     public int baseHealth = 1;
     public float baseStamina = 20;
@@ -51,15 +50,17 @@ public class PlayerController : GameCharacter
 
     // Find Scripts
 
+    // Components
+    public Renderer spriteRenderer;
+    Color spriteColor;
+
     // Inputs 
     float horizontalMove;
     float verticalMove;
     bool attackButton;
     bool dashButton;
 
-
     Vector3 theScale;
-    Color spriteColor;
 
     //Timing
     float currentAttackTime = 0;
@@ -67,15 +68,11 @@ public class PlayerController : GameCharacter
     float attackLength = 0.05f;
     bool attacking = false;
 
-    float startFrameTime = 2;
-    public float frameTime;
-
-
-
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = spriteRenderer.GetComponent<SpriteRenderer>();
         spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
         ResetRunStats();
     }
@@ -101,7 +98,6 @@ public class PlayerController : GameCharacter
         FlipCharacterModel();
         DrainManager();
     }
-
 
     protected new void FlipCharacterModel()
     {
@@ -145,6 +141,34 @@ public class PlayerController : GameCharacter
         }
     }
 
+    public void InvincibilityFrames()
+    {
+        if (hit && isDead == false)
+        {
+            hitFrameTime -= Time.deltaTime;
+            takeDamage.canTakeDamage = false;
+            spriteColor.a = 0.2f;
+            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
+            if (hitFrameTime <= 0)
+            {
+                hitFrameTime = 0;
+                hit = false;
+            }
+        }
+
+        else if (isDead)
+        {
+            hit = false;
+        }
+
+        else
+        {
+            hitFrameTime = startHitFrameTime;
+            takeDamage.canTakeDamage = true;
+            spriteColor.a = 1f;
+            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
+        }
+    }
     private void AttackManager()
     {
         TakeDamage takeDamage = playerAttackRadius.takeDamage;
@@ -166,35 +190,6 @@ public class PlayerController : GameCharacter
             stamina += food.staminaPoints;
             if (playerAttackRadius.eatCurrentFood) takeDamage.health -= damage;
 
-        }
-    }
-
-    public void InvincibilityFrames()
-    {
-        if (hit && isDead == false)
-        {
-            frameTime -= Time.deltaTime;
-            takeDamage.canTakeDamage = false;
-            spriteColor.a = 0.2f;
-            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
-            if (frameTime <= 0)
-            {
-                frameTime = 0;
-                hit = false;
-            }
-        }
-
-        else if (isDead)
-        {
-            hit = false;
-        }
-
-        else
-        {
-            frameTime = startFrameTime;
-            takeDamage.canTakeDamage = true;
-            spriteColor.a = 1f;
-            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
         }
     }
 

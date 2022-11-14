@@ -5,11 +5,14 @@ using UnityEngine;
 public class GameCharacter : MonoBehaviour
 {
     public TakeDamage takeDamage;
+    public bool isDead = false;
 
     protected Rigidbody2D rb;
-    public bool c_FacingRight = true;
+    protected bool c_FacingRight = true;
 
-    public bool isDead = false;
+    [Header("InvincibilityFrames")]
+    public float hitFrameTime;
+    protected float startHitFrameTime = 2;
 
     protected void FlipCharacterModel()
     {

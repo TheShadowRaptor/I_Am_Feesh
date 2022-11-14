@@ -170,10 +170,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takeDamage: {fileID: 5649587124154103249}
-  c_FacingRight: 1
   isDead: 0
+  spriteRenderer: {fileID: 4161123100826681653}
+  hitFrameTime: 0
   hit: 0
-  evolutionPoints: 0
   baseHealth: 1
   baseStamina: 20
   baseDamage: 1
@@ -181,13 +181,8 @@ MonoBehaviour:
   baseDashSpeed: 2
   baseSwimSpeed: 50
   baseRotateSpeed: 20
-  staminaDecrease: 1
-  dashSpeedDecrease: 1
-  attackTimeDecrease: 0.18
-  playerAttackRadius: {fileID: 9155749875499288213}
-  audioManager: {fileID: 0}
-  attackRadius: {fileID: 1570108902988751184}
-  camera: {fileID: 0}
+  baseDepthLimit: 0
+  evolutionPoints: 0
   health: 0
   stamina: 0
   damage: 0
@@ -195,7 +190,19 @@ MonoBehaviour:
   rotateSpeed: 10
   dashCharges: 0
   dashSpeed: 0
-  frameTime: 0
+  depthLimit: 0
+  staminaDecrease: 1
+  dashSpeedDecrease: 1
+  attackTimeDecrease: 0.18
+  playerAttackRadius: {fileID: 9155749875499288213}
+  audioManager: {fileID: 0}
+  attackRadius: {fileID: 1570108902988751184}
+  camera: {fileID: 0}
+  tallyEvoPoints: 0
+  tallyKills: 0
+  tallyFoodEaten: 0
+  tallyBiome: 
+  causeOfDeath: 
 --- !u!50 &4161123100735933436
 Rigidbody2D:
   serializedVersion: 4

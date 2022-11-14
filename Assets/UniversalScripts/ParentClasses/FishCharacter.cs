@@ -8,9 +8,7 @@ public class FishCharacter : GameCharacter
 
     protected float attackTime = 0.2f;
 
-
     protected bool attacking = false;
-
 
     protected int damage;
 

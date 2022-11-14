@@ -550,8 +550,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takeDamage: {fileID: 2908277861166573562}
-  c_FacingRight: 1
   isDead: 0
+  spriteRenderer: {fileID: 2234014791937590591}
+  hitFrameTime: 0
   changeDir: 0
   swimSpeed: 20
   fleeSwimSpeed: 40
@@ -564,6 +565,7 @@ MonoBehaviour:
   attackRange: {fileID: 3985453303454449440}
   attackRadius: {fileID: 2015838912133325948}
   attackRadiusObj: {fileID: 930782943469733474}
+  hit: 0
 --- !u!61 &780704287502217349
 BoxCollider2D:
   m_ObjectHideFlags: 0

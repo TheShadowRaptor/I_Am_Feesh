@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class CoralLatcher : FishCharacter
 {
-    AudioManager audioManager;
-
-    protected Renderer renderer;
+    public bool hit = false;
+    public Renderer spriteRenderer;
+    // Components
     Color spriteColor;
+    AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
-        renderer = gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
-        spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
         damage = 1;
 
         if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -24,6 +22,10 @@ public class CoralLatcher : FishCharacter
     // Update is called once per frame
     void Update()
     {
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = spriteRenderer.GetComponent<SpriteRenderer>();
+        spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
+
         if (audioManager == null)
         {
             audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
@@ -39,7 +41,7 @@ public class CoralLatcher : FishCharacter
 
     void FixedUpdate()
     {
-        if (renderer.isVisible)
+        if (spriteRenderer.isVisible)
         {
             Move();
         }
@@ -72,6 +74,35 @@ public class CoralLatcher : FishCharacter
                 Instantiate(food, transform.position, transform.rotation);
                 Debug.Log("Dead");
             }
+        }
+    }
+
+    public void InvincibilityFrames()
+    {
+        if (hit && isDead == false)
+        {
+            hitFrameTime -= Time.deltaTime;
+            takeDamage.canTakeDamage = false;
+            spriteColor.a = 0.2f;
+            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
+            if (hitFrameTime <= 0)
+            {
+                hitFrameTime = 0;
+                hit = false;
+            }
+        }
+
+        else if (isDead)
+        {
+            hit = false;
+        }
+
+        else
+        {
+            hitFrameTime = startHitFrameTime;
+            takeDamage.canTakeDamage = true;
+            spriteColor.a = 1f;
+            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
         }
     }
 

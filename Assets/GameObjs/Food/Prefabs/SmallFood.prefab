@@ -101,10 +101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takeDamage: {fileID: 5019588910840587034}
-  c_FacingRight: 1
   isDead: 0
-  evolutionPoints: 1
-  staminaPoints: 5
+  hitFrameTime: 0
+  evolutionPoints: 2
+  staminaPoints: 3
 --- !u!114 &5019588910840587034
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 using System.IO;
@@ -52,6 +53,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         if (player == null && playerObj == null)
         {
             playerObj = GameObject.Find("Player");
@@ -96,10 +99,6 @@ public class GameManager : MonoBehaviour
         {
             case GameState.title:
                 Time.timeScale = 0;
-
-                //Set plays position to player spawn
-                player.transform.position = playerSpawn.transform.position;
-                player.transform.rotation = playerSpawn.transform.rotation;
 
                 uIMananger.TitleCanvasOn();
                 break;
@@ -156,13 +155,21 @@ public class GameManager : MonoBehaviour
         player.FullyResetStats();
         LoadLevelButton();
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //Set Player position to PlayerSpawn point
+        player.transform.position = playerSpawn.transform.position;
+        player.transform.rotation = playerSpawn.transform.rotation;
+        Debug.Log(mode);
+        Debug.Log("OnSceneLoaded: " + scene.name);
+    }
+
     public void LoadLevelButton()
     {
         levelMananger.LoadLevel();
 
-        //Set Player position to PlayerSpawn point
-        player.transform.position = playerSpawn.transform.position;
-        player.transform.rotation = playerSpawn.transform.rotation;
+        Debug.Log(player.transform.position);
 
         audioManager.PlayGameplayMusic();
         Save();

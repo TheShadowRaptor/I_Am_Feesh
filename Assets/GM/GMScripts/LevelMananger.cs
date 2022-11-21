@@ -9,8 +9,14 @@ public class LevelMananger : MonoBehaviour
     // Used to save currentSceneNumber for export
     public int currentSceneNum;
 
+    private void Start()
+    {
+
+    }
+
     private void Update()
     {
+        //SceneManager.sceneLoaded += OnSceneLoaded;
         if (level == null)
         {
             level = GameObject.Find("Level");
@@ -26,6 +32,7 @@ public class LevelMananger : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         currentSceneNum = 1;
+        
         //level.SetActive(true);
     }
 

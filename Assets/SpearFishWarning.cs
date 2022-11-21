@@ -107,11 +107,11 @@ public class SpearFishWarning : MonoBehaviour
 
         if (rightSpawn)
         {
-            pos.x = camPos.x + 5;
+            pos.x = camPos.x - 10;
         }
         else
         {
-            pos.x = camPos.x - 5;
+            pos.x = camPos.x + 10;
         }
 
         transform.position = pos;

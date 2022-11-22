@@ -70,7 +70,7 @@ public class GameplayHud : MonoBehaviour
         else dashOne.SetActive(false);
         if (player.dashCharges >= 2) dashTwo.SetActive(true);
         else dashTwo.SetActive(false);
-        if (player.dashCharges == 3) dashThree.SetActive(true);
+        if (player.dashCharges >= 3) dashThree.SetActive(true);
         else dashThree.SetActive(false);
     }
 
@@ -80,7 +80,7 @@ public class GameplayHud : MonoBehaviour
         else heartOne.SetActive(false);
         if (player.health >= 2) heartTwo.SetActive(true);
         else heartTwo.SetActive(false);
-        if (player.health == 3) heartThree.SetActive(true);
+        if (player.health >= 3) heartThree.SetActive(true);
         else heartThree.SetActive(false);
     }
 }

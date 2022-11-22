@@ -16,15 +16,12 @@ public class PlayerAttackRadius : MonoBehaviour
     {  
         if (other.gameObject.CompareTag("Enemy"))
         {
-            enemyObj = other.gameObject;
             takeDamage = enemyObj.GetComponent<TakeDamage>();
             attackCurrentFish = true;
         }
 
-        else if (other.gameObject.CompareTag("Food"))
+        if (other.gameObject.CompareTag("Food"))
         {
-            foodObj = other.gameObject;
-            foodScript = foodObj.GetComponent<FoodCharacter>();
             takeDamage = foodObj.GetComponent<TakeDamage>();
             eatCurrentFood = true;
         }
@@ -34,7 +31,6 @@ public class PlayerAttackRadius : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            enemyObj = null;
             takeDamage = null;
             attackCurrentFish = false;
         }
@@ -43,8 +39,6 @@ public class PlayerAttackRadius : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Food"))
             {
-                foodObj = null;
-                foodScript = null;
                 takeDamage = null;
                 eatCurrentFood = false;
             }

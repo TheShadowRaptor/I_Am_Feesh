@@ -38,7 +38,7 @@ public class PlayerController : GameCharacter
     public AudioManager audioManager;
 
     [Header("GameObjects")]
-    public GameObject attackRadius;
+    public GameObject attackRadiusObj;
     public Camera camera;
 
     // Run Results
@@ -176,9 +176,9 @@ public class PlayerController : GameCharacter
         // Attack Input
         if (Attacking() == true)
         {
-            attackRadius.SetActive(true);
+            attackRadiusObj.SetActive(true);
         }
-        else attackRadius.SetActive(false);
+        else attackRadiusObj.SetActive(false);
 
         // Attack Target        
         if (playerAttackRadius.attackCurrentFish) takeDamage.health -= damage;
@@ -188,12 +188,11 @@ public class PlayerController : GameCharacter
         {
             evolutionPoints += food.evolutionPoints;
             stamina += food.staminaPoints;
-            if (playerAttackRadius.eatCurrentFood) takeDamage.health -= damage;
-
+            takeDamage.health -= damage;
         }
     }
 
-    bool Attacking()
+    public bool Attacking()
     {
         StopAttacking();
         if (attackButton && currentAttackTime == 0)

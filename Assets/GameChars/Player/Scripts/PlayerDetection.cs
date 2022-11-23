@@ -28,11 +28,8 @@ public class PlayerDetection : MonoBehaviour
 
         if (other.gameObject.CompareTag("Food"))
         {
-            if (other.gameObject.CompareTag("Food"))
-            {
-                attackRadius.foodObj = null;
-                attackRadius.foodScript = null;
-            }
+            attackRadius.foodObj = null;
+            attackRadius.foodScript = null;
         }
     }
 }

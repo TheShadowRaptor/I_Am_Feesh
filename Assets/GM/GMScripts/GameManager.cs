@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour
     public GameObject warningPanel;
     public GameObject SavingPanel;
 
-    GameObject playerObj;
-    GameObject playerSpawn;
+    public GameObject playerObj;
+    public GameObject playerSpawn;
 
     PlayerController player;
 
@@ -47,13 +47,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        state = GameState.title;        
+        state = GameState.title;
     }
 
     // Update is called once per frame
     void Update()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (playerSpawn == null)
+        {
+            playerSpawn = GameObject.Find("PlayerSpawn");
+        }
 
         if (player == null && playerObj == null)
         {
@@ -61,10 +64,7 @@ public class GameManager : MonoBehaviour
             player = playerObj.GetComponent<PlayerController>();
         }
 
-        if (playerSpawn == null)
-        {
-            playerSpawn = GameObject.Find("PlayerSpawn");
-        }
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         if (player.isDead)
         {
@@ -99,7 +99,9 @@ public class GameManager : MonoBehaviour
         {
             case GameState.title:
                 Time.timeScale = 0;
-
+                //Set Player position to PlayerSpawn point
+                player.transform.position = playerSpawn.transform.position;
+                player.transform.rotation = playerSpawn.transform.rotation;
                 uIMananger.TitleCanvasOn();
                 break;
 
@@ -157,19 +159,20 @@ public class GameManager : MonoBehaviour
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
+    {      
+        playerSpawn = GameObject.Find("PlayerSpawn");
         //Set Player position to PlayerSpawn point
         player.transform.position = playerSpawn.transform.position;
         player.transform.rotation = playerSpawn.transform.rotation;
-        Debug.Log(mode);
-        Debug.Log("OnSceneLoaded: " + scene.name);
     }
 
     public void LoadLevelButton()
     {
         levelMananger.LoadLevel();
 
-        Debug.Log(player.transform.position);
+        //Set Player position to PlayerSpawn point
+        player.transform.position = playerSpawn.transform.position;
+        player.transform.rotation = playerSpawn.transform.rotation;
 
         audioManager.PlayGameplayMusic();
         Save();

@@ -8,6 +8,7 @@ TagManager:
   - Warning
   - Food
   - Wall
+  - AttackRadius
   layers:
   - Default
   - TransparentFX

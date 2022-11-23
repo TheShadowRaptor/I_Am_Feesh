@@ -14,33 +14,33 @@ public class PlayerAttackRadius : MonoBehaviour
     public bool eatCurrentFood;
     private void OnTriggerStay2D(Collider2D other)
     {
-        //Debug.Log("Colliding");
-        //if (other.gameObject.CompareTag("Enemy"))
-        //{
-        //    takeDamage = enemyObj.GetComponent<TakeDamage>();
-        //    attackCurrentFish = true;
-        //}
+        Debug.Log("Colliding");
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            takeDamage = enemyObj.GetComponent<TakeDamage>();
+            attackCurrentFish = true;
+        }
 
-        //if (other.gameObject.CompareTag("Food"))
-        //{
-        //    takeDamage = foodObj.GetComponent<TakeDamage>();
-        //    Debug.Log("Eat");
-        //    eatCurrentFood = true;
-        //}
+        if (other.gameObject.CompareTag("Food"))
+        {
+            takeDamage = foodObj.GetComponent<TakeDamage>();
+            Debug.Log("Eat");
+            eatCurrentFood = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        //if (other.gameObject.CompareTag("Enemy"))
-        //{
-        //    takeDamage = null;
-        //    attackCurrentFish = false;
-        //}
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            takeDamage = null;
+            attackCurrentFish = false;
+        }
 
-        //if (other.gameObject.CompareTag("Food"))
-        //{
-        //    takeDamage = null;
-        //    eatCurrentFood = false;
-        //}
+        if (other.gameObject.CompareTag("Food"))
+        {
+            takeDamage = null;
+            eatCurrentFood = false;
+        }
     }
 }

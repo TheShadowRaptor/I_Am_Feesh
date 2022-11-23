@@ -25,6 +25,7 @@ public class MeanSamon : FishCharacter
     {
         audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
 
+        InvincibilityFrames();
         AttackManager();
         AttackTimeDrain();
         FlipCharacterModel();

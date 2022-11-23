@@ -189,6 +189,7 @@ public class PlayerController : GameCharacter
             evolutionPoints += food.evolutionPoints;
             stamina += food.staminaPoints;
             takeDamage.health -= damage;
+
         }
     }
 

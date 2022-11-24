@@ -237,7 +237,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -383,12 +383,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takeDamage: {fileID: 1600229212212232768}
   isDead: 0
-  spriteRenderer: {fileID: 2407649191171121285}
   hitFrameTime: 0
   changeDir: 0
   swimSpeed: 0
   fleeSwimSpeed: 60
-  attackingLength: 0.1
+  attackingLength: 0.5
   currentAttackTime: 0
   attackTimeDecrease: 5
   detectPlayer: {fileID: 7174315558566771764}
@@ -398,6 +397,7 @@ MonoBehaviour:
   attackRadius: {fileID: 2706894807241294278}
   attackRadiusObj: {fileID: 3639944878742037464}
   hit: 0
+  spriteRenderer: {fileID: 2407649191171121285}
 --- !u!61 &5241664906787764922
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -575,8 +575,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.92723775, y: -0.032991763}
-  m_Size: {x: 3.0135725, y: 2.0000334}
+  m_Offset: {x: 0.62590647, y: -0.032991763}
+  m_Size: {x: 2.4109259, y: 2.0000465}
   m_Direction: 1
 --- !u!114 &7174315558566771764
 MonoBehaviour:

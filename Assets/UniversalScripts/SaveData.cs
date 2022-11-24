@@ -21,14 +21,11 @@ public class SaveData
     public int currentSwimSpeedButtonState;
     public int currentTurnSpeedButtonState;
     public int currentStomachCapacityButtonState;
-    public int currentDepthIncreaseButtonState;
-    public int currentDashSpeedButtonState;
+    public int currentEvolveButtonStateCap;
 
     public int currentSwimSpeedButtonPriceState;
     public int currentTurnSpeedButtonPriceState;
     public int currentStomachCapacityPriceButtonState;
-    public int currentDepthIncreaseButtonPriceState;
-    public int currentDashSpeedButtonPriceState;
 
     public int evolutionStage;
 }

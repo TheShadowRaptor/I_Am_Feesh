@@ -348,6 +348,7 @@ public class PlayerController : GameCharacter
         {
             isDead = false;
         }
+        health = takeDamage.health;
     }
 
     public void OnTriggerStay2D(Collider2D other)

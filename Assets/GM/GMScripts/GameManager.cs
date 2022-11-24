@@ -141,6 +141,7 @@ public class GameManager : MonoBehaviour
 
             case GameState.upgrade:
                 Time.timeScale = 0;
+                player.ResetRunStats();
                 uIMananger.UpgradeCanvasOn();
                 break;
 
@@ -260,14 +261,11 @@ public class GameManager : MonoBehaviour
         saveData.currentSwimSpeedButtonState = upgradeManager.currentSwimSpeedButtonState;
         saveData.currentTurnSpeedButtonState = upgradeManager.currentTurnSpeedButtonState;
         saveData.currentStomachCapacityButtonState = upgradeManager.currentStomachCapacityButtonState;
-        saveData.currentDepthIncreaseButtonState = upgradeManager.currentDepthIncreaseButtonState;
-        saveData.currentDashSpeedButtonState = upgradeManager.currentDashSpeedButtonState;
+        saveData.currentEvolveButtonStateCap = upgradeManager.currentEvolveButtonStateCap;
 
         saveData.currentSwimSpeedButtonPriceState = upgradeManager.currentSwimSpeedButtonPriceState;
         saveData.currentTurnSpeedButtonPriceState = upgradeManager.currentTurnSpeedButtonPriceState;
         saveData.currentStomachCapacityPriceButtonState = upgradeManager.currentStomachCapacityButtonPriceState;
-        saveData.currentDepthIncreaseButtonPriceState = upgradeManager.currentDepthIncreaseButtonPriceState;
-        saveData.currentDashSpeedButtonPriceState = upgradeManager.currentDashSpeedButtonPriceState;
 
         saveData.evolutionStage = upgradeManager.evolutionStage;
 
@@ -299,14 +297,11 @@ public class GameManager : MonoBehaviour
         upgradeManager.currentSwimSpeedButtonState = saveData.currentSwimSpeedButtonState;
         upgradeManager.currentTurnSpeedButtonState = saveData.currentTurnSpeedButtonState;
         upgradeManager.currentStomachCapacityButtonState = saveData.currentStomachCapacityButtonState;
-        upgradeManager.currentDepthIncreaseButtonState = saveData.currentDepthIncreaseButtonState;
-        upgradeManager.currentDashSpeedButtonState = saveData.currentDashSpeedButtonState;
+        upgradeManager.currentEvolveButtonStateCap = saveData.currentEvolveButtonStateCap;
 
         upgradeManager.currentSwimSpeedButtonPriceState = saveData.currentSwimSpeedButtonPriceState;
         upgradeManager.currentTurnSpeedButtonPriceState = saveData.currentTurnSpeedButtonPriceState;
         upgradeManager.currentStomachCapacityButtonPriceState = saveData.currentStomachCapacityPriceButtonState;
-        upgradeManager.currentDepthIncreaseButtonPriceState = saveData.currentDepthIncreaseButtonPriceState;
-        upgradeManager.currentDashSpeedButtonPriceState = saveData.currentDashSpeedButtonPriceState;
 
         upgradeManager.evolutionStage = saveData.evolutionStage;
     }

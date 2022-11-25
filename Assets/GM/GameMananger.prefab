@@ -3045,7 +3045,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613486613746540990}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -5878,7 +5878,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3460325486521076322}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -6903,7 +6903,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2549269735516707524}
         m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
         m_MethodName: EvolveButton
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9448,9 +9448,9 @@ MonoBehaviour:
   turnSpeedObj: {fileID: 1311406978278683479}
   stomachCapacityObj: {fileID: 4255497312134252824}
   evolutionObj: {fileID: 4012353663904596499}
-  swimSpeedPrices: 03000000060000000a000000190000002000000028000000370000003c000000
-  turnSpeedPrices: 01000000030000000f000000190000001e000000280000003700000041000000
-  stomachCapacityPrices: 050000000a000000140000001e00000028000000370000004100000050000000
+  swimSpeedPrices: 01000000050000000a0000000f00000014000000190000001e00000023000000280000002d000000320000003700000000000000
+  turnSpeedPrices: 0100000003000000080000000c0000000f000000120000001400000016000000190000001c0000001e0000002000000000000000
+  stomachCapacityPrices: 050000000a000000140000001e0000002800000037000000410000004b0000005500000064000000780000008c00000000000000
   currentSwimSpeedButtonState: 0
   currentTurnSpeedButtonState: 0
   currentStomachCapacityButtonState: 0

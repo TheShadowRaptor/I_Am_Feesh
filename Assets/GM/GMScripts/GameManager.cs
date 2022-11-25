@@ -311,8 +311,5 @@ public class GameManager : MonoBehaviour
         File.Delete(Application.persistentDataPath + "/savefile1.dat");
     }
 
-    public void OnGUI()
-    {
-
-    }
+    
 }

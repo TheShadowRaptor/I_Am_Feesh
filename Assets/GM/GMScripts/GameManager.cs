@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         {
             case GameState.title:
                 Time.timeScale = 0;
+                audioManager.StopGameplayMusic();
                 //Set Player position to PlayerSpawn point
                 player.transform.position = playerSpawn.transform.position;
                 player.transform.rotation = playerSpawn.transform.rotation;
@@ -129,6 +130,7 @@ public class GameManager : MonoBehaviour
                 {
                     state = GameState.gameplay;
                 }
+                audioManager.StopGameplayMusic();
                 uIMananger.PauseCanvasOn();
                 Time.timeScale = 0;
                 break;
@@ -148,6 +150,7 @@ public class GameManager : MonoBehaviour
             case GameState.win:
                 Time.timeScale = 0;
                 uIMananger.WinCanvasOn();
+                audioManager.StopGameplayMusic();
                 break;
         }
     }

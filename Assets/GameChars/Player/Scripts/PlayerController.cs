@@ -39,6 +39,7 @@ public class PlayerController : GameCharacter
 
     [Header("GameObjects")]
     public GameObject attackRadiusObj;
+    public GameObject openMouth;
     public Camera camera;
 
     // Run Results
@@ -64,7 +65,7 @@ public class PlayerController : GameCharacter
 
     //Timing
     float currentAttackTime = 0;
-    float attackTime = 0.2f;
+    float attackTime = 0.1f;
     float attackLength = 0.05f;
     bool attacking = false;
 
@@ -177,6 +178,7 @@ public class PlayerController : GameCharacter
         if (Attacking() == true)
         {
             attackRadiusObj.SetActive(true);
+            openMouth.SetActive(false);
         }
         else attackRadiusObj.SetActive(false);
 
@@ -201,6 +203,7 @@ public class PlayerController : GameCharacter
             audioManager.PlayPlayerReadyingBite();
             currentAttackTime = attackTime;
             attacking = true;
+            openMouth.SetActive(true);
             return false;
         }
 

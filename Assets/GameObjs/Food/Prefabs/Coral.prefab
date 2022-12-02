@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 19
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.745283, g: 0.31332302, b: 0, a: 1}
   m_FlipX: 0
@@ -135,8 +135,8 @@ MonoBehaviour:
   takeDamage: {fileID: 5278570421942837974}
   isDead: 0
   hitFrameTime: 0
-  evolutionPoints: 6
-  staminaPoints: 6
+  evolutionPoints: 5
+  staminaPoints: 5
 --- !u!114 &5278570421942837974
 MonoBehaviour:
   m_ObjectHideFlags: 0

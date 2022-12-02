@@ -104,7 +104,7 @@ MonoBehaviour:
   isDead: 0
   hitFrameTime: 0
   evolutionPoints: 2
-  staminaPoints: 3
+  staminaPoints: 1
 --- !u!114 &5019588910840587034
 MonoBehaviour:
   m_ObjectHideFlags: 0

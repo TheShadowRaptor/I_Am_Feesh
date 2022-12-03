@@ -278,6 +278,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7450891008823788318, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: m_Radius
+      value: 0.62617886
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450891008823788318, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.12986329
+      objectReference: {fileID: 0}
     - target: {fileID: 8469462314071482277, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -298,7 +306,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8865878691462383669, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
 --- !u!1001 &134191497939000907
 PrefabInstance:

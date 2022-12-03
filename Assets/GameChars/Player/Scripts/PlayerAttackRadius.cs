@@ -14,7 +14,6 @@ public class PlayerAttackRadius : MonoBehaviour
     public bool eatCurrentFood;
     private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("Colliding");
         if (other.gameObject.CompareTag("Enemy"))
         {
             takeDamage = enemyObj.GetComponent<TakeDamage>();
@@ -24,7 +23,6 @@ public class PlayerAttackRadius : MonoBehaviour
         if (other.gameObject.CompareTag("Food"))
         {
             takeDamage = foodObj.GetComponent<TakeDamage>();
-            Debug.Log("Eat");
             eatCurrentFood = true;
         }
     }

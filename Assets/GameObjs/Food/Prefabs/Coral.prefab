@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7637318719455844501}
   - component: {fileID: 3634441878079926647}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5278570421942837974}
   - component: {fileID: 5278570421942837978}
   - component: {fileID: 6579763693392167626}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Coral
   m_TagString: Food
   m_Icon: {fileID: 0}

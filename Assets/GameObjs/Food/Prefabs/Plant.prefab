@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 859752387206242976}
   - component: {fileID: 859752387206242988}
   - component: {fileID: 1873303787214897852}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plant
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 859752387206242979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.927415, y: -11.166, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3121697131416180963}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 3121697131416180963}
   - component: {fileID: 8133336311943688449}
   - component: {fileID: 8550023904721385105}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

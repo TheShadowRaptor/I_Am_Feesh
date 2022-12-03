@@ -6,6 +6,7 @@ public class CoralLatcher : FishCharacter
 {
     public bool hit = false;
     public Renderer spriteRenderer;
+    public GameObject openMouth;
     // Components
     Color spriteColor;
     AudioManager audioManager;
@@ -111,7 +112,11 @@ public class CoralLatcher : FishCharacter
         TakeDamage takeDamage = attackRadius.playerTakeDamage;
 
         // Attack Input
-        if (Attacking()) attackRadiusObj.SetActive(true);
+        if (Attacking())
+        {
+            attackRadiusObj.SetActive(true);
+            openMouth.SetActive(false);
+        }
         else attackRadiusObj.SetActive(false);
 
         // Attack Target        
@@ -129,6 +134,7 @@ public class CoralLatcher : FishCharacter
         if (attackRange.inRange && currentAttackTime == 0)
         {
             currentAttackTime = attackTime;
+            openMouth.SetActive(true);
             attacking = true;
             return false;
         }

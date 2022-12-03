@@ -157,7 +157,7 @@ public class CoralLatcher : FishCharacter
     {
         if (PlayerSpotted() == false)
         {
-            spriteColor.a = 0.05f;
+            spriteColor.a = 0.02f;
             spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
         }
         else

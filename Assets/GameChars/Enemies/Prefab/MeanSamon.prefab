@@ -74,9 +74,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_SortingOrder: 20
+  m_Sprite: {fileID: 1552401631, guid: f9229b56784e5134ea239da0a6887b12, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -551,7 +551,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takeDamage: {fileID: 2908277861166573562}
   isDead: 0
-  spriteRenderer: {fileID: 2234014791937590591}
   hitFrameTime: 0
   changeDir: 0
   swimSpeed: 20
@@ -566,6 +565,7 @@ MonoBehaviour:
   attackRadius: {fileID: 2015838912133325948}
   attackRadiusObj: {fileID: 930782943469733474}
   hit: 0
+  spriteRenderer: {fileID: 2234014791937590591}
 --- !u!61 &780704287502217349
 BoxCollider2D:
   m_ObjectHideFlags: 0

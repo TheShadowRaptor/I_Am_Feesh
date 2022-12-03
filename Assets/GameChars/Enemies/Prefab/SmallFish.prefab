@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7061251369241800488}
   - component: {fileID: 7061251369241800489}
-  - component: {fileID: 3461785274436314605}
+  - component: {fileID: 756865712286635102}
   m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
@@ -196,7 +196,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3461785274436314605
+--- !u!95 &756865712286635102
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ Animator:
   m_GameObject: {fileID: 7061251369241800487}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e2c1833dabc0bb347a7cac7ff07f6af7, type: 2}
+  m_Controller: {fileID: 9100000, guid: d5589a3cb5115b048904eadfedba9ec2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -290,7 +290,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takeDamage: {fileID: 7061251369404605410}
   isDead: 0
-  spriteRenderer: {fileID: 7061251369241800489}
   hitFrameTime: 0
   changeDir: 0
   swimSpeed: 20
@@ -305,6 +304,7 @@ MonoBehaviour:
   attackRadius: {fileID: 0}
   attackRadiusObj: {fileID: 0}
   hit: 0
+  spriteRenderer: {fileID: 7061251369241800489}
 --- !u!114 &7061251369404605410
 MonoBehaviour:
   m_ObjectHideFlags: 0

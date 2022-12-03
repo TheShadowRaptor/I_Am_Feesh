@@ -557,7 +557,7 @@ MonoBehaviour:
   fleeSwimSpeed: 40
   attackingLength: 0.01
   currentAttackTime: 0
-  attackTimeDecrease: 0.18
+  attackTimeDecrease: 1
   detectPlayer: {fileID: 6771488931474332046}
   warningBehaviour: {fileID: 2546963460300292760}
   food: {fileID: 5019588910840587033, guid: d9daebc5d69ce1043833012d43546fef, type: 3}

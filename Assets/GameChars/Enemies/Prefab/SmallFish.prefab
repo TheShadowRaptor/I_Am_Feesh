@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 7061251369404605410}
   - component: {fileID: 1432140413807765972}
   - component: {fileID: 9063402674523948722}
+  - component: {fileID: 735726593617557133}
   m_Layer: 7
   m_Name: SmallFish
   m_TagString: Enemy
@@ -345,7 +346,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0290588}
+  m_Offset: {x: -0.14001763, y: -0.029058814}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -356,5 +357,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.624169}
+  m_Size: {x: 0.71996474, y: 0.624169}
   m_EdgeRadius: 0
+--- !u!58 &735726593617557133
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061251369404605212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.2193585, y: -0.028645737}
+  serializedVersion: 2
+  m_Radius: 0.3092874

@@ -563,6 +563,7 @@ GameObject:
   - component: {fileID: 2546963460300292760}
   - component: {fileID: 4854438778691309877}
   - component: {fileID: 780704287502217349}
+  - component: {fileID: 3740597048136938110}
   m_Layer: 7
   m_Name: MeanSamon
   m_TagString: Enemy
@@ -682,7 +683,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.000003993511, y: -0.0018204153}
+  m_Offset: {x: -0.19717011, y: -0.0018204153}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -693,5 +694,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8406168, y: 0.83433014}
+  m_Size: {x: 1.4462686, y: 0.83433014}
   m_EdgeRadius: 0
+--- !u!58 &3740597048136938110
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385848389611067917}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.503479, y: -0.001759847}
+  serializedVersion: 2
+  m_Radius: 0.41726685

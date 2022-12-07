@@ -7,22 +7,27 @@ public class PlayerAttackRadius : MonoBehaviour
     public GameObject enemyObj;
     public GameObject foodObj;
 
-    public TakeDamage takeDamage;
+    public TakeDamage enemyTakeDamage;
+    public TakeDamage foodTakeDamage;
     public FoodCharacter foodScript;
 
     public bool attackCurrentFish;
     public bool eatCurrentFood;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            takeDamage = enemyObj.GetComponent<TakeDamage>();
+            enemyTakeDamage = enemyObj.GetComponent<TakeDamage>();
             attackCurrentFish = true;
         }
+    }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
         if (other.gameObject.CompareTag("Food"))
         {
-            takeDamage = foodObj.GetComponent<TakeDamage>();
+            foodTakeDamage = foodObj.GetComponent<TakeDamage>();
             eatCurrentFood = true;
         }
     }
@@ -31,13 +36,13 @@ public class PlayerAttackRadius : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            takeDamage = null;
+            enemyTakeDamage = null;
             attackCurrentFish = false;
         }
 
         if (other.gameObject.CompareTag("Food"))
         {
-            takeDamage = null;
+            foodTakeDamage = null;
             eatCurrentFood = false;
         }
     }

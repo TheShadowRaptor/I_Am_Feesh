@@ -172,7 +172,8 @@ public class PlayerController : GameCharacter
     }
     private void AttackManager()
     {
-        TakeDamage enemyTakeDamage = playerAttackRadius.takeDamage;
+        TakeDamage enemyTakeDamage = playerAttackRadius.enemyTakeDamage;
+        TakeDamage foodTakeDamage = playerAttackRadius.foodTakeDamage;
         FoodCharacter food = playerAttackRadius.foodScript;
         // Attack Input
         if (Attacking() == true)
@@ -187,14 +188,15 @@ public class PlayerController : GameCharacter
         {
             enemyTakeDamage.health -= damage;
             enemyTakeDamage.hit = true;
+            playerAttackRadius.attackCurrentFish = false;
         }
         // Consume Food       
         if (playerAttackRadius.eatCurrentFood)
         {
             evolutionPoints += food.evolutionPoints;
             stamina += food.staminaPoints;
-            enemyTakeDamage.health -= damage;
-
+            foodTakeDamage.health -= damage;
+            playerAttackRadius.eatCurrentFood = false;
         }
     }
 

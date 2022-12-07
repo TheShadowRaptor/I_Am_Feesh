@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpearFish : FishCharacter
 {
-    public bool hit = false;
     public Renderer spriteRenderer;
     // Components
     Color spriteColor;
@@ -65,7 +64,7 @@ public class SpearFish : FishCharacter
 
     public void InvincibilityFrames()
     {
-        if (hit && isDead == false)
+        if (takeDamage.hit && isDead == false)
         {
             hitFrameTime -= Time.deltaTime;
             takeDamage.canTakeDamage = false;
@@ -74,13 +73,13 @@ public class SpearFish : FishCharacter
             if (hitFrameTime <= 0)
             {
                 hitFrameTime = 0;
-                hit = false;
+                takeDamage.hit = false;
             }
         }
 
         else if (isDead)
         {
-            hit = false;
+            takeDamage.hit = false;
         }
 
         else
@@ -102,7 +101,7 @@ public class SpearFish : FishCharacter
             takeDamage.health -= damage;
             player.GetComponent<PlayerController>().causeOfDeath = "Fish Food!";
             audioManager.PlayEnemyBite();
-            player.GetComponent<PlayerController>().hit = true;
+            takeDamage.hit = true;
         }
     }
 

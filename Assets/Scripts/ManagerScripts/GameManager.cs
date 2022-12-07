@@ -258,7 +258,6 @@ public class GameManager : MonoBehaviour
         saveData.dashCharges = player.baseDashCharges;
         saveData.swimSpeed = player.baseSwimSpeed;
         saveData.rotateSpeed = player.baseRotateSpeed;
-        saveData.depthLimit = player.baseDepthLimit;
 
         // UpgradeData
         saveData.currentSwimSpeedButtonState = upgradeManager.currentSwimSpeedButtonState;
@@ -294,7 +293,6 @@ public class GameManager : MonoBehaviour
         player.baseDashCharges = saveData.dashCharges;
         player.baseSwimSpeed = saveData.swimSpeed;
         player.baseRotateSpeed = saveData.rotateSpeed;
-        player.baseDepthLimit = saveData.depthLimit;
 
         // UpgradeData
         upgradeManager.currentSwimSpeedButtonState = saveData.currentSwimSpeedButtonState;

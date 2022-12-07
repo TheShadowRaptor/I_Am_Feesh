@@ -175,7 +175,6 @@ MonoBehaviour:
   takeDamage: {fileID: 5649587124154103249}
   isDead: 0
   hitFrameTime: 0
-  hit: 0
   baseHealth: 1
   baseStamina: 20
   baseDamage: 1
@@ -183,7 +182,6 @@ MonoBehaviour:
   baseDashSpeed: 2
   baseSwimSpeed: 50
   baseRotateSpeed: 20
-  baseDepthLimit: 0
   evolutionPoints: 0
   health: 0
   stamina: 0
@@ -192,7 +190,7 @@ MonoBehaviour:
   rotateSpeed: 10
   dashCharges: 0
   dashSpeed: 0
-  depthLimit: 0
+  currentDepth: 
   staminaDecrease: 1
   dashSpeedDecrease: 1
   attackTimeDecrease: 0.18
@@ -240,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7da7103e8e38ab4baec18e967ca93dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit: 0
   health: 1
   canTakeDamage: 1
 --- !u!61 &6809753431892673644
@@ -379,7 +378,6 @@ GameObject:
   - component: {fileID: 7721732039266769046}
   - component: {fileID: 9090139061943839357}
   - component: {fileID: 1245628224417664466}
-  - component: {fileID: 8447292168649756896}
   m_Layer: 0
   m_Name: OpenMouth
   m_TagString: AttackRadius
@@ -470,24 +468,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &8447292168649756896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7082455489355587215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa839f4807e1e34a8633826d22752c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyObj: {fileID: 0}
-  foodObj: {fileID: 0}
-  takeDamage: {fileID: 0}
-  foodScript: {fileID: 0}
-  attackCurrentFish: 0
-  eatCurrentFood: 0
 --- !u!1 &7951192453824801937
 GameObject:
   m_ObjectHideFlags: 0

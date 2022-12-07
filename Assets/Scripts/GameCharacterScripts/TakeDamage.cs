@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
+    public bool hit = false;
     public int health;
     public bool canTakeDamage = true;
     void Update()

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : GameCharacter
 {
-    public bool hit = false;
     [Header("BaseStats")]
     public int baseHealth = 1;
     public float baseStamina = 20;
@@ -14,7 +13,6 @@ public class PlayerController : GameCharacter
     public int baseDashSpeed = 2;
     public float baseSwimSpeed = 50;
     public float baseRotateSpeed = 20;
-    public int baseDepthLimit = 0;
 
     [Header("PlayerStats")]
     public int evolutionPoints;
@@ -25,7 +23,7 @@ public class PlayerController : GameCharacter
     public float rotateSpeed;
     public int dashCharges;
     public int dashSpeed;
-    public int depthLimit;
+    public string currentDepth;
 
     [Header("Decrease")]
     public float staminaDecrease = 1.0f;
@@ -51,6 +49,7 @@ public class PlayerController : GameCharacter
 
     // Find Scripts
 
+
     // Components
     public Renderer spriteRenderer;
     Color spriteColor;
@@ -73,6 +72,7 @@ public class PlayerController : GameCharacter
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        takeDamage = GetComponent<TakeDamage>();
         spriteRenderer = spriteRenderer.GetComponent<SpriteRenderer>();
         spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
         ResetRunStats();
@@ -144,7 +144,7 @@ public class PlayerController : GameCharacter
 
     public void InvincibilityFrames()
     {
-        if (hit && isDead == false)
+        if (takeDamage.hit && isDead == false)
         {
             hitFrameTime -= Time.deltaTime;
             takeDamage.canTakeDamage = false;
@@ -153,13 +153,13 @@ public class PlayerController : GameCharacter
             if (hitFrameTime <= 0)
             {
                 hitFrameTime = 0;
-                hit = false;
+                takeDamage.hit = false;
             }
         }
 
         else if (isDead)
         {
-            hit = false;
+            takeDamage.hit = false;
         }
 
         else
@@ -172,7 +172,7 @@ public class PlayerController : GameCharacter
     }
     private void AttackManager()
     {
-        TakeDamage takeDamage = playerAttackRadius.takeDamage;
+        TakeDamage enemyTakeDamage = playerAttackRadius.takeDamage;
         FoodCharacter food = playerAttackRadius.foodScript;
         // Attack Input
         if (Attacking() == true)
@@ -182,15 +182,18 @@ public class PlayerController : GameCharacter
         }
         else attackRadiusObj.SetActive(false);
 
-        // Attack Target        
-        if (playerAttackRadius.attackCurrentFish) takeDamage.health -= damage;
-
+        // Attack Target
+        if (playerAttackRadius.attackCurrentFish)
+        {
+            enemyTakeDamage.health -= damage;
+            enemyTakeDamage.hit = true;
+        }
         // Consume Food       
         if (playerAttackRadius.eatCurrentFood)
         {
             evolutionPoints += food.evolutionPoints;
             stamina += food.staminaPoints;
-            takeDamage.health -= damage;
+            enemyTakeDamage.health -= damage;
 
         }
     }
@@ -296,7 +299,6 @@ public class PlayerController : GameCharacter
         rotateSpeed = baseRotateSpeed;
         dashCharges = baseDashCharges;
         dashSpeed = baseDashSpeed;
-        depthLimit = baseDepthLimit;
 
         tallyEvoPoints = 0;
         tallyFoodEaten = 0;
@@ -315,7 +317,6 @@ public class PlayerController : GameCharacter
         rotateSpeed = 200;
         dashCharges = 999;
         dashSpeed = 999;
-        depthLimit = 999;
     }
 
     public void FullyResetStats()
@@ -328,7 +329,6 @@ public class PlayerController : GameCharacter
         baseDashSpeed = 2;
         baseSwimSpeed = 50;
         baseRotateSpeed = 20;
-        baseDepthLimit = 0;
 
         health = baseHealth;
         takeDamage.health = health;
@@ -338,7 +338,6 @@ public class PlayerController : GameCharacter
         rotateSpeed = baseRotateSpeed;
         dashCharges = baseDashCharges;
         dashSpeed = baseDashSpeed;
-        depthLimit = baseDepthLimit;
     }
 
     public new void CheckState()

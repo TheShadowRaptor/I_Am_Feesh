@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CoralLatcher : FishCharacter
 {
-    public bool hit = false;
     public Renderer spriteRenderer;
     public GameObject openMouth;
     // Components
@@ -80,7 +79,7 @@ public class CoralLatcher : FishCharacter
 
     public void InvincibilityFrames()
     {
-        if (hit && isDead == false)
+        if (takeDamage.hit && isDead == false)
         {
             hitFrameTime -= Time.deltaTime;
             takeDamage.canTakeDamage = false;
@@ -89,13 +88,13 @@ public class CoralLatcher : FishCharacter
             if (hitFrameTime <= 0)
             {
                 hitFrameTime = 0;
-                hit = false;
+                takeDamage.hit = false;
             }
         }
 
         else if (isDead)
         {
-            hit = false;
+            takeDamage.hit = false;
         }
 
         else
@@ -124,7 +123,7 @@ public class CoralLatcher : FishCharacter
         {
             takeDamage.health -= damage;
             player.GetComponent<PlayerController>().causeOfDeath = "Fish Food!";
-            player.GetComponent<PlayerController>().hit = true;
+            takeDamage.hit = true;
         }
     }
 

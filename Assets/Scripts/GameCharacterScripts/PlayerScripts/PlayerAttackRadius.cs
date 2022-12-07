@@ -12,7 +12,7 @@ public class PlayerAttackRadius : MonoBehaviour
 
     public bool attackCurrentFish;
     public bool eatCurrentFood;
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MeanSamon : FishCharacter
 {
-    public bool hit = false;
     public Renderer spriteRenderer;
     public GameObject openMouth;
     // Components
@@ -36,7 +35,7 @@ public class MeanSamon : FishCharacter
     }
 
     void FixedUpdate()
-    {
+    {        
         if (spriteRenderer.isVisible)
         {
             Move();
@@ -76,22 +75,24 @@ public class MeanSamon : FishCharacter
 
     public void InvincibilityFrames()
     {
-        if (hit && isDead == false)
+        if (takeDamage.hit && isDead == false)
         {
-            hitFrameTime -= Time.deltaTime;
             takeDamage.canTakeDamage = false;
+            Debug.Log("Invincibility Activated");
+            Debug.Log("Health: " + takeDamage.health);
+            hitFrameTime -= Time.deltaTime;
             spriteColor.a = 0.2f;
             spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
             if (hitFrameTime <= 0)
             {
                 hitFrameTime = 0;
-                hit = false;
+                takeDamage.hit = false;
             }
         }
 
         else if (isDead)
         {
-            hit = false;
+            takeDamage.hit = false;
         }
 
         else
@@ -120,7 +121,7 @@ public class MeanSamon : FishCharacter
         {
             player.GetComponent<PlayerController>().causeOfDeath = "Fish Food!";
             takeDamage.health -= damage;
-            player.GetComponent<PlayerController>().hit = true;
+            takeDamage.hit = true;
         }
     }
 

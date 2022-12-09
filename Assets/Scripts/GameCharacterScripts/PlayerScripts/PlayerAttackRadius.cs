@@ -21,10 +21,7 @@ public class PlayerAttackRadius : MonoBehaviour
             enemyTakeDamage = enemyObj.GetComponent<TakeDamage>();
             attackCurrentFish = true;
         }
-    }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
         if (other.gameObject.CompareTag("Food"))
         {
             foodTakeDamage = foodObj.GetComponent<TakeDamage>();

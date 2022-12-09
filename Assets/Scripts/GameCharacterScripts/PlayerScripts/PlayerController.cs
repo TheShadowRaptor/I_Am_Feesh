@@ -184,18 +184,19 @@ public class PlayerController : GameCharacter
         else attackRadiusObj.SetActive(false);
 
         // Attack Target
-        if (playerAttackRadius.attackCurrentFish)
+        if (playerAttackRadius.attackCurrentFish && enemyTakeDamage.hit == false)
         {
             enemyTakeDamage.health -= damage;
             enemyTakeDamage.hit = true;
             playerAttackRadius.attackCurrentFish = false;
         }
         // Consume Food       
-        if (playerAttackRadius.eatCurrentFood)
+        if (playerAttackRadius.eatCurrentFood && foodTakeDamage.hit == false)
         {
             evolutionPoints += food.evolutionPoints;
             stamina += food.staminaPoints;
             foodTakeDamage.health -= damage;
+            foodTakeDamage.hit = true;
             playerAttackRadius.eatCurrentFood = false;
         }
     }

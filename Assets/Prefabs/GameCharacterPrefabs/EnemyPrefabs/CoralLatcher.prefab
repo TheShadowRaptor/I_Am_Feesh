@@ -457,7 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7da7103e8e38ab4baec18e967ca93dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  hit: 0
+  health: 2
   canTakeDamage: 1
 --- !u!114 &2103675217752827682
 MonoBehaviour:
@@ -499,7 +500,6 @@ MonoBehaviour:
   attackRange: {fileID: 659298073409051290}
   attackRadius: {fileID: 2706894807241294278}
   attackRadiusObj: {fileID: 3639944878742037464}
-  hit: 0
   spriteRenderer: {fileID: 2407649191171121285}
   openMouth: {fileID: 3099973076207404107}
 --- !u!61 &5241664906787764922

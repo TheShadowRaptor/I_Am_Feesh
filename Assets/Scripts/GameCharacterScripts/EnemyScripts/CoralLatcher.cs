@@ -30,6 +30,7 @@ public class CoralLatcher : FishCharacter
         {
             audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
         }
+        InvincibilityFrames();
         CamouflageManager();
         AttackManager();
         AttackTimeDrain();
@@ -81,8 +82,8 @@ public class CoralLatcher : FishCharacter
     {
         if (takeDamage.hit && isDead == false)
         {
-            hitFrameTime -= Time.deltaTime;
             takeDamage.canTakeDamage = false;
+            hitFrameTime -= Time.deltaTime;
             spriteColor.a = 0.2f;
             spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
             if (hitFrameTime <= 0)
@@ -163,11 +164,6 @@ public class CoralLatcher : FishCharacter
         if (PlayerSpotted() == false)
         {
             spriteColor.a = 0.02f;
-            spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
-        }
-        else
-        {
-            spriteColor.a = 1f;
             spriteColor = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
         }
     }

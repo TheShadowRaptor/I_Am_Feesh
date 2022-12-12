@@ -52,6 +52,7 @@ public class PlayerController : GameCharacter
 
     // Components
     public Renderer spriteRenderer;
+    public Animator animator;
     Color spriteColor;
 
     // Inputs 
@@ -93,7 +94,9 @@ public class PlayerController : GameCharacter
         {
             GodMode();
         }
+
         InvincibilityFrames();
+        AnimationHandler();
         CheckState();
         AttackManager();
         FlipCharacterModel();
@@ -354,6 +357,18 @@ public class PlayerController : GameCharacter
             isDead = false;
         }
         health = takeDamage.health;
+    }
+
+    void AnimationHandler()
+    {
+        if (verticalMove > 0 || verticalMove < 0)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
     }
 
     public void OnTriggerStay2D(Collider2D other)

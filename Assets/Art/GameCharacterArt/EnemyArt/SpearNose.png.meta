@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dd7f1f892d976574ca43820ba56dd1a4
+guid: c9e5b49f3e3ee364b9e727dc00f25753
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -63,7 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,7 +118,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MeanSam_0
+      name: SpearNose_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 58
-        height: 27
+        width: 55
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da50c5dfdb7337342afd819035d71090
-      internalID: 1985181533
+      spriteID: 6d7a75d0aec678e4a8a47672d5514e1c
+      internalID: 1351158283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MeanSam_1
+      name: SpearNose_1
       rect:
         serializedVersion: 2
-        x: 58
+        x: 55
         y: 0
-        width: 56
-        height: 27
+        width: 55
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,8 +164,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25c55cef2b9e3784fa4a1de2c69415b2
-      internalID: 2053560775
+      spriteID: 24f7cf9800308dd4ebcc9d4ceb3c7632
+      internalID: 1796973186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpearNose_2
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 55
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd4e138f76c426d478ea580ba4b78807
+      internalID: 1788872711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpearNose_3
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 0
+        width: 55
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6124a150ab60446a063527c0a7c3e1
+      internalID: -1989923105
       vertices: []
       indices: 
       edges: []
@@ -181,8 +223,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MeanSam_1: 2053560775
-      MeanSam_0: 1985181533
+      SpearNose_2: 1788872711
+      SpearNose_1: 1796973186
+      SpearNose_3: -1989923105
+      SpearNose_0: 1351158283
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

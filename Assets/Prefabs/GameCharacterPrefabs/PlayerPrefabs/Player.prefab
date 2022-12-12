@@ -116,7 +116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyObj: {fileID: 0}
   foodObj: {fileID: 0}
-  takeDamage: {fileID: 0}
+  enemyTakeDamage: {fileID: 0}
+  foodTakeDamage: {fileID: 0}
   foodScript: {fileID: 0}
   attackCurrentFish: 0
   eatCurrentFood: 0
@@ -205,6 +206,7 @@ MonoBehaviour:
   tallyBiome: 
   causeOfDeath: 
   spriteRenderer: {fileID: 4161123100826681653}
+  animator: {fileID: 3458113595640981786}
 --- !u!50 &4161123100735933436
 Rigidbody2D:
   serializedVersion: 4
@@ -293,6 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4161123100826681652}
   - component: {fileID: 4161123100826681653}
+  - component: {fileID: 3458113595640981786}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -356,7 +359,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 70964c115c64b3547bfac9cd84567fe0, type: 3}
+  m_Sprite: {fileID: -1633367069, guid: 3ba547cd5f4f0e648a853cf0be47ed0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -367,6 +370,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3458113595640981786
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4161123100826681643}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 936633ecf1c8c3447963007488e9b5c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7082455489355587215
 GameObject:
   m_ObjectHideFlags: 0

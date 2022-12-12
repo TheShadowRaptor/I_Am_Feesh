@@ -1953,8 +1953,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd16ab17f93d1d74f84bfdb6655f1b22, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3146,7 +3146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -329.22614, y: 25.999939}
+  m_AnchoredPosition: {x: -329.22614, y: 26}
   m_SizeDelta: {x: 341.3305, y: 163.06451}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3029555962650744115
@@ -5130,8 +5130,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd16ab17f93d1d74f84bfdb6655f1b22, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10444,6 +10444,8 @@ MonoBehaviour:
   SavingPanel: {fileID: 5017125235233209410}
   playerObj: {fileID: 0}
   playerSpawn: {fileID: 0}
+  cameraScroll: {fileID: 4991096508086486164}
+  state: 0
 --- !u!114 &7205261957720064405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10564,7 +10566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.000183, y: 0.00048828125}
+  m_AnchoredPosition: {x: 10.000244, y: 0.00048828125}
   m_SizeDelta: {x: 13.266968, y: 150.38}
   m_Pivot: {x: 1, y: 0.99999994}
 --- !u!222 &4625229916007283777
@@ -11716,7 +11718,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 40
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12946,8 +12948,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd16ab17f93d1d74f84bfdb6655f1b22, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -14406,7 +14408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -313, y: 18.000427}
+  m_AnchoredPosition: {x: -313, y: 18.000488}
   m_SizeDelta: {x: 341.3305, y: 163.06451}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8475129497721471238
@@ -14967,6 +14969,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4002685921023841062}
+  gameManager: {fileID: 0}
+  isEnabled: 0
+  lerpTime: 5
 --- !u!1 &9109539519629424408
 GameObject:
   m_ObjectHideFlags: 0
@@ -15163,8 +15168,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd16ab17f93d1d74f84bfdb6655f1b22, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -15272,6 +15277,10 @@ PrefabInstance:
       propertyPath: baseStamina
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4161123100735933437, guid: 2813bd1840bc563418b0ab8ed4419553, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 8047815183634792025}
     - target: {fileID: 4161123100735933437, guid: 2813bd1840bc563418b0ab8ed4419553, type: 3}
       propertyPath: audioManager
       value: 

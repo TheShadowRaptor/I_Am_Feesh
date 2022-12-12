@@ -34,6 +34,7 @@ public class PlayerController : GameCharacter
     [Header("Scripts")]
     public PlayerAttackRadius playerAttackRadius;
     public AudioManager audioManager;
+    public GameManager gameManager;
 
     [Header("GameObjects")]
     public GameObject attackRadiusObj;
@@ -120,7 +121,10 @@ public class PlayerController : GameCharacter
         verticalMove = Input.GetAxis("Vertical");
 
         //Attack Input
-        attackButton = Input.GetButton("Attack");
+        if (gameManager.state == GameManager.GameState.gameplay)
+        {
+            attackButton = Input.GetButton("Attack");
+        }
 
         //Dash Input
         dashButton = Input.GetKeyDown(KeyCode.LeftShift) || Input.GetMouseButtonDown(1);

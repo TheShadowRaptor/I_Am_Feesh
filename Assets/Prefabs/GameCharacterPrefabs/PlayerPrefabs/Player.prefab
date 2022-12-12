@@ -188,7 +188,7 @@ MonoBehaviour:
   stamina: 0
   damage: 0
   swimSpeed: 50
-  rotateSpeed: 10
+  rotateSpeed: 20
   dashCharges: 0
   dashSpeed: 0
   currentDepth: 

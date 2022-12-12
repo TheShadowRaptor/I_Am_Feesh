@@ -7,6 +7,7 @@ public class MeanSamon : FishCharacter
     public Renderer spriteRenderer;
     public GameObject openMouth;
     
+    public float turnTime = 1.0f;
     // Components
     Color spriteColor;
     AudioManager audioManager;
@@ -43,17 +44,14 @@ public class MeanSamon : FishCharacter
         AttackManager();
         AttackTimeDrain();
         FlipCharacterModel();
-        CheckState();
         SpawnFood();
         Deactivate();
+        CheckState();
     }
 
     void FixedUpdate()
     {        
-        if (spriteRenderer.isVisible)
-        {
-            Move();
-        }
+        Move();
     }
 
     protected new void Move()
@@ -63,8 +61,10 @@ public class MeanSamon : FishCharacter
 
         if (PlayerSpotted() || WarningSpotted())
         {
-            // After 
-            transform.right = player.transform.position - transform.position;
+            // Chase
+            Vector3 playerPos = player.transform.position;
+            Vector3 chaseLerp = Vector3.Lerp(transform.right, playerPos - transform.position, turnTime * Time.deltaTime);
+            transform.right = chaseLerp;
             swimSpeed = fleeSwimSpeed;
             LockCamera();
         }

@@ -8,7 +8,7 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
-    enum GameState
+    public enum GameState
     {
         title,
         controls,
@@ -38,11 +38,13 @@ public class GameManager : MonoBehaviour
 
     PlayerController player;
 
+    // scripts
+    public CameraClamp cameraScroll;
     //Text timer
     float timeStart = 3;
     float timeLeft = 3;
 
-    GameState state;
+    public GameState state;
 
     // Start is called before the first frame update
     void Start()
@@ -98,7 +100,7 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameState.title:
-                Time.timeScale = 0;
+                Time.timeScale = 1;
                 audioManager.StopGameplayMusic();
                 //Set Player position to PlayerSpawn point
                 player.transform.position = playerSpawn.transform.position;
@@ -142,7 +144,11 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.upgrade:
-                Time.timeScale = 0;
+                Time.timeScale = 1;
+
+                //Set Player position to PlayerSpawn point
+                player.transform.position = playerSpawn.transform.position;
+                player.transform.rotation = playerSpawn.transform.rotation;
                 player.ResetRunStats();
                 uIMananger.UpgradeCanvasOn();
                 break;
@@ -164,10 +170,12 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {      
-        playerSpawn = GameObject.Find("PlayerSpawn");
+        playerSpawn = GameObject.Find("PlayerSpawn"); 
+
         //Set Player position to PlayerSpawn point
         player.transform.position = playerSpawn.transform.position;
         player.transform.rotation = playerSpawn.transform.rotation;
+        cameraScroll.isEnabled = true;
     }
 
     public void LoadLevelButton()

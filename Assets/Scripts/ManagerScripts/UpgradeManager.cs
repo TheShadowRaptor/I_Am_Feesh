@@ -86,9 +86,9 @@ public class UpgradeManager : MonoBehaviour
         evolutionPointCountText.text = "Evo Points: (" + evolutionPointCount.ToString() + ")";
 
         // Upgrades Text
-        swimSpeedText.text = "Swim Speed\n (" + swimSpeedPrices[currentSwimSpeedButtonPriceState].ToString() + ")";
-        turnSpeedText.text = "Turn Speed\n (" + turnSpeedPrices[currentTurnSpeedButtonPriceState].ToString() + ")";
-        stomachCapacityText.text = "Stomach Capacity\n (" + stomachCapacityPrices[currentStomachCapacityButtonPriceState].ToString() + ")";
+        swimSpeedText.text = "Swim Speed\n (" + swimSpeedPrices[currentSwimSpeedButtonPriceState].ToString() + ") Evo Points";
+        turnSpeedText.text = "Turn Speed\n (" + turnSpeedPrices[currentTurnSpeedButtonPriceState].ToString() + ") Evo Points";
+        stomachCapacityText.text = "Stomach Capacity\n (" + stomachCapacityPrices[currentStomachCapacityButtonPriceState].ToString() + ") Evo Points";
 
         // EvolvedButton
         if (evolutionStage == 0)
@@ -221,7 +221,7 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= swimSpeedPrices[currentSwimSpeedButtonPriceState])
                 {
-                    player.baseSwimSpeed += 30;
+                    player.baseSwimSpeed += 20;
                     player.evolutionPoints -= swimSpeedPrices[currentSwimSpeedButtonPriceState];
                     currentSwimSpeedButtonState += 1;
                     currentSwimSpeedButtonPriceState += 1;
@@ -234,7 +234,7 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= swimSpeedPrices[currentSwimSpeedButtonPriceState])
                 {
-                    player.baseSwimSpeed += 30;
+                    player.baseSwimSpeed += 20;
                     player.evolutionPoints -= swimSpeedPrices[currentSwimSpeedButtonPriceState];
                     currentSwimSpeedButtonState += 1;
                     currentSwimSpeedButtonPriceState += 1;
@@ -247,7 +247,7 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= swimSpeedPrices[currentSwimSpeedButtonPriceState])
                 {
-                    player.baseSwimSpeed += 30;
+                    player.baseSwimSpeed += 20;
                     player.evolutionPoints -= swimSpeedPrices[currentSwimSpeedButtonPriceState];
                     currentSwimSpeedButtonState += 1;
                     currentSwimSpeedButtonPriceState += 1;
@@ -264,7 +264,7 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= turnSpeedPrices[currentTurnSpeedButtonPriceState])
                 {
-                    player.baseRotateSpeed += 30;
+                    player.baseRotateSpeed += 20;
                     player.evolutionPoints -= turnSpeedPrices[currentTurnSpeedButtonPriceState];
                     currentTurnSpeedButtonState += 1;
                     currentTurnSpeedButtonPriceState += 1;
@@ -277,7 +277,7 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= turnSpeedPrices[currentTurnSpeedButtonPriceState])
                 {
-                    player.baseRotateSpeed += 30;
+                    player.baseRotateSpeed += 20;
                     player.evolutionPoints -= turnSpeedPrices[currentTurnSpeedButtonPriceState];
                     currentTurnSpeedButtonState += 1;
                     currentTurnSpeedButtonPriceState += 1;
@@ -290,7 +290,7 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= turnSpeedPrices[currentTurnSpeedButtonPriceState])
                 {
-                    player.baseRotateSpeed += 30;
+                    player.baseRotateSpeed += 20;
                     player.evolutionPoints -= turnSpeedPrices[currentTurnSpeedButtonPriceState];
                     currentTurnSpeedButtonState += 1;
                     currentTurnSpeedButtonPriceState += 1;

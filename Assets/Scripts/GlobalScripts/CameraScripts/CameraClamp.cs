@@ -5,7 +5,12 @@ using UnityEngine;
 public class CameraClamp : MonoBehaviour
 {
     public GameObject player;
-    public bool isEnabled = true;
+    public GameManager gameManager;
+    public bool isEnabled = false;
+
+    private GameObject playerSpawnObj;
+
+    public float lerpTime = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +20,14 @@ public class CameraClamp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerSpawnObj == null)
+        {
+            playerSpawnObj = GameObject.Find("PlayerSpawn");
+        }
+
         Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y, -10);
+        Vector3 playerSpawnPos = new Vector3(playerSpawnObj.transform.position.x, player.transform.position.y, -10);
+
         if (playerPos.y > 0)
         {
             playerPos.y = 0;
@@ -33,17 +45,17 @@ public class CameraClamp : MonoBehaviour
 
         if (isEnabled == true)
         {
-            this.transform.position = playerPos;
+            Vector3 camMove = Vector3.Lerp(gameObject.transform.position, playerPos, lerpTime * Time.deltaTime);
+            this.transform.position = camMove;
         }
-    }
+        else if (gameManager.state == GameManager.GameState.title)
+        {
+            this.transform.position = playerSpawnPos;
+        }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        
+        else if (gameManager.state == GameManager.GameState.upgrade)
+        {
+            this.transform.position = playerSpawnPos;
+        }
     }
 }

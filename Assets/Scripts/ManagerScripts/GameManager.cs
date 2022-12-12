@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void NewGame()
-    {
+    {        
         DeleteSave();
         player.FullyResetStats();
         LoadLevelButton();
@@ -227,9 +227,21 @@ public class GameManager : MonoBehaviour
         else state = GameState.pause;
     }
 
+    public void StartNewGame()
+    {
+        if (Application.persistentDataPath + "/savefile1.dat" == null)
+        {
+            showWarningPanel();
+        }
+        else
+        {
+            NewGame();
+        }
+    }
+
     public void showWarningPanel()
     {
-        warningPanel.SetActive(true);
+        warningPanel.SetActive(true);        
     }
 
     public void hideWarningPanel()

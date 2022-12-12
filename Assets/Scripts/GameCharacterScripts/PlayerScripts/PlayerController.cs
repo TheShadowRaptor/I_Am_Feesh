@@ -128,6 +128,14 @@ public class PlayerController : GameCharacter
 
     private void Move()
     {
+        // Can't move past camera
+        Vector3 pos = gameObject.transform.position;
+        if (pos.x > camera.orthographicSize * 2 - 1) pos.x = camera.orthographicSize * 2 - 1;
+        if (pos.x < -camera.orthographicSize * 2 + 1) pos.x = -camera.orthographicSize * 2 + 1;
+        if (pos.y > camera.orthographicSize) pos.y = camera.orthographicSize;
+        if (pos.y < -camera.orthographicSize) pos.y = -camera.orthographicSize;
+        gameObject.transform.position = pos;
+
         rb.velocity = (Vector2)transform.right * verticalMove * swimSpeed * currentDashSpeed * Time.deltaTime;
         rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -horizontalMove * rotateSpeed * Time.deltaTime));
 

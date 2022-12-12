@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraClamp : MonoBehaviour
 {
     public GameObject player;
+    public bool isEnabled = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,10 @@ public class CameraClamp : MonoBehaviour
             playerPos.x = -5;
         }
 
-        this.transform.position = playerPos;
+        if (isEnabled == true)
+        {
+            this.transform.position = playerPos;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)

@@ -130,10 +130,12 @@ public class PlayerController : GameCharacter
     {
         // Can't move past camera
         Vector3 pos = gameObject.transform.position;
-        if (pos.x > camera.orthographicSize * 2 - 1) pos.x = camera.orthographicSize * 2 - 1;
-        if (pos.x < -camera.orthographicSize * 2 + 1) pos.x = -camera.orthographicSize * 2 + 1;
-        if (pos.y > camera.orthographicSize) pos.y = camera.orthographicSize;
-        if (pos.y < -camera.orthographicSize) pos.y = -camera.orthographicSize;
+        Vector3 camBounds = new Vector3(camera.orthographicSize * 2, camera.orthographicSize, 0);
+        Vector3 camPos = camera.transform.position;
+        if (pos.x > camBounds.x + camPos.x) pos.x = camBounds.x + camPos.x;
+        if (pos.x < -camBounds.x + camPos.x) pos.x = -camBounds.x + camPos.x;
+        if (pos.y > camBounds.y + camPos.y - 3) pos.y = camBounds.y + camPos.y - 3;
+        if (pos.y < -camBounds.y + camPos.y + 1) pos.y = -camBounds.y + camPos.y + 1;
         gameObject.transform.position = pos;
 
         rb.velocity = (Vector2)transform.right * verticalMove * swimSpeed * currentDashSpeed * Time.deltaTime;

@@ -6,9 +6,13 @@ public class MeanSamon : FishCharacter
 {
     public Renderer spriteRenderer;
     public GameObject openMouth;
+    
     // Components
     Color spriteColor;
     AudioManager audioManager;
+
+    GameObject camObj;
+    CameraClamp cameraScroll;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +27,18 @@ public class MeanSamon : FishCharacter
     // Update is called once per frame
     void Update()
     {
-        audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
+        if (audioManager == null)
+        {
+            audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
+        }
 
+        if (camObj == null)
+        {
+            camObj = GameObject.Find("MainCamera");
+            cameraScroll = camObj.GetComponent<CameraClamp>();
+        }
+
+        if (isDead) UnlockCamera();
         InvincibilityFrames();
         AttackManager();
         AttackTimeDrain();
@@ -49,9 +63,10 @@ public class MeanSamon : FishCharacter
 
         if (PlayerSpotted() || WarningSpotted())
         {
-            // Swim Away 
+            // After 
             transform.right = player.transform.position - transform.position;
             swimSpeed = fleeSwimSpeed;
+            LockCamera();
         }
 
         else
@@ -59,6 +74,16 @@ public class MeanSamon : FishCharacter
             if (changeDir == false) transform.rotation = new Quaternion(0, 0, 0, 0);
             else if (changeDir == true) transform.rotation = new Quaternion(0, 0, 180, 0);
         }
+    }
+
+    public void LockCamera()
+    {
+        cameraScroll.isEnabled = false;
+    }
+
+    public void UnlockCamera()
+    {
+        cameraScroll.isEnabled = true;
     }
 
     protected new void SpawnFood()

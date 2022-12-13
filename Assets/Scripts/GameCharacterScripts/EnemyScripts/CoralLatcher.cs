@@ -46,9 +46,9 @@ public class CoralLatcher : FishCharacter
         AttackManager();
         AttackTimeDrain();
         FlipCharacterModel();
-        CheckState();
         SpawnFood();
         Deactivate();
+        CheckState();
     }
 
     void FixedUpdate()

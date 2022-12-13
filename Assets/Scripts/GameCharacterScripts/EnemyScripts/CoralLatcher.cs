@@ -95,8 +95,11 @@ public class CoralLatcher : FishCharacter
         {
             for (int i = 0; i < 2; i++)
             {
-                Instantiate(food, transform.position, transform.rotation);
-                Debug.Log("Dead");
+                float spacing = 0;
+                Vector3 pos = transform.position;
+                pos.x += spacing;
+                Instantiate(food, pos, transform.rotation);
+                spacing += 0.1f;
             }
         }
     }

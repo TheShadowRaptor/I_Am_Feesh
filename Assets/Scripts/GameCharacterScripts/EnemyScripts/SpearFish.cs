@@ -33,8 +33,7 @@ public class SpearFish : FishCharacter
         }
 
         if (spriteRenderer.isVisible) LockCamera();
-
-        else UnlockCamera();
+        else isDead = true;
 
         if (isDead) UnlockCamera();
         AttackManager();
@@ -75,14 +74,7 @@ public class SpearFish : FishCharacter
     }
     protected new void SpawnFood()
     {
-        if (isDead)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                Instantiate(food, transform.position, transform.rotation);
-                Debug.Log("Dead");
-            }
-        }
+
     }
 
     public void InvincibilityFrames()

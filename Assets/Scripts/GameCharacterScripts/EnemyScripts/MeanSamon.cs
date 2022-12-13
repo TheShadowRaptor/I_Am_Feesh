@@ -6,8 +6,6 @@ public class MeanSamon : FishCharacter
 {
     public Renderer spriteRenderer;
     public GameObject openMouth;
-    
-    public float turnTime = 1.0f;
     // Components
     Color spriteColor;
     AudioManager audioManager;
@@ -90,10 +88,13 @@ public class MeanSamon : FishCharacter
     {
         if (isDead)
         {
+            float spacing = 0;
             for (int i = 0; i < 3; i++)
             {
-                Instantiate(food, transform.position, transform.rotation);
-                Debug.Log("Dead");
+                Vector3 pos = transform.position;
+                pos.x += spacing;
+                Instantiate(food, pos, transform.rotation);
+                spacing += 0.1f;
             }
         }
     }

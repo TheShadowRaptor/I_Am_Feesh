@@ -199,7 +199,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = playerSpawn.transform.position;
         player.transform.rotation = playerSpawn.transform.rotation;
 
-        audioManager.PlayGameplayMusic();
+        audioManager.PlayGameplayMusicShallow();
         Save();
 
         state = GameState.gameplay;

@@ -7,8 +7,12 @@ public class AreaDetect : MonoBehaviour
 
     public int areaNum = 0;
     int currentAreaNum = 0;
+
     GameObject playerObj;
     PlayerController player;
+
+    GameObject audioManagerObj;
+    AudioManager audioManager;
 
     private void Update()
     {
@@ -18,6 +22,13 @@ public class AreaDetect : MonoBehaviour
             player = playerObj.GetComponent<PlayerController>();
 
         }
+
+        if (audioManager == null)
+        {
+            audioManagerObj = GameObject.Find("AudioManager");
+            audioManager = audioManagerObj.GetComponent<AudioManager>();
+        }
+         
         else
         {
             switch (currentAreaNum)
@@ -49,8 +60,14 @@ public class AreaDetect : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Collision");
             currentAreaNum = areaNum;
+            if (currentAreaNum == 0) audioManager.PlayGameplayMusicShallow();
+            else if (currentAreaNum == 1) audioManager.PlayGameplayMusicCoralReef();
+            else if (currentAreaNum == 2) audioManager.PlayGameplayMusicOpenOcean();
+            else if (currentAreaNum == 3) audioManager.PlayGameplayMusicTwilight();
+            else if (currentAreaNum == 4) audioManager.StopGameplayMusic();
         }
+
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 }

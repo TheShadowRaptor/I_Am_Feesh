@@ -29,7 +29,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip selectButton;
 
     [Header("Music")]
-    public AudioClip gameplayMusic;
+    public AudioClip gameplayMusicShallow;
+    public AudioClip gameplayMusicCoralReef;
+    public AudioClip gameplayMusicOpenOcean;
+    public AudioClip gameplayMusicTwilight;
     public AudioClip menuMusic;
 
     [Header("Scripts")]
@@ -128,9 +131,30 @@ public class AudioManager : MonoBehaviour
     }
 
     //Music 
-    public void PlayGameplayMusic()
+    public void PlayGameplayMusicShallow()
     {
-        musicAudio.clip = gameplayMusic;
+        musicAudio.clip = gameplayMusicShallow;
+        musicAudio.Play();
+        musicAudio.volume = maxMusicVolume;
+    }
+
+    public void PlayGameplayMusicCoralReef()
+    {
+        musicAudio.clip = gameplayMusicCoralReef;
+        musicAudio.Play();
+        musicAudio.volume = maxMusicVolume;
+    }
+
+    public void PlayGameplayMusicOpenOcean()
+    {
+        musicAudio.clip = gameplayMusicOpenOcean;
+        musicAudio.Play();
+        musicAudio.volume = maxMusicVolume;
+    }
+
+    public void PlayGameplayMusicTwilight()
+    {
+        musicAudio.clip = gameplayMusicTwilight;
         musicAudio.Play();
         musicAudio.volume = maxMusicVolume;
     }

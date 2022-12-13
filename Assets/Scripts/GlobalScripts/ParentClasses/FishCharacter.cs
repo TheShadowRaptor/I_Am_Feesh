@@ -18,7 +18,7 @@ public class FishCharacter : GameCharacter
     [Header("FishStats")]
     public float swimSpeed = 20;
     public float fleeSwimSpeed = 40;
-
+    public float turnTime = 1.0f;
     public float attackingLength = 0.1f;
     public float currentAttackTime = 0;
     public float attackTimeDecrease = 5.0f;
@@ -52,7 +52,9 @@ public class FishCharacter : GameCharacter
         if (PlayerSpotted() || WarningSpotted())
         {
             // Swim Away 
-            transform.right = -player.transform.position + transform.position;
+            Vector3 playerPos = -player.transform.position;
+            Vector3 fleeLerp = Vector3.Lerp(transform.right, playerPos + transform.position, turnTime * Time.deltaTime);
+            transform.right = fleeLerp;
             swimSpeed = fleeSwimSpeed;
         }
 

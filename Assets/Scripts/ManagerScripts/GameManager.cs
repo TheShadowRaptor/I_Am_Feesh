@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
         {
             case GameState.title:
                 Time.timeScale = 1;
+                player.staminaDecrease = 0;
                 audioManager.StopGameplayMusic();
                 //Set Player position to PlayerSpawn point
                 player.transform.position = playerSpawn.transform.position;
@@ -110,16 +111,19 @@ public class GameManager : MonoBehaviour
 
             case GameState.controls:
                 Time.timeScale = 0;
+                player.staminaDecrease = 0;
                 uIMananger.ControlsCanvasOn();
                 break;
 
             case GameState.settings:
                 Time.timeScale = 0;
+                player.staminaDecrease = 0;
                 uIMananger.SettingsCanvasOn();
                 break;
 
             case GameState.gameplay:
                 Time.timeScale = 1;
+                player.staminaDecrease = 1;
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     state = GameState.pause;
@@ -132,29 +136,32 @@ public class GameManager : MonoBehaviour
                 {
                     state = GameState.gameplay;
                 }
+                Time.timeScale = 0;
+                player.staminaDecrease = 0;
                 audioManager.StopGameplayMusic();
                 uIMananger.PauseCanvasOn();
-                Time.timeScale = 0;
                 break;
 
             case GameState.results:
-                Time.timeScale = 0;
+                Time.timeScale = 1;
+                player.staminaDecrease = 0;
                 uIMananger.ResultsCanvasOn();
                 audioManager.StopGameplayMusic();
                 break;
 
             case GameState.upgrade:
                 Time.timeScale = 1;
+                player.staminaDecrease = 0;
 
                 //Set Player position to PlayerSpawn point
                 player.transform.position = playerSpawn.transform.position;
                 player.transform.rotation = playerSpawn.transform.rotation;
-                player.ResetRunStats();
                 uIMananger.UpgradeCanvasOn();
                 break;
 
             case GameState.win:
-                Time.timeScale = 0;
+                Time.timeScale = 1;
+                player.staminaDecrease = 0;
                 uIMananger.WinCanvasOn();
                 audioManager.StopGameplayMusic();
                 break;
@@ -181,6 +188,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevelButton()
     {
+        player.ResetRunStats();
+
         levelMananger.LoadLevel();
 
         //Set Player position to PlayerSpawn point

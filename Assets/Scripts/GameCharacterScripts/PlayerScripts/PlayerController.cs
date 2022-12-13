@@ -82,8 +82,11 @@ public class PlayerController : GameCharacter
 
     private void FixedUpdate()
     {
-        InputMananger();
-        Move();
+        if (gameManager.state == GameManager.GameState.gameplay)
+        {
+            InputMananger();
+            Move();
+        }
     }
 
     // Update is called once per frame
@@ -96,12 +99,12 @@ public class PlayerController : GameCharacter
             GodMode();
         }
 
+        AttackManager();
         InvincibilityFrames();
         AnimationHandler();
-        CheckState();
-        AttackManager();
         FlipCharacterModel();
-        DrainManager();
+        DrainManager();     
+        CheckState();     
     }
 
     protected new void FlipCharacterModel()
@@ -193,7 +196,7 @@ public class PlayerController : GameCharacter
         TakeDamage foodTakeDamage = playerAttackRadius.foodTakeDamage;
         FoodCharacter food = playerAttackRadius.foodScript;
         // Attack Input
-        if (Attacking() == true)
+        if (Attacking() == true && isDead == false)
         {
             attackRadiusObj.SetActive(true);
             openMouth.SetActive(false);
@@ -223,22 +226,31 @@ public class PlayerController : GameCharacter
         StopAttacking();
         if (attackButton && currentAttackTime == 0)
         {
-            audioManager.PlayPlayerReadyingBite();
-            currentAttackTime = attackTime;
-            attacking = true;
-            openMouth.SetActive(true);
+            if (isDead == false)
+            {
+                audioManager.PlayPlayerReadyingBite();
+                currentAttackTime = attackTime;
+                attacking = true;
+                openMouth.SetActive(true);
+            }
             return false;
         }
 
         else if (attacking == true && currentAttackTime <= attackLength)
         {
-            audioManager.PlayPlayerBite();
+            if (isDead == false)
+            {
+                audioManager.PlayPlayerBite();
+            }
+            else
+            {
+                attacking = false;
+            }
             return true;
         }
 
         else
         {
-
             return false;
         }
     }
@@ -324,6 +336,8 @@ public class PlayerController : GameCharacter
         tallyFoodEaten = 0;
         tallyKills = 0;
         tallyBiome = "Shallow";
+
+        openMouth.SetActive(false);
     }
 
     public void GodMode()
@@ -362,7 +376,7 @@ public class PlayerController : GameCharacter
 
     public new void CheckState()
     {
-        if (health <= 0 || takeDamage.health <= 0)
+        if (health <= 0 || takeDamage.health <= 0 || health <= 0 && takeDamage.health <= 0) 
         {
             isDead = true;
         }

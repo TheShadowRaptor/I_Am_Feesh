@@ -8,6 +8,9 @@ public class SpearFish : FishCharacter
     // Components
     Color spriteColor;
     AudioManager audioManager;
+
+    GameObject camObj;
+    CameraClamp cameraScroll;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +26,23 @@ public class SpearFish : FishCharacter
     {
         audioManager = GameObject.Find("AudioManager").gameObject.GetComponent<AudioManager>();
 
+        if (camObj == null)
+        {
+            camObj = GameObject.Find("MainCamera");
+            cameraScroll = camObj.GetComponent<CameraClamp>();
+        }
+
+        if (spriteRenderer.isVisible) LockCamera();
+
+        else UnlockCamera();
+
+        if (isDead) UnlockCamera();
         AttackManager();
         AttackTimeDrain();
         FlipCharacterModel();
-        CheckState();
         SpawnFood();
         Deactivate();
+        CheckState();
     }
 
     void FixedUpdate()
@@ -50,6 +64,15 @@ public class SpearFish : FishCharacter
 
     }
 
+    public void LockCamera()
+    {
+        cameraScroll.isEnabled = false;
+    }
+
+    public void UnlockCamera()
+    {
+        cameraScroll.isEnabled = true;
+    }
     protected new void SpawnFood()
     {
         if (isDead)

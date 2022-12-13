@@ -89,7 +89,6 @@ public class PlayerController : GameCharacter
     {
         if (gameManager.state == GameManager.GameState.gameplay)
         {
-            InputMananger();
             Move();
         }
     }
@@ -104,6 +103,7 @@ public class PlayerController : GameCharacter
             GodMode();
         }
 
+        InputMananger();
         AttackManager();
         InvincibilityFrames();
         AnimationHandler();

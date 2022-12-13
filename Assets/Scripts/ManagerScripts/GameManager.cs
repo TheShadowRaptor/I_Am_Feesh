@@ -165,6 +165,7 @@ public class GameManager : MonoBehaviour
     {        
         DeleteSave();
         player.FullyResetStats();
+        upgradeManager.ResetUpgrades();
         LoadLevelButton();
     }
 

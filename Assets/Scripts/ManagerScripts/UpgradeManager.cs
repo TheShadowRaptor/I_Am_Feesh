@@ -480,4 +480,50 @@ public class UpgradeManager : MonoBehaviour
             }
         }
     }
+
+    public void ResetUpgrades()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            swimSpeedObj.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.white;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            turnSpeedObj.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.white;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            stomachCapacityObj.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.white;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            evolutionObj.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.white;
+        }
+
+        currentSwimSpeedButtonState = 0;
+        currentTurnSpeedButtonState = 0;
+        currentStomachCapacityButtonState = 0;
+
+        currentSwimSpeedButtonPriceState = 0;
+        currentTurnSpeedButtonPriceState = 0;
+        currentStomachCapacityButtonPriceState = 0;
+        currentEvolveButtonStateCap = 0;
+
+        evolutionStage = 0;
+
+        swimSpeedButtonStateCap = 0;
+        turnSpeedButtonStateCap = 0;
+        stomachCapacityButtonStateCap = 0;
+
+        swimSpeedButtonPriceStateCap = 0;
+        turnSpeedButtonPriceStateCap = 0;
+        stomachCapacityButtonPriceStateCap = 0;
+
+        evolutionPointCount = 0;
+
+        evolved = false;
+    }
 }

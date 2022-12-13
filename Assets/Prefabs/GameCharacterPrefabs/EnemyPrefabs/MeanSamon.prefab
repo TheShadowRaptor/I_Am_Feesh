@@ -658,7 +658,7 @@ MonoBehaviour:
   hitFrameTime: 0
   changeDir: 0
   swimSpeed: 0
-  fleeSwimSpeed: 40
+  fleeSwimSpeed: 60
   attackingLength: 0.05
   currentAttackTime: 0
   attackTimeDecrease: 0.5

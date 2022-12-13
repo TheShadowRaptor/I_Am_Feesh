@@ -406,7 +406,7 @@ MonoBehaviour:
   isDead: 0
   hitFrameTime: 0
   changeDir: 0
-  swimSpeed: 300
+  swimSpeed: 600
   fleeSwimSpeed: 40
   attackingLength: 0.1
   currentAttackTime: 0

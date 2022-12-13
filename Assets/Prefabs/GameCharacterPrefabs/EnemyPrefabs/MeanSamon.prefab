@@ -265,7 +265,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 3
 --- !u!1 &3992301917038275427
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +428,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0806961, y: -0.153314}
-  m_Size: {x: 10, y: 10}
+  m_Size: {x: 6, y: 6}
   m_Direction: 1
 --- !u!114 &6771488931474332046
 MonoBehaviour:
@@ -658,7 +658,7 @@ MonoBehaviour:
   hitFrameTime: 0
   changeDir: 0
   swimSpeed: 0
-  fleeSwimSpeed: 60
+  fleeSwimSpeed: 70
   attackingLength: 0.05
   currentAttackTime: 0
   attackTimeDecrease: 0.5

@@ -5062,7 +5062,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9489,6 +9489,8 @@ MonoBehaviour:
   enemyBite: {fileID: 8300000, guid: 85afe035c63d19249b447826d0467fa1, type: 3}
   selectButton: {fileID: 8300000, guid: 9cfd8803f24945f46964ef0ae4e1016f, type: 3}
   gameplayMusic: {fileID: 8300000, guid: f01bf2a279a8c5940aba2d85a0dc2ec5, type: 3}
+  menuMusic: {fileID: 8300000, guid: 0c4d4ffce6085f3488a4d56bd7eaf197, type: 3}
+  settingsManager: {fileID: 8128486359117132478}
 --- !u!1 &5724953683973483764
 GameObject:
   m_ObjectHideFlags: 0
@@ -11710,10 +11712,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6577051919683083136}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySelectButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6892434141256882085
 GameObject:
   m_ObjectHideFlags: 0
@@ -13037,6 +13051,7 @@ GameObject:
   - component: {fileID: 5755170163811973479}
   - component: {fileID: 8678660442233146053}
   - component: {fileID: 7867463512283787234}
+  - component: {fileID: 8128486359117132478}
   m_Layer: 0
   m_Name: CanvasSettings
   m_TagString: Untagged
@@ -13130,6 +13145,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8128486359117132478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921076439714620067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c4d9efd2e4a20439f9183e83531ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSlider: {fileID: 5089011243345073387}
+  soundSlider: {fileID: 6150391608067956327}
+  musicVolume: 0.5
+  soundVolume: 0.5
 --- !u!1 &8128307191574430886
 GameObject:
   m_ObjectHideFlags: 0

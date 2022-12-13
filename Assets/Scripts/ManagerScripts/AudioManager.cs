@@ -121,7 +121,10 @@ public class AudioManager : MonoBehaviour
     public void PlaySelectButton()
     {
         uIAudio.clip = selectButton;
-        uIAudio.PlayOneShot(selectButton);
+        if (uIAudio.isPlaying == false)
+        {
+            uIAudio.Play();
+        }
     }
 
     //Music 

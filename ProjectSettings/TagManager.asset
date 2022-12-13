@@ -9,6 +9,7 @@ TagManager:
   - Food
   - Wall
   - AttackRadius
+  - Coral
   layers:
   - Default
   - TransparentFX

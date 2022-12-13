@@ -25,24 +25,21 @@ public class GameplayHud : MonoBehaviour
     int evolutionPointCount;
     float staminaCount;
 
-    GameObject playerObj;
-    PlayerController player;
+    float startX;
+    [HideInInspector] public float savedX;
+    RectTransform currentTransform;
 
-    // Start is called before the first frame update
-    void Start()
+    public PlayerController player;
+
+    private void Start()
     {
-
+        currentTransform = hungerBarSlider.GetComponent(typeof(RectTransform)) as RectTransform;
+        startX = currentTransform.sizeDelta.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerObj == null)
-        {
-            playerObj = GameObject.Find("Player");
-            player = playerObj.GetComponent<PlayerController>();
-        }
-
         DisplayEvolutionPoints();
         DisplayHungerBar();
         DisplayDash();
@@ -54,6 +51,20 @@ public class GameplayHud : MonoBehaviour
         evolutionPointCount = player.evolutionPoints;
 
         evolutionPointCountText.text = "Evo Points: (" + evolutionPointCount.ToString() + ")";
+    }
+
+    public void IncreaseHungerBarSize(int size)
+    {
+        currentTransform = hungerBarSlider.GetComponent(typeof(RectTransform)) as RectTransform;
+        RectTransform rectTransform = hungerBarSlider.GetComponent(typeof (RectTransform)) as RectTransform;
+        float currentSizeX = currentTransform.sizeDelta.x;
+        rectTransform.sizeDelta = new Vector2(currentSizeX += size, 90);
+        savedX = currentSizeX;
+    }
+
+    public void ResetHungerBar()
+    {
+        currentTransform.sizeDelta = new Vector2(startX, 90);
     }
 
     void DisplayHungerBar()

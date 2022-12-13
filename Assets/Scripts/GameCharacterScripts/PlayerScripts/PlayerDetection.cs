@@ -17,6 +17,12 @@ public class PlayerDetection : MonoBehaviour
             attackRadius.foodObj = other.gameObject;
             attackRadius.foodScript = attackRadius.foodObj.GetComponent<FoodCharacter>();
         }
+
+        if (other.gameObject.CompareTag("Coral"))
+        {
+            attackRadius.foodObj = other.gameObject;
+            attackRadius.foodScript = attackRadius.foodObj.GetComponent<FoodCharacter>();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)

@@ -28,4 +28,7 @@ public class SaveData
     public int currentStomachCapacityPriceButtonState;
 
     public int evolutionStage;
+
+    // GameplayHudData
+    public float savedX;
 }

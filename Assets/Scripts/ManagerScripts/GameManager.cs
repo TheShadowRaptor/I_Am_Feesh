@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public LevelMananger levelMananger;
     public AudioManager audioManager;
     public UpgradeManager upgradeManager;
+    public GameplayHud gameplayHud;
 
     [Header("TextObjects")]
     public TextMeshProUGUI SaveDataDoesNotExist;
@@ -173,6 +174,7 @@ public class GameManager : MonoBehaviour
         DeleteSave();
         player.FullyResetStats();
         upgradeManager.ResetUpgrades();
+        gameplayHud.ResetHungerBar();
         LoadLevelButton();
     }
 
@@ -301,7 +303,10 @@ public class GameManager : MonoBehaviour
 
         saveData.evolutionStage = upgradeManager.evolutionStage;
 
-    bf.Serialize(file, saveData);
+        // GameplayHudData
+        saveData.savedX = gameplayHud.savedX;
+
+        bf.Serialize(file, saveData);
         file.Close();
 
         SavingPanel.SetActive(true);
@@ -335,6 +340,9 @@ public class GameManager : MonoBehaviour
         upgradeManager.currentStomachCapacityButtonPriceState = saveData.currentStomachCapacityPriceButtonState;
 
         upgradeManager.evolutionStage = saveData.evolutionStage;
+
+        // GameplayHudData
+        gameplayHud.savedX = saveData.savedX;
     }
 
     public void DeleteSave()

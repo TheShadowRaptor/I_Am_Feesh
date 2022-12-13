@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class UpgradeManager : MonoBehaviour
 {
-    GameObject playerObj;
-    PlayerController player;
+    public PlayerController player;
+    public GameplayHud gameplayHud;
 
     [Header("Text")]
     public TextMeshProUGUI swimSpeedText;
@@ -67,13 +67,6 @@ public class UpgradeManager : MonoBehaviour
     void Update()
     {
         PipManager();
-
-        if (playerObj == null)
-        {
-            playerObj = GameObject.Find("Player");
-            player = playerObj.GetComponent<PlayerController>();
-        }
-      
         DisplayText();
         UpgradeButtonManager();
 
@@ -307,7 +300,8 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= stomachCapacityPrices[currentStomachCapacityButtonPriceState])
                 {
-                    player.baseStamina += 5;
+                    player.baseStamina += 20;
+                    gameplayHud.IncreaseHungerBarSize(20);
                     player.evolutionPoints -= stomachCapacityPrices[currentStomachCapacityButtonPriceState];
                     currentStomachCapacityButtonState += 1;
                     currentStomachCapacityButtonPriceState += 1;
@@ -320,7 +314,8 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= stomachCapacityPrices[currentStomachCapacityButtonPriceState])
                 {
-                    player.baseStamina += 5;
+                    player.baseStamina += 20;
+                    gameplayHud.IncreaseHungerBarSize(20);
                     player.evolutionPoints -= stomachCapacityPrices[currentStomachCapacityButtonPriceState];
                     currentStomachCapacityButtonState += 1;
                     currentStomachCapacityButtonPriceState += 1;
@@ -333,7 +328,8 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= stomachCapacityPrices[currentStomachCapacityButtonPriceState])
                 {
-                    player.baseStamina += 5;
+                    player.baseStamina += 20;
+                    gameplayHud.IncreaseHungerBarSize(20);
                     player.evolutionPoints -= stomachCapacityPrices[currentStomachCapacityButtonPriceState];
                     currentStomachCapacityButtonState += 1;
                     currentStomachCapacityButtonPriceState += 1;

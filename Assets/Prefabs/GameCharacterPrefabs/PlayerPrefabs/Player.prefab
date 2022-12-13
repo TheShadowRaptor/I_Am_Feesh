@@ -180,9 +180,10 @@ MonoBehaviour:
   baseStamina: 20
   baseDamage: 1
   baseDashCharges: 1
-  baseDashSpeed: 2
+  baseDashSpeed: 3
   baseSwimSpeed: 50
   baseRotateSpeed: 20
+  maxDashChargeTime: 5
   evolutionPoints: 0
   health: 0
   stamina: 0
@@ -191,12 +192,15 @@ MonoBehaviour:
   rotateSpeed: 20
   dashCharges: 0
   dashSpeed: 0
+  currentDashChargeTime: 0
   currentDepth: 
   staminaDecrease: 1
   dashSpeedDecrease: 1
   attackTimeDecrease: 0.18
+  dashChargeTimeIncrease: 1
   playerAttackRadius: {fileID: 9155749875499288213}
   audioManager: {fileID: 0}
+  gameManager: {fileID: 0}
   attackRadiusObj: {fileID: 1570108902988751184}
   openMouth: {fileID: 7082455489355587215}
   camera: {fileID: 0}

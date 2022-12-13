@@ -11,6 +11,10 @@ public class GameplayHud : MonoBehaviour
 
     [Header("Slider")]
     public Slider hungerBarSlider;
+    public Slider dashRechargeSlider;
+
+    [Header("Images")]
+    public GameObject dashRechargeBackground;
 
     [Header("DashCharges")]
     public GameObject dashOne;
@@ -23,7 +27,10 @@ public class GameplayHud : MonoBehaviour
     public GameObject heartThree;
 
     int evolutionPointCount;
+
     float staminaCount;
+
+    float dashRechargeCount;
 
     float startX;
     [HideInInspector] public float savedX;
@@ -42,6 +49,7 @@ public class GameplayHud : MonoBehaviour
     {
         DisplayEvolutionPoints();
         DisplayHungerBar();
+        DisplayDashRechargeBar();
         DisplayDash();
         DisplayHealth();
     }
@@ -69,10 +77,28 @@ public class GameplayHud : MonoBehaviour
 
     void DisplayHungerBar()
     {
-        hungerBarSlider.maxValue = player.baseStamina;
+        hungerBarSlider.maxValue = player.baseStamina;       
         staminaCount = player.stamina;
 
         hungerBarSlider.value = staminaCount;
+    }
+
+    void DisplayDashRechargeBar()
+    {
+        dashRechargeSlider.maxValue = player.maxDashChargeTime;
+
+        if (dashRechargeSlider.value <= 0)
+        {
+            dashRechargeBackground.SetActive(false);
+        }
+        else
+        {
+            dashRechargeBackground.SetActive(true);
+        }
+
+        dashRechargeCount = player.currentDashChargeTime;
+
+        dashRechargeSlider.value = dashRechargeCount;
     }
 
     void DisplayDash()

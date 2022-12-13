@@ -13,6 +13,7 @@ public class PlayerController : GameCharacter
     public int baseDashSpeed = 2;
     public float baseSwimSpeed = 50;
     public float baseRotateSpeed = 20;
+    public float maxDashChargeTime = 5;
 
     [Header("PlayerStats")]
     public int evolutionPoints;
@@ -23,6 +24,7 @@ public class PlayerController : GameCharacter
     public float rotateSpeed;
     public int dashCharges;
     public int dashSpeed;
+    public float currentDashChargeTime;
     public string currentDepth;
 
     [Header("Decrease")]
@@ -30,6 +32,9 @@ public class PlayerController : GameCharacter
     public float dashSpeedDecrease = 1.0f;
     public float attackTimeDecrease = 5.0f;
     float currentDashSpeed = 1;
+
+    [Header("Increase")]
+    public float dashChargeTimeIncrease = 1.0f;
 
     [Header("Scripts")]
     public PlayerAttackRadius playerAttackRadius;
@@ -103,7 +108,7 @@ public class PlayerController : GameCharacter
         InvincibilityFrames();
         AnimationHandler();
         FlipCharacterModel();
-        DrainManager();     
+        TimerManager();     
         CheckState();     
     }
 
@@ -281,6 +286,62 @@ public class PlayerController : GameCharacter
         }
     }
 
+    void DashRecharge()
+    {
+        // Clamp
+        if (currentDashChargeTime <= 0)
+        {
+            currentDashChargeTime = 0;
+        }
+
+        if (currentDashChargeTime > maxDashChargeTime)
+        {
+            currentDashChargeTime = maxDashChargeTime;
+        }
+
+        if (baseDashCharges == 1)
+        {
+            if (dashCharges == 0)
+            {
+                currentDashChargeTime += dashChargeTimeIncrease * Time.deltaTime;
+
+                if (currentDashChargeTime >= maxDashChargeTime)
+                {
+                    dashCharges = 1;
+                    currentDashChargeTime = 0;
+                }
+            }
+        }
+
+        else if (baseDashCharges == 2)
+        {
+            if (dashCharges <= 1)
+            {
+                currentDashChargeTime += dashChargeTimeIncrease * Time.deltaTime;
+
+                if (currentDashChargeTime >= maxDashChargeTime)
+                {
+                    dashCharges += 1;
+                    currentDashChargeTime = 0;
+                }
+            }
+        }
+
+        else if (baseDashCharges >= 3)
+        {
+            if (dashCharges <= 2)
+            {
+                currentDashChargeTime += dashChargeTimeIncrease * Time.deltaTime;
+
+                if (currentDashChargeTime == maxDashChargeTime)
+                {
+                    dashCharges += 1;
+                    currentDashChargeTime = 0;
+                }
+            }
+        }
+    }
+
     void DashDrain()
     {
         currentDashSpeed -= dashSpeedDecrease * Time.deltaTime;
@@ -314,9 +375,10 @@ public class PlayerController : GameCharacter
         }
     }
 
-    void DrainManager()
+    void TimerManager()
     {
         StaminaDrain();
+        DashRecharge();
         DashDrain();
         AttackTimeDrain();
     }
@@ -331,6 +393,8 @@ public class PlayerController : GameCharacter
         rotateSpeed = baseRotateSpeed;
         dashCharges = baseDashCharges;
         dashSpeed = baseDashSpeed;
+
+        currentDashChargeTime = 0;
 
         tallyEvoPoints = 0;
         tallyFoodEaten = 0;

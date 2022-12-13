@@ -135,11 +135,12 @@ public class GameManager : MonoBehaviour
             case GameState.pause:
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
+                    audioManager.TurnGameplayMusicUp();
                     state = GameState.gameplay;
                 }
                 Time.timeScale = 0;
                 player.staminaDecrease = 0;
-                audioManager.StopGameplayMusic();
+                audioManager.TurnGameplayMusicDown();
                 uIMananger.PauseCanvasOn();
                 break;
 
@@ -238,6 +239,7 @@ public class GameManager : MonoBehaviour
 
     public void UnPauseButton()
     {
+        audioManager.TurnGameplayMusicUp();
         state = GameState.gameplay;
     }
 

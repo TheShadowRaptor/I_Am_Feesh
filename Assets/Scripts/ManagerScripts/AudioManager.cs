@@ -30,6 +30,10 @@ public class AudioManager : MonoBehaviour
 
     [Header("Music")]
     public AudioClip gameplayMusic;
+    public AudioClip menuMusic;
+
+    float maxVolume;
+    float pauseVolume;
 
     private void Start()
     {
@@ -39,6 +43,12 @@ public class AudioManager : MonoBehaviour
         enemyAudio = gameObject.transform.Find("EnemyAudio").gameObject.GetComponent<AudioSource>();
         uIAudio = gameObject.transform.Find("UIAudio").gameObject.GetComponent<AudioSource>();
         musicAudio = gameObject.transform.Find("MusicAudio").gameObject.GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        maxVolume = 1.0f;
+        pauseVolume = maxVolume / 3.0f;
     }
 
     //Player Sounds
@@ -109,6 +119,23 @@ public class AudioManager : MonoBehaviour
     {
         musicAudio.clip = gameplayMusic;
         musicAudio.Play();
+        musicAudio.volume = maxVolume;
+    }
+
+    public void PlayMenuMusic()
+    {
+        musicAudio.clip = menuMusic;
+        musicAudio.Play();
+    }
+
+    public void TurnGameplayMusicDown()
+    {
+        musicAudio.volume = pauseVolume;
+    }
+    
+    public void TurnGameplayMusicUp()
+    {
+        musicAudio.volume = maxVolume;
     }
 
     public void StopGameplayMusic()

@@ -7,18 +7,22 @@ using TMPro;
 public class SettingsManager : MonoBehaviour
 {
     [Header("Sliders")]
-    public Slider MusicSlider;
-    public Slider SoundSlider;
+    public Slider musicSlider;
+    public Slider soundSlider;
 
-    // Start is called before the first frame update
-    void Start()
+    public float musicVolume;
+    public float soundVolume;
+
+    private void Start()
     {
-        
+        musicSlider.value = 0.5f;    
+        soundSlider.value = 0.5f;    
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        musicVolume = musicSlider.value;
+        soundVolume = soundSlider.value;
     }
 }

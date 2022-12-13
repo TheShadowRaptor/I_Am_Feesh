@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &393850950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6150391608067956327, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+  m_PrefabInstance: {fileID: 1571264561}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &928626785
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +345,10 @@ PrefabInstance:
       propertyPath: menuMusic
       value: 
       objectReference: {fileID: 8300000, guid: 0c4d4ffce6085f3488a4d56bd7eaf197, type: 3}
+    - target: {fileID: 6577051919683083136, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: settingsManager
+      value: 
+      objectReference: {fileID: 2063641366}
     - target: {fileID: 6999387384786933176, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -420,6 +435,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a518e0b7f0ffa0043ad8a3a43e84d1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2044036119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5089011243345073387, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+  m_PrefabInstance: {fileID: 1571264561}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2063641361 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7921076439714620067, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
@@ -437,8 +463,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c4d9efd2e4a20439f9183e83531ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicSlider: {fileID: 0}
-  SoundSlider: {fileID: 0}
+  musicSlider: {fileID: 2044036119}
+  soundSlider: {fileID: 393850950}
+  musicVolume: 0.5
+  soundVolume: 0.5
 --- !u!1001 &134191497939000907
 PrefabInstance:
   m_ObjectHideFlags: 0

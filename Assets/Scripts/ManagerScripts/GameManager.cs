@@ -102,8 +102,8 @@ public class GameManager : MonoBehaviour
         {
             case GameState.title:
                 Time.timeScale = 1;
+                audioManager.PlayMenuMusic();
                 player.staminaDecrease = 0;
-                audioManager.StopGameplayMusic();
                 //Set Player position to PlayerSpawn point
                 player.transform.position = playerSpawn.transform.position;
                 player.transform.rotation = playerSpawn.transform.rotation;
@@ -133,14 +133,14 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.pause:
+                Time.timeScale = 0;
+                player.staminaDecrease = 0;
+                audioManager.TurnGameplayMusicDown();
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     audioManager.TurnGameplayMusicUp();
                     state = GameState.gameplay;
                 }
-                Time.timeScale = 0;
-                player.staminaDecrease = 0;
-                audioManager.TurnGameplayMusicDown();
                 uIMananger.PauseCanvasOn();
                 break;
 
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
             case GameState.upgrade:
                 Time.timeScale = 1;
                 player.staminaDecrease = 0;
-
+                audioManager.PlayMenuMusic();
                 //Set Player position to PlayerSpawn point
                 player.transform.position = playerSpawn.transform.position;
                 player.transform.rotation = playerSpawn.transform.rotation;

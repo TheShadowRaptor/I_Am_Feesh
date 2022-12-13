@@ -32,8 +32,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameplayMusic;
     public AudioClip menuMusic;
 
-    float maxVolume;
-    float pauseVolume;
+    [Header("Scripts")]
+    public SettingsManager settingsManager;
+
+    float maxMusicVolume;
+    float pauseMusicVolume;
 
     private void Start()
     {
@@ -47,8 +50,15 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        maxVolume = 1.0f;
-        pauseVolume = maxVolume / 3.0f;
+        musicAudio.volume = settingsManager.musicVolume;
+        playerAudio.volume = settingsManager.soundVolume;
+        playerBiteAudio.volume = settingsManager.soundVolume;
+        objectAudio.volume = settingsManager.soundVolume;
+        enemyAudio.volume = settingsManager.soundVolume;
+        uIAudio.volume = settingsManager.soundVolume;
+
+        maxMusicVolume = settingsManager.musicVolume;
+        pauseMusicVolume = maxMusicVolume / 3.0f;
     }
 
     //Player Sounds
@@ -119,23 +129,26 @@ public class AudioManager : MonoBehaviour
     {
         musicAudio.clip = gameplayMusic;
         musicAudio.Play();
-        musicAudio.volume = maxVolume;
+        musicAudio.volume = maxMusicVolume;
     }
 
     public void PlayMenuMusic()
     {
         musicAudio.clip = menuMusic;
-        musicAudio.Play();
+        if (musicAudio.isPlaying == false)
+        {
+            musicAudio.Play();
+        }
     }
 
     public void TurnGameplayMusicDown()
     {
-        musicAudio.volume = pauseVolume;
+        musicAudio.volume = pauseMusicVolume;
     }
     
     public void TurnGameplayMusicUp()
     {
-        musicAudio.volume = maxVolume;
+        musicAudio.volume = maxMusicVolume;
     }
 
     public void StopGameplayMusic()

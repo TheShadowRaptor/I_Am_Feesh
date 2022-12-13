@@ -243,14 +243,11 @@ public class PlayerController : GameCharacter
 
         else if (attacking == true && currentAttackTime <= attackLength)
         {
-            if (isDead == false)
+            if (gameManager.state == GameManager.GameState.gameplay)
             {
                 audioManager.PlayPlayerBite();
             }
-            else
-            {
-                attacking = false;
-            }
+
             return true;
         }
 

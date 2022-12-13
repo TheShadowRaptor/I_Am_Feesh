@@ -67,7 +67,7 @@ public class AudioManager : MonoBehaviour
         playerBiteAudio.clip = playerBite;
         if (playerBiteAudio.isPlaying == false)
         {
-            playerBiteAudio.Play();
+            playerBiteAudio.PlayOneShot(playerBite);
         }
     }
 

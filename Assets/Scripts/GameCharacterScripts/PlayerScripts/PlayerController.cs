@@ -44,6 +44,7 @@ public class PlayerController : GameCharacter
     [Header("GameObjects")]
     public GameObject attackRadiusObj;
     public GameObject openMouth;
+    public GameObject dashLines;
     public Camera camera;
 
     // Run Results
@@ -157,6 +158,7 @@ public class PlayerController : GameCharacter
         {
             currentDashSpeed = dashSpeed;
             dashCharges -= 1;
+            dashLines.SetActive(true);
             audioManager.PlayPlayerDash();
         }
 
@@ -346,8 +348,8 @@ public class PlayerController : GameCharacter
         // Clamp
         if (currentDashSpeed <= 1)
         {
+            dashLines.SetActive(false);
             currentDashSpeed = 1;
-
         }
 
         if (currentDashSpeed > dashSpeed)

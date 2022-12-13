@@ -66,8 +66,8 @@ public class AreaDetect : MonoBehaviour
             else if (currentAreaNum == 2) audioManager.PlayGameplayMusicOpenOcean();
             else if (currentAreaNum == 3) audioManager.PlayGameplayMusicTwilight();
             else if (currentAreaNum == 4) audioManager.StopGameplayMusic();
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
 
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 }

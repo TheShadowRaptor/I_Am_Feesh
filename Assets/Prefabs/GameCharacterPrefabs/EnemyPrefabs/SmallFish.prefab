@@ -294,7 +294,8 @@ MonoBehaviour:
   hitFrameTime: 0
   changeDir: 0
   swimSpeed: 20
-  fleeSwimSpeed: 30
+  fleeSwimSpeed: 50
+  turnTime: 3
   attackingLength: 0.1
   currentAttackTime: 0
   attackTimeDecrease: 5
@@ -318,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7da7103e8e38ab4baec18e967ca93dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit: 0
   health: 1
   canTakeDamage: 1
 --- !u!114 &1432140413807765972

@@ -93,9 +93,9 @@ public class CoralLatcher : FishCharacter
     {
         if (isDead)
         {
+            float spacing = 0;
             for (int i = 0; i < 2; i++)
             {
-                float spacing = 0;
                 Vector3 pos = transform.position;
                 pos.x += spacing;
                 Instantiate(food, pos, transform.rotation);

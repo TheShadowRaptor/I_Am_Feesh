@@ -300,8 +300,8 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= stomachCapacityPrices[currentStomachCapacityButtonPriceState])
                 {
-                    player.baseStamina += 20;
-                    gameplayHud.IncreaseHungerBarSize(20);
+                    player.baseStamina += 10;
+                    gameplayHud.IncreaseHungerBarSize(40);
                     player.evolutionPoints -= stomachCapacityPrices[currentStomachCapacityButtonPriceState];
                     currentStomachCapacityButtonState += 1;
                     currentStomachCapacityButtonPriceState += 1;
@@ -314,8 +314,8 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= stomachCapacityPrices[currentStomachCapacityButtonPriceState])
                 {
-                    player.baseStamina += 20;
-                    gameplayHud.IncreaseHungerBarSize(20);
+                    player.baseStamina += 10;
+                    gameplayHud.IncreaseHungerBarSize(40);
                     player.evolutionPoints -= stomachCapacityPrices[currentStomachCapacityButtonPriceState];
                     currentStomachCapacityButtonState += 1;
                     currentStomachCapacityButtonPriceState += 1;
@@ -328,8 +328,8 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (player.evolutionPoints >= stomachCapacityPrices[currentStomachCapacityButtonPriceState])
                 {
-                    player.baseStamina += 20;
-                    gameplayHud.IncreaseHungerBarSize(20);
+                    player.baseStamina += 10;
+                    gameplayHud.IncreaseHungerBarSize(40);
                     player.evolutionPoints -= stomachCapacityPrices[currentStomachCapacityButtonPriceState];
                     currentStomachCapacityButtonState += 1;
                     currentStomachCapacityButtonPriceState += 1;

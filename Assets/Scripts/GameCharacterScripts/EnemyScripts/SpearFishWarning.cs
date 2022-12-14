@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class SpearFishWarning : MonoBehaviour
 {
-    GameObject camera;
+    GameObject cameraObj;
+    Camera camera;
+
+    GameObject playerObj;
 
     Renderer renderer;
     Color spriteRenderer;
@@ -27,7 +30,6 @@ public class SpearFishWarning : MonoBehaviour
     {
         renderer = gameObject.GetComponent<Renderer>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>().color;
-        camera = GameObject.Find("MainCamera");
 
         if (startInvisable == false)
         {
@@ -45,6 +47,17 @@ public class SpearFishWarning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerObj == null)
+        {
+            playerObj = GameObject.Find("Player");
+        }
+
+        if (cameraObj == null)
+        {
+            cameraObj = GameObject.Find("MainCamera");
+            camera = cameraObj.GetComponent<Camera>();
+        }
+
         if (cycleTime == lastCycle)
         {
             if (rightSpawn)
@@ -102,16 +115,19 @@ public class SpearFishWarning : MonoBehaviour
     {
         Vector3 pos = transform.position;
         Vector3 camPos = camera.transform.position;
+        Vector3 playerPos = playerObj.transform.position;
 
-        pos.y = camPos.y;
+        pos.y = playerPos.y;
+
+        Vector3 camBounds = new Vector3(camera.orthographicSize * 2, camera.orthographicSize, 0);
 
         if (rightSpawn)
         {
-            pos.x = camPos.x - 10;
+            pos.x = -camBounds.x + camPos.x + 2;
         }
         else
         {
-            pos.x = camPos.x + 10;
+            pos.x = camBounds.x + camPos.x - 2;
         }
 
         transform.position = pos;

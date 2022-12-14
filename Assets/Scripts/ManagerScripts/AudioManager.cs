@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
         playerBiteAudio = gameObject.transform.Find("PlayerBiteAudio").gameObject.GetComponent<AudioSource>();
         objectAudio = gameObject.transform.Find("ObjectAudio").gameObject.GetComponent<AudioSource>();
         enemyAudio = gameObject.transform.Find("EnemyAudio").gameObject.GetComponent<AudioSource>();
-        uIAudio = gameObject.transform.Find("UIAudio").gameObject.GetComponent<AudioSource>();
+        uIAudio = gameObject.transform.Find("UiAudio").gameObject.GetComponent<AudioSource>();
         musicAudio = gameObject.transform.Find("MusicAudio").gameObject.GetComponent<AudioSource>();
         battleMusicAudio = gameObject.transform.Find("BattleMusicAudio").gameObject.GetComponent<AudioSource>();
     }

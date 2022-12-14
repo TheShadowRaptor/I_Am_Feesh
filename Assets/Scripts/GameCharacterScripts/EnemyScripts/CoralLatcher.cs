@@ -82,11 +82,13 @@ public class CoralLatcher : FishCharacter
     public void LockCamera()
     {
         cameraScroll.isEnabled = false;
+        audioManager.DynamicGameplayMusicSwitch(true);
     }
 
     public void UnlockCamera()
     {
         cameraScroll.isEnabled = true;
+        audioManager.DynamicGameplayMusicSwitch(false);
     }
 
     protected new void SpawnFood()

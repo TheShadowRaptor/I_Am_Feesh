@@ -14,6 +14,7 @@ public class UIMananger : MonoBehaviour
     public Canvas results;
     public Canvas upgrade;
     public Canvas win;
+    public Canvas credits;
 
     public void TitleCanvasOn()
     {
@@ -25,6 +26,7 @@ public class UIMananger : MonoBehaviour
         results.enabled = false;
         upgrade.enabled = false;
         win.enabled = false;
+        credits.enabled = false;
     }
 
     public void ControlsCanvasOn()
@@ -37,6 +39,7 @@ public class UIMananger : MonoBehaviour
         results.enabled = false;
         upgrade.enabled = false;
         win.enabled = false;
+        credits.enabled = false;
     }
 
     public void SettingsCanvasOn()
@@ -49,6 +52,7 @@ public class UIMananger : MonoBehaviour
         results.enabled = false;
         upgrade.enabled = false;
         win.enabled = false;
+        credits.enabled = false;
     }
     public void GameplayCanvasOn()
     {
@@ -60,6 +64,7 @@ public class UIMananger : MonoBehaviour
         results.enabled = false;
         upgrade.enabled = false;
         win.enabled = false;
+        credits.enabled = false;
     }
 
     public void PauseCanvasOn()
@@ -72,6 +77,7 @@ public class UIMananger : MonoBehaviour
         results.enabled = false;
         upgrade.enabled = false;
         win.enabled = false;
+        credits.enabled = false;
     }
 
     public void ResultsCanvasOn()
@@ -84,6 +90,7 @@ public class UIMananger : MonoBehaviour
         results.enabled = true;
         upgrade.enabled = false;
         win.enabled = false;
+        credits.enabled = false;
     }
 
     public void UpgradeCanvasOn()
@@ -96,6 +103,7 @@ public class UIMananger : MonoBehaviour
         results.enabled = false;
         upgrade.enabled = true;
         win.enabled = false;
+        credits.enabled = false;
     }
 
     public void WinCanvasOn()
@@ -108,5 +116,19 @@ public class UIMananger : MonoBehaviour
         results.enabled = false;
         upgrade.enabled = false;
         win.enabled = true;
+        credits.enabled = false;
+    }
+
+    public void CreditsCanvasOn()
+    {
+        title.enabled = false;
+        control.enabled = false;
+        settings.enabled = false;
+        gameplay.enabled = false;
+        pause.enabled = false;
+        results.enabled = false;
+        upgrade.enabled = false;
+        win.enabled = false;
+        credits.enabled = true;
     }
 }

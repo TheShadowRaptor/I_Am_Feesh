@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
         pause,
         results,
         upgrade,
-        win
+        win,
+        credits
     }
 
     [Header("GameManagers")]
@@ -167,6 +168,12 @@ public class GameManager : MonoBehaviour
                 uIMananger.WinCanvasOn();
                 audioManager.StopGameplayMusic();
                 break;
+
+            case GameState.credits:
+                Time.timeScale = 1;
+                player.staminaDecrease = 0;
+                uIMananger.CreditsCanvasOn();
+                break;
         }
     }
 
@@ -218,6 +225,10 @@ public class GameManager : MonoBehaviour
     {
         Save();
         state = GameState.upgrade;
+    }
+    public void LoadCreditsButton()
+    {
+        state = GameState.credits;
     }
 
     public void LoadControlsButton()

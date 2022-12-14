@@ -228,7 +228,7 @@ public class PlayerController : GameCharacter
         StopAttacking();
         if (attackButton && currentAttackTime == 0)
         {
-            if (isDead == false)
+            if (gameManager.state == GameManager.GameState.gameplay)
             {
                 audioManager.PlayPlayerReadyingBite();
                 currentAttackTime = attackTime;

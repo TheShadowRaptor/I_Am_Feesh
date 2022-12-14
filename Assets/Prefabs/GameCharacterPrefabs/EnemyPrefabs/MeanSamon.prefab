@@ -265,7 +265,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 4
 --- !u!1 &3992301917038275427
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +659,7 @@ MonoBehaviour:
   changeDir: 0
   swimSpeed: 0
   fleeSwimSpeed: 70
+  turnTime: 0.5
   attackingLength: 0.05
   currentAttackTime: 0
   attackTimeDecrease: 0.5
@@ -670,7 +671,6 @@ MonoBehaviour:
   attackRadiusObj: {fileID: 930782943469733474}
   spriteRenderer: {fileID: 2234014791937590591}
   openMouth: {fileID: 144686412151050165}
-  turnTime: 0.5
 --- !u!61 &780704287502217349
 BoxCollider2D:
   m_ObjectHideFlags: 0

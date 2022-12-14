@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource enemyAudio;
     public AudioSource uIAudio;
     public AudioSource musicAudio;
+    public AudioSource battleMusicAudio;
 
     [Header("PlayerSounds")]
     public AudioClip playerBite;
@@ -35,11 +36,21 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameplayMusicTwilight;
     public AudioClip menuMusic;
 
+    [Header("Music")]
+    public AudioClip battleMusicShallow;
+    public AudioClip battleMusicCoralReef;
+    public AudioClip battleMusicOpenOcean;
+    public AudioClip battleMusicTwilight;
+
     [Header("Scripts")]
+    public GameManager gameManager;
     public SettingsManager settingsManager;
 
     float maxMusicVolume;
     float pauseMusicVolume;
+    float muteMusicVolume;
+
+    bool inBattle;
 
     private void Start()
     {
@@ -49,19 +60,35 @@ public class AudioManager : MonoBehaviour
         enemyAudio = gameObject.transform.Find("EnemyAudio").gameObject.GetComponent<AudioSource>();
         uIAudio = gameObject.transform.Find("UIAudio").gameObject.GetComponent<AudioSource>();
         musicAudio = gameObject.transform.Find("MusicAudio").gameObject.GetComponent<AudioSource>();
+        battleMusicAudio = gameObject.transform.Find("BattleMusicAudio").gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        musicAudio.volume = settingsManager.musicVolume;
-        playerAudio.volume = settingsManager.soundVolume;
-        playerBiteAudio.volume = settingsManager.soundVolume;
-        objectAudio.volume = settingsManager.soundVolume;
-        enemyAudio.volume = settingsManager.soundVolume;
-        uIAudio.volume = settingsManager.soundVolume;
+        if (gameManager.state == GameManager.GameState.settings)
+        {
+            musicAudio.volume = settingsManager.musicVolume;
+            battleMusicAudio.volume = settingsManager.musicVolume;
+
+            if (inBattle)
+            {
+                musicAudio.volume = muteMusicVolume;
+            }
+            else if (inBattle == false)
+            {
+                battleMusicAudio.volume = muteMusicVolume;
+            }
+
+            playerAudio.volume = settingsManager.soundVolume;
+            playerBiteAudio.volume = settingsManager.soundVolume;
+            objectAudio.volume = settingsManager.soundVolume;
+            enemyAudio.volume = settingsManager.soundVolume;
+            uIAudio.volume = settingsManager.soundVolume;
+        }
 
         maxMusicVolume = settingsManager.musicVolume;
         pauseMusicVolume = maxMusicVolume / 3.0f;
+        muteMusicVolume = 0;
     }
 
     //Player Sounds
@@ -159,6 +186,36 @@ public class AudioManager : MonoBehaviour
         musicAudio.volume = maxMusicVolume;
     }
 
+    // Battle Music
+
+    public void PlayBattleMusicShallow()
+    {
+        battleMusicAudio.clip = battleMusicShallow;
+        battleMusicAudio.Play();
+        battleMusicAudio.volume = muteMusicVolume;
+    }
+
+    public void PlayBattleMusicCoralReef()
+    {
+        battleMusicAudio.clip = battleMusicCoralReef;
+        battleMusicAudio.Play();
+        battleMusicAudio.volume = muteMusicVolume;
+    }
+
+    public void PlayBattleMusicOpenOcean()
+    {
+        battleMusicAudio.clip = battleMusicOpenOcean;
+        battleMusicAudio.Play();
+        battleMusicAudio.volume = muteMusicVolume;
+    }
+
+    public void PlayBattleMusicTwilight()
+    {
+        battleMusicAudio.clip = battleMusicTwilight;
+        battleMusicAudio.Play();
+        battleMusicAudio.volume = muteMusicVolume;
+    }
+
     public void PlayMenuMusic()
     {
         musicAudio.clip = menuMusic;
@@ -166,8 +223,10 @@ public class AudioManager : MonoBehaviour
         {
             musicAudio.Play();
         }
+        musicAudio.volume = maxMusicVolume;
     }
 
+    // Misc
     public void TurnGameplayMusicDown()
     {
         musicAudio.volume = pauseMusicVolume;
@@ -178,8 +237,26 @@ public class AudioManager : MonoBehaviour
         musicAudio.volume = maxMusicVolume;
     }
 
+    public void DynamicGameplayMusicSwitch(bool playBattleMusic)
+    {
+        if (playBattleMusic)
+        {
+            battleMusicAudio.volume = maxMusicVolume;
+            musicAudio.volume = muteMusicVolume;
+            inBattle = true;
+        }
+
+        else if (playBattleMusic == false)
+        {
+            battleMusicAudio.volume = muteMusicVolume;
+            musicAudio.volume = maxMusicVolume;
+            inBattle = false;
+        }
+    }
+
     public void StopGameplayMusic()
     {
         musicAudio.Stop();
+        battleMusicAudio.Stop();
     }
 }

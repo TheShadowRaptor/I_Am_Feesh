@@ -200,6 +200,7 @@ public class GameManager : MonoBehaviour
         player.transform.rotation = playerSpawn.transform.rotation;
 
         audioManager.PlayGameplayMusicShallow();
+        audioManager.PlayBattleMusicShallow();
         Save();
 
         state = GameState.gameplay;

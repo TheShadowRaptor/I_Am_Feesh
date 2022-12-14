@@ -274,6 +274,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 26
       objectReference: {fileID: 0}
+    - target: {fileID: 4925210281198190214, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4991096508086486164, guid: d8787019c1e51c84390c4131f7958a46, type: 3}
       propertyPath: gameManager
       value: 

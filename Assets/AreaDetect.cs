@@ -61,13 +61,31 @@ public class AreaDetect : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             currentAreaNum = areaNum;
-            if (currentAreaNum == 0) audioManager.PlayGameplayMusicShallow();
-            else if (currentAreaNum == 1) audioManager.PlayGameplayMusicCoralReef();
-            else if (currentAreaNum == 2) audioManager.PlayGameplayMusicOpenOcean();
-            else if (currentAreaNum == 3) audioManager.PlayGameplayMusicTwilight();
+            if (currentAreaNum == 0)
+            {
+                audioManager.PlayGameplayMusicShallow();
+                audioManager.PlayBattleMusicShallow();
+            }
+            else if (currentAreaNum == 1)
+            {
+                audioManager.PlayGameplayMusicCoralReef();
+                audioManager.PlayBattleMusicCoralReef();
+            }
+
+            else if (currentAreaNum == 2)
+            {
+                audioManager.PlayGameplayMusicOpenOcean();
+                audioManager.PlayBattleMusicOpenOcean();
+            }
+
+            else if (currentAreaNum == 3)
+            {
+                audioManager.PlayGameplayMusicTwilight();
+                audioManager.PlayBattleMusicTwilight();
+            }
+
             else if (currentAreaNum == 4) audioManager.StopGameplayMusic();
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
-
     }
 }

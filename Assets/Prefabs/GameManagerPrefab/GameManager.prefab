@@ -830,6 +830,134 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &214401036103565974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4484383697386973390}
+  - component: {fileID: 7556914625232800559}
+  m_Layer: 0
+  m_Name: BattleMusicAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4484383697386973390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214401036103565974}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7835037311478812665}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7556914625232800559
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214401036103565974}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &240598130231326900
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2834,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9cfd8803f24945f46964ef0ae4e1016f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -4688,8 +4816,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 2.519043}
+  m_SizeDelta: {x: 30.811, y: 25.775}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2326573499891530689
 CanvasRenderer:
@@ -5790,8 +5918,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -103.65027}
-  m_SizeDelta: {x: 0, y: -207.301}
+  m_AnchoredPosition: {x: 0, y: -102.336}
+  m_SizeDelta: {x: 30.811, y: -183.933}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &962824604722342051
 CanvasRenderer:
@@ -9459,6 +9587,7 @@ Transform:
   - {fileID: 3152681046088731945}
   - {fileID: 8217383251592519249}
   - {fileID: 2276363939630572968}
+  - {fileID: 4484383697386973390}
   m_Father: {fileID: 5800173004709001040}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9480,6 +9609,7 @@ MonoBehaviour:
   enemyAudio: {fileID: 1927012119692547055}
   uIAudio: {fileID: 4925210281198190214}
   musicAudio: {fileID: 7194030496548074443}
+  battleMusicAudio: {fileID: 7556914625232800559}
   playerBite: {fileID: 8300000, guid: 27a88f976546cb84b9faac2af6461a11, type: 3}
   playerReadyingBite: {fileID: 8300000, guid: 569db86b68ad84840a95e21fdd4e7c97, type: 3}
   playerDeath: {fileID: 8300000, guid: be7b5bf7617e9d049a8af80148ddc481, type: 3}
@@ -9493,6 +9623,11 @@ MonoBehaviour:
   gameplayMusicOpenOcean: {fileID: 8300000, guid: ead2589ce25ee1b4087d1d21c50f81b3, type: 3}
   gameplayMusicTwilight: {fileID: 8300000, guid: de9f569a6be7317408ff673926100bf7, type: 3}
   menuMusic: {fileID: 8300000, guid: 0c4d4ffce6085f3488a4d56bd7eaf197, type: 3}
+  battleMusicShallow: {fileID: 8300000, guid: 87b9bb38d0b997742a9c4ee2564c7aa3, type: 3}
+  battleMusicCoralReef: {fileID: 8300000, guid: 3718d14dee9f8084bb8aa02ad3832ed5, type: 3}
+  battleMusicOpenOcean: {fileID: 8300000, guid: 2ba395521c0f16c4bb0e475c2ac60858, type: 3}
+  battleMusicTwilight: {fileID: 8300000, guid: 349cd997022a6924090f36eeb4dda226, type: 3}
+  gameManager: {fileID: 8047815183634792025}
   settingsManager: {fileID: 8128486359117132478}
 --- !u!1 &5724953683973483764
 GameObject:
@@ -9551,7 +9686,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5724953683973483764}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -11908,7 +12043,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 40
+  m_Value: 20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

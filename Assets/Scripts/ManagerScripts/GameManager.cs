@@ -252,13 +252,13 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        if (Application.persistentDataPath + "/savefile1.dat" == null)
+        if (Application.persistentDataPath + "/savefile1.dat" != null)
         {
             showWarningPanel();
         }
         else
         {
-            NewGame();
+            LoadControlsButton();
         }
     }
 

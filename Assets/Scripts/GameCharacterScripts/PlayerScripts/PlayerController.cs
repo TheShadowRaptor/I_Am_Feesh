@@ -99,11 +99,6 @@ public class PlayerController : GameCharacter
     {
         theScale = transform.localScale;
 
-        if (Input.GetKey(KeyCode.C))
-        {
-            GodMode();
-        }
-
         InputMananger();
         AttackManager();
         InvincibilityFrames();
